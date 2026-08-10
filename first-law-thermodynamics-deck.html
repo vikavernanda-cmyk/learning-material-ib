@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Law of Thermodynamics — Study Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F3EA;
+    --paper2:#F0EBDC;
+    --ink:#23262B;
+    --ink-soft:#5B5A52;
+    --grid:#DCD5BF;
+    --magenta:#B23A6B;
+    --magenta-soft:#F3DCE5;
+    --green:#3F7D4A;
+    --green-soft:#DCEBDD;
+    --blue:#1B4FD6;
+    --blue-soft:#DCE6F9;
+    --amber:#1E8A3C;
+    --amber-soft:#F2E5CC;
+    --isobaric:#1E8A3C;
+    --isobaric-soft:#DCF3E1;
+    --isothermal:#D62E2E;
+    --isothermal-soft:#FADBDB;
+    --adiabatic:#7A3FC2;
+    --adiabatic-soft:#EBE0F7;
+    --purple:#6B4FA0;
+    --purple-soft:#E6DFF2;
+    --line: rgba(35,38,43,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 27px, var(--grid) 27px, var(--grid) 28px),
+      repeating-linear-gradient(90deg, transparent, transparent 27px, var(--grid) 27px, var(--grid) 28px),
+      var(--paper);
+    background-attachment: fixed, fixed, fixed;
+    opacity:1;
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+  }
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:radial-gradient(ellipse at 20% -10%, rgba(178,58,107,0.06), transparent 45%),
+               radial-gradient(ellipse at 90% 10%, rgba(47,95,168,0.06), transparent 40%);
+    pointer-events:none;
+    z-index:0;
+  }
+  h1,h2,h3{font-family:'Newsreader', serif; font-weight:600; color:var(--ink); letter-spacing:-0.01em;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  sup, sub{font-size:0.68em;}
+
+  /* ---- Top nav ---- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,243,234,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; gap:2px;
+    padding:0 14px;
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+  nav a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--ink-soft); text-decoration:none;
+    padding:13px 10px; border-bottom:2px solid transparent;
+    transition:.15s;
+  }
+  nav a:hover, nav a.active{color:var(--magenta); border-bottom-color:var(--magenta);}
+
+  main{max-width:860px; margin:0 auto; padding:0 22px 40px; position:relative; z-index:1;}
+
+  /* ---- Hero ---- */
+  .hero{
+    padding:64px 0 30px; text-align:center;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--magenta); margin-bottom:14px;
+  }
+  .hero h1{font-size:44px; line-height:1.05; margin:0 0 12px;}
+  .hero p.sub{color:var(--ink-soft); font-size:16.5px; max-width:520px; margin:0 auto 34px;}
+  .pv-hero{width:100%; max-width:520px; margin:0 auto; display:block;}
+  .hero-caption{font-size:12.5px; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; margin-top:10px;}
+
+  /* ---- Section chrome ---- */
+  section{padding:46px 0; border-top:1px solid var(--line);}
+  section:first-of-type{border-top:none;}
+  .tag{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em;
+    text-transform:uppercase; padding:3px 9px; border-radius:3px; margin-bottom:12px;
+  }
+  .tag.green{background:var(--green-soft); color:var(--green);}
+  .tag.magenta{background:var(--magenta-soft); color:var(--magenta);}
+  .tag.purple{background:var(--purple-soft); color:var(--purple);}
+  .tag.blue{background:var(--blue-soft); color:var(--blue);}
+  .tag.amber{background:var(--isobaric-soft); color:var(--isobaric);}
+  .tag.teal{background:var(--isothermal-soft); color:var(--isothermal);}
+  .tag.rust{background:var(--adiabatic-soft); color:var(--adiabatic);}
+
+  section h2{font-size:28px; margin:0 0 6px;}
+  section > p.lede{color:var(--ink-soft); margin:0 0 22px; font-size:15px; max-width:600px;}
+
+  .card{
+    background:rgba(255,255,255,0.55);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:18px 20px;
+    margin-bottom:16px;
+  }
+  .card h3{font-size:17px; margin:0 0 10px;}
+
+  .formula-box{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:18px;
+    background:#fff;
+    border:1.5px solid var(--ink);
+    border-radius:6px;
+    padding:14px 20px;
+    display:inline-block;
+    margin:8px 10px 8px 0;
+  }
+  .formula-box.magenta{border-color:var(--magenta); color:var(--magenta);}
+  .formula-box.purple{border-color:var(--purple); color:var(--purple);}
+  .formula-box.blue{border-color:var(--blue);}
+  .formula-box.small{font-size:14px; padding:9px 14px;}
+
+  .frac{display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle; margin:0 3px; font-size:0.85em; line-height:1;}
+  .frac .num{border-bottom:1.4px solid currentColor; padding:0 3px 1px;}
+  .frac .den{padding:1px 3px 0;}
+
+  ul.notes{margin:0; padding-left:20px;}
+  ul.notes li{margin-bottom:6px;}
+
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr;}}
+
+  svg.diagram{width:100%; height:auto; display:block;}
+  .diagram-label{font-family:'IBM Plex Mono',monospace; font-size:11px;}
+
+  .sign-table{width:100%; border-collapse:collapse; margin-top:6px; font-size:14px;}
+  .sign-table th, .sign-table td{border:1px solid var(--line); padding:8px 10px; text-align:center;}
+  .sign-table th{background:var(--paper2); font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.05em;}
+  .sign-table td.pos{color:var(--green); font-weight:600;}
+  .sign-table td.neg{color:var(--magenta); font-weight:600;}
+  .sign-table td.zero{color:var(--ink-soft); font-weight:600;}
+
+  /* ---- Process cards ---- */
+  .process{border-left:4px solid; padding-left:18px; margin-bottom:34px;}
+  .process.blue{border-color:var(--blue);}
+  .process.amber{border-color:var(--isobaric);}
+  .process.teal{border-color:var(--isothermal);}
+  .process.rust{border-color:var(--adiabatic);}
+  .process-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;}
+  .process-num{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--ink-soft);}
+
+  /* ---- Checkpoints ---- */
+  .checkpoint{
+    background:var(--ink); color:var(--paper);
+    border-radius:10px; padding:24px 24px 20px; margin:34px 0;
+    position:relative;
+  }
+  .checkpoint::before{
+    content:"CHECKPOINT"; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em;
+    color:#E8C6D5; display:block; margin-bottom:10px;
+  }
+  .checkpoint h4{margin:0 0 14px; font-family:'Newsreader',serif; font-weight:500; font-size:19px; color:#fff;}
+  .options{display:flex; flex-direction:column; gap:8px;}
+  .opt-btn{
+    text-align:left; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.18);
+    color:var(--paper); padding:10px 14px; border-radius:6px; font-family:'IBM Plex Sans',sans-serif;
+    font-size:14.5px; cursor:pointer; transition:.15s;
+  }
+  .opt-btn:hover{background:rgba(255,255,255,0.12);}
+  .opt-btn.correct{background:rgba(63,125,74,0.35); border-color:#7CBB86;}
+  .opt-btn.incorrect{background:rgba(178,58,107,0.35); border-color:#D98CAE;}
+  .cp-feedback{margin-top:12px; font-size:14px; padding:10px 12px; border-radius:6px; display:none; line-height:1.5;}
+  .cp-feedback.show{display:block;}
+  .cp-feedback.good{background:rgba(63,125,74,0.2); color:#B7E0BE;}
+  .cp-feedback.bad{background:rgba(178,58,107,0.2); color:#F0B9CE;}
+
+  /* ---- Assessment ---- */
+  .reveal-btn{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; text-transform:uppercase; letter-spacing:.06em;
+    background:var(--ink); color:var(--paper); border:none; padding:9px 16px; border-radius:5px; cursor:pointer;
+    margin:6px 0 14px;
+  }
+  .reveal-btn:hover{background:var(--magenta);}
+  .hidden-answer{display:none; background:var(--paper2); border-left:3px solid var(--magenta); padding:10px 14px; border-radius:0 6px 6px 0; margin-bottom:10px; font-size:14px;}
+  .hidden-answer.show{display:block;}
+  .reflection{margin-bottom:18px;}
+  .reflection p.q{font-weight:600; margin-bottom:6px;}
+
+  /* ---- Quiz ---- */
+  .quiz-q{
+    background:rgba(255,255,255,0.6); border:1px solid var(--line); border-radius:10px;
+    padding:20px 22px; margin-bottom:18px;
+  }
+  .quiz-head{display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:12px;}
+  .quiz-num{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft);}
+  .diff{font-family:'IBM Plex Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; padding:3px 9px; border-radius:20px; white-space:nowrap;}
+  .diff.easy{background:var(--green-soft); color:var(--green);}
+  .diff.medium{background:var(--amber-soft); color:var(--amber);}
+  .diff.hard{background:var(--magenta-soft); color:var(--magenta);}
+  .quiz-q p.stem{margin:0 0 14px; font-size:15.5px;}
+  .quiz-opts{display:flex; flex-direction:column; gap:8px;}
+  .qopt{
+    text-align:left; background:#fff; border:1px solid var(--line); padding:10px 14px; border-radius:6px;
+    font-size:14.5px; cursor:pointer; transition:.15s; font-family:'IBM Plex Sans',sans-serif;
+  }
+  .qopt:hover{border-color:var(--ink);}
+  .qopt.correct{background:var(--green-soft); border-color:var(--green); font-weight:600;}
+  .qopt.incorrect{background:var(--magenta-soft); border-color:var(--magenta);}
+  .qopt.disabled{cursor:default;}
+  .qexp{display:none; margin-top:12px; font-size:13.5px; background:var(--paper2); padding:10px 12px; border-radius:6px; color:var(--ink-soft);}
+  .qexp.show{display:block;}
+
+  .score-panel{
+    position:sticky; bottom:16px; margin-top:20px;
+    background:var(--ink); color:var(--paper); border-radius:10px;
+    padding:16px 22px; display:flex; justify-content:space-between; align-items:center; gap:14px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.25);
+  }
+  .score-panel .big{font-family:'Newsreader',serif; font-size:26px;}
+  .score-panel button{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:.05em;
+    background:var(--magenta); color:#fff; border:none; padding:10px 16px; border-radius:6px; cursor:pointer;
+  }
+
+  footer{text-align:center; padding:30px 0 50px; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; font-size:11.5px;}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#hero">Start</a>
+  <a href="#systems">Systems</a>
+  <a href="#firstlaw">1st Law</a>
+  <a href="#internal-energy">ΔU</a>
+  <a href="#example">Worked Ex.</a>
+  <a href="#processes">4 Processes</a>
+  <a href="#explanations">Why?</a>
+  <a href="#assessment">Assessment</a>
+  <a href="#exercises">Exercises</a>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="hero" style="border-top:none;">
+    <div class="eyebrow">IB Physics · Thermodynamics</div>
+    <h1>The First Law of<br>Thermodynamics</h1>
+    <p class="sub">Every process below starts from the same point on a P–V diagram. Which path the gas takes — constant volume, constant pressure, constant temperature, or no heat at all — decides everything about Q, ΔU and W.</p>
+
+    <svg class="pv-hero" viewBox="0 0 560 340" fill="none">
+      <!-- axes -->
+      <line x1="70" y1="15" x2="70" y2="290" stroke="#23262B" stroke-width="1.5"/>
+      <polygon points="70,15 65,25 75,25" fill="#23262B"/>
+      <line x1="70" y1="290" x2="540" y2="290" stroke="#23262B" stroke-width="1.5"/>
+      <polygon points="540,290 530,285 530,295" fill="#23262B"/>
+      <text x="48" y="26" class="diagram-label" fill="#23262B" font-size="14">P</text>
+      <text x="530" y="312" class="diagram-label" fill="#23262B" font-size="14">V</text>
+
+      <!-- common starting point -->
+      <circle cx="150" cy="60" r="4" fill="#23262B"/>
+
+      <!-- isochoric: vertical down (V = constant) -->
+      <line x1="150" y1="60" x2="150" y2="278" stroke="#1B4FD6" stroke-width="2.6"/>
+      <text x="130" y="200" class="diagram-label" fill="#1B4FD6" font-size="12" transform="rotate(-90 130 200)">V = constant</text>
+
+      <!-- isobaric: horizontal (P = constant) -->
+      <line x1="150" y1="278" x2="500" y2="278" stroke="#1E8A3C" stroke-width="2.6"/>
+      <text x="270" y="300" class="diagram-label" fill="#1E8A3C" font-size="12">P = constant</text>
+
+      <!-- isothermal: PV = constant, gentler hyperbola -->
+      <path d="M150 60 C 210 100, 330 165, 500 240" stroke="#D62E2E" stroke-width="2.6" fill="none"/>
+      <text x="300" y="182" class="diagram-label" fill="#D62E2E" font-size="12" transform="rotate(-14 300 182)">PV = constant</text>
+
+      <!-- adiabatic: PV^gamma = constant, steeper hyperbola -->
+      <path d="M150 60 C 195 110, 250 190, 400 265" stroke="#7A3FC2" stroke-width="2.6" fill="none"/>
+      <text x="250" y="238" class="diagram-label" fill="#7A3FC2" font-size="12" transform="rotate(-24 250 238)">PVᵞ = constant</text>
+
+      <!-- legend -->
+      <g font-family="'IBM Plex Sans', sans-serif">
+        <line x1="360" y1="30" x2="392" y2="30" stroke="#1B4FD6" stroke-width="3"/>
+        <text x="400" y="34" font-size="12.5" fill="#23262B">Isochoric</text>
+        <line x1="360" y1="52" x2="392" y2="52" stroke="#1E8A3C" stroke-width="3"/>
+        <text x="400" y="56" font-size="12.5" fill="#23262B">Isobaric</text>
+        <line x1="360" y1="74" x2="392" y2="74" stroke="#D62E2E" stroke-width="3"/>
+        <text x="400" y="78" font-size="12.5" fill="#23262B">Isothermal</text>
+        <line x1="360" y1="96" x2="392" y2="96" stroke="#7A3FC2" stroke-width="3"/>
+        <text x="400" y="100" font-size="12.5" fill="#23262B">Adiabatic</text>
+      </g>
+    </svg>
+    <div class="hero-caption">four paths, one starting point — scroll to see how each one works</div>
+  </section>
+
+  <!-- SYSTEMS -->
+  <section id="systems">
+    <span class="tag green">Definitions</span>
+    <h2>Closed vs. Isolated Systems</h2>
+    <p class="lede">The First Law applies inside a <strong>closed system</strong> — get this boundary condition right before anything else.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3 style="color:var(--green)">Closed system</h3>
+        <ul class="notes">
+          <li>No mass transfer in or out</li>
+          <li>Energy <em>can</em> be transferred in both directions — as heat <strong>and</strong> work</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--green)">Isolated system</h3>
+        <ul class="notes">
+          <li>No mass transfer</li>
+          <li>No energy transferred, at all</li>
+        </ul>
+      </div>
+    </div>
+    <p class="lede" style="margin-top:6px;">From here on, every diagram and formula assumes we're inside a <strong>closed system</strong>.</p>
+
+    <div class="checkpoint">
+      <h4>Which system allows energy to move in or out (as heat and work), but never allows mass in or out?</h4>
+      <div class="options" data-correct="1">
+        <button class="opt-btn">Open system</button>
+        <button class="opt-btn">Closed system</button>
+        <button class="opt-btn">Isolated system</button>
+        <button class="opt-btn">None of the above</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
+
+  <!-- FIRST LAW -->
+  <section id="firstlaw">
+    <span class="tag magenta">Core Law</span>
+    <h2>The First Law: Conservation of Energy</h2>
+    <p class="lede">For a closed system, this is just conservation of energy written for heat and work.</p>
+
+    <div class="formula-box magenta">Q = ΔU + W</div>
+    <p style="font-size:14px; color:var(--ink-soft); margin-top:2px;">Q, ΔU and W are all measured in <strong>joules</strong> — heat, change in internal energy, and work, respectively.</p>
+
+    <div class="card">
+      <h3>Work done by / on a closed system</h3>
+      <div class="formula-box small">W = P · ΔV</div>
+      <p style="font-size:14px; color:var(--ink-soft);">P in pascals, ΔV (change in volume) in m³, W in joules.</p>
+      <p style="font-size:14.5px; margin-top:10px;"><strong>Work done = the area under a P–V diagram.</strong> The direction of the arrow (i.e. whether volume increases or decreases) sets the sign.</p>
+      <div class="grid2" style="margin-top:10px;">
+        <svg class="diagram" viewBox="0 0 220 140">
+          <line x1="30" y1="10" x2="30" y2="115" stroke="#23262B" stroke-width="1.3"/>
+          <line x1="30" y1="115" x2="205" y2="115" stroke="#23262B" stroke-width="1.3"/>
+          <text x="14" y="16" class="diagram-label" fill="#23262B">P</text>
+          <text x="198" y="130" class="diagram-label" fill="#23262B">V</text>
+          <line x1="55" y1="60" x2="160" y2="60" stroke="#3F7D4A" stroke-width="2.5" marker-end="url(#arrowg)"/>
+          <text x="80" y="50" class="diagram-label" fill="#B23A6B">W +</text>
+          <text x="60" y="132" class="diagram-label" fill="#B23A6B">work done = +</text>
+          <defs><marker id="arrowg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#3F7D4A"/></marker></defs>
+        </svg>
+        <svg class="diagram" viewBox="0 0 220 140">
+          <line x1="30" y1="10" x2="30" y2="115" stroke="#23262B" stroke-width="1.3"/>
+          <line x1="30" y1="115" x2="205" y2="115" stroke="#23262B" stroke-width="1.3"/>
+          <text x="14" y="16" class="diagram-label" fill="#23262B">P</text>
+          <text x="198" y="130" class="diagram-label" fill="#23262B">V</text>
+          <line x1="160" y1="60" x2="55" y2="60" stroke="#B23A6B" stroke-width="2.5" marker-end="url(#arrowr)"/>
+          <text x="80" y="50" class="diagram-label" fill="#B23A6B">W −</text>
+          <text x="60" y="132" class="diagram-label" fill="#B23A6B">work done = −</text>
+          <defs><marker id="arrowr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#B23A6B"/></marker></defs>
+        </svg>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Clausius sign conventions</h3>
+      <ul class="notes">
+        <li><strong class="mono">Q</strong> = <span style="color:var(--green)">+</span> heat flows from surroundings <em>into</em> the system</li>
+        <li><strong class="mono">ΔU</strong> = <span style="color:var(--green)">+</span> internal energy increases</li>
+        <li><strong class="mono">W</strong> = <span style="color:var(--green)">+</span> system does work <em>on</em> the surroundings</li>
+        <li><strong class="mono">W</strong> = <span style="color:var(--magenta)">−</span> surroundings do work <em>on</em> the system</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- INTERNAL ENERGY -->
+  <section id="internal-energy">
+    <span class="tag purple">Change in Internal Energy</span>
+    <h2>ΔU for an Ideal Gas</h2>
+    <div class="formula-box purple">ΔU = <span class="frac"><span class="num">3</span><span class="den">2</span></span> n R ΔT</div>
+    <div class="formula-box purple">ΔU = <span class="frac"><span class="num">3</span><span class="den">2</span></span> N k<sub>B</sub> ΔT</div>
+    <p style="font-size:14px; color:var(--ink-soft);">where <span class="mono">N = n · N<sub>A</sub></span> (number of molecules = moles × Avogadro's number)</p>
+  </section>
+
+  <!-- WORKED EXAMPLE -->
+  <section id="example">
+    <span class="tag magenta">Worked Example</span>
+    <h2>Isovolumetric Cooling, A → B</h2>
+    <p class="lede">An ideal gas undergoes an isovolumetric (constant-volume) change from state A to state B.</p>
+
+    <div class="card">
+      <h3>Given</h3>
+      <ul class="notes mono" style="font-size:14.5px;">
+        <li>At A: P = 4×10⁶ Pa, V = 1.5×10⁻⁴ m³, T = 612 K</li>
+        <li>At B: T = 386 K</li>
+      </ul>
+      <p style="margin:10px 0 0; font-weight:600;">Q: How much thermal energy is removed from the gas going from A to B?</p>
+    </div>
+
+    <div class="card">
+      <h3>Step 1 — Read the graph</h3>
+      <p style="font-size:14.5px;">Isovolumetric ⇒ volume is fixed. Temperature falls, so (from PV = nRT) pressure must fall too — a vertical line straight down from A to B.</p>
+      <svg class="diagram" style="max-width:220px;" viewBox="0 0 180 150">
+        <line x1="30" y1="15" x2="30" y2="120" stroke="#23262B" stroke-width="1.3"/>
+        <line x1="30" y1="120" x2="160" y2="120" stroke="#23262B" stroke-width="1.3"/>
+        <text x="14" y="20" class="diagram-label" fill="#23262B">P</text>
+        <text x="152" y="135" class="diagram-label" fill="#23262B">V</text>
+        <line x1="75" y1="40" x2="75" y2="90" stroke="#3F7D4A" stroke-width="2.2" marker-end="url(#arrowdown)"/>
+        <text x="82" y="45" class="diagram-label" fill="#3F7D4A">A</text>
+        <text x="82" y="95" class="diagram-label" fill="#3F7D4A">B</text>
+        <defs><marker id="arrowdown" markerWidth="8" markerHeight="8" refX="3" refY="6" orient="auto"><path d="M0,0 L6,0 L3,6 Z" fill="#3F7D4A"/></marker></defs>
+      </svg>
+      <p style="font-size:14.5px;">Thermal energy is <em>removed</em> — flowing from the system to the surroundings — so we expect <strong>Q negative</strong>.</p>
+    </div>
+
+    <div class="card">
+      <h3>Step 2 — Apply the First Law</h3>
+      <p class="mono" style="font-size:15px;">Q = ΔU + W</p>
+      <p style="font-size:14.5px;">Isovolumetric ⇒ ΔV = 0 ⇒ <span class="mono">W = P·ΔV = 0</span></p>
+      <p class="mono" style="font-size:15px;">so Q = ΔU</p>
+      <p style="font-size:14.5px;">And <span class="mono">ΔU = 3/2 · n R · ΔT</span>. From PV = nRT: <span class="mono">nR = P<sub>A</sub>V<sub>A</sub> / T<sub>A</sub></span></p>
+      <p class="mono" style="font-size:15px;">Q = 3/2 · (P<sub>A</sub>V<sub>A</sub> / T<sub>A</sub>) · ΔT</p>
+      <p class="mono" style="font-size:14.5px;">Q = 3/2 · [(4×10⁶ × 1.5×10⁻⁴) / 612] × (386 − 612)</p>
+      <p class="mono" style="font-size:17px; color:var(--magenta); font-weight:600;">Q = −332 J</p>
+    </div>
+
+    <div class="checkpoint">
+      <h4>In this example ΔV = 0. Why is W = 0, and why does the negative Q make physical sense?</h4>
+      <div class="options" data-correct="0">
+        <button class="opt-btn">W = 0 because no volume change means no work is done; internal energy (and temperature) falls, so heat must leave the system → Q is negative</button>
+        <button class="opt-btn">W is positive because pressure decreases</button>
+        <button class="opt-btn">W is negative because the gas contracts</button>
+        <button class="opt-btn">Q is negative because volume increases</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
+
+  <!-- PROCESSES -->
+  <section id="processes">
+    <span class="tag magenta">Thermodynamic Processes</span>
+    <h2>Four Named Processes</h2>
+    <p class="lede">Every case below still obeys <span class="mono">Q = ΔU + W</span> and <span class="mono">PV = nRT</span> — only the constraint changes.</p>
+
+    <!-- Isochoric -->
+    <div class="process blue">
+      <div class="process-head">
+        <span class="process-num">1</span>
+        <h3 style="color:var(--blue); margin:0;">Isochoric (constant volume)</h3>
+      </div>
+      <p style="font-size:14.5px;"><span class="mono">PV = nRT</span>, V constant ⇒ <strong>P ∝ T</strong>. As T↑, P↑.</p>
+      <div class="grid2">
+        <svg class="diagram" viewBox="0 0 180 140">
+          <line x1="30" y1="15" x2="30" y2="115" stroke="#23262B" stroke-width="1.3"/>
+          <line x1="30" y1="115" x2="160" y2="115" stroke="#23262B" stroke-width="1.3"/>
+          <text x="14" y="20" class="diagram-label" fill="#23262B">P</text>
+          <text x="152" y="130" class="diagram-label" fill="#23262B">T</text>
+          <line x1="30" y1="115" x2="140" y2="35" stroke="#1B4FD6" stroke-width="2.4"/>
+        </svg>
+        <svg class="diagram" viewBox="0 0 180 140">
+          <line x1="30" y1="15" x2="30" y2="115" stroke="#23262B" stroke-width="1.3"/>
+          <line x1="30" y1="115" x2="160" y2="115" stroke="#23262B" stroke-width="1.3"/>
+          <text x="14" y="20" class="diagram-label" fill="#23262B">P</text>
+          <text x="152" y="130" class="diagram-label" fill="#23262B">V</text>
+          <line x1="75" y1="40" x2="75" y2="90" stroke="#1B4FD6" stroke-width="2.4"/>
+        </svg>
+      </div>
+      <table class="sign-table">
+        <tr><th>Case</th><th>ΔU</th><th>W</th><th>Q</th></tr>
+        <tr><td>P↓ (T↓)</td><td class="neg">−</td><td class="zero">0</td><td class="neg">−</td></tr>
+      </table>
+      <p style="font-size:13.5px; color:var(--ink-soft); margin-top:8px;">W = P·ΔV = 0 since ΔV = 0 always. If T↓, internal energy falls and heat leaves the system (Q −).</p>
+    </div>
+
+    <!-- Isobaric -->
+    <div class="process amber">
+      <div class="process-head">
+        <span class="process-num">2</span>
+        <h3 style="color:var(--isobaric); margin:0;">Isobaric (constant pressure)</h3>
+      </div>
+      <p style="font-size:14.5px;"><span class="mono">PV = nRT</span>, P constant ⇒ <strong>V ∝ T</strong>. As T↑, V↑.</p>
+      <div class="grid2">
+        <svg class="diagram" viewBox="0 0 180 140">
+          <line x1="30" y1="15" x2="30" y2="115" stroke="#23262B" stroke-width="1.3"/>
+          <line x1="30" y1="115" x2="160" y2="115" stroke="#23262B" stroke-width="1.3"/>
+          <text x="14" y="20" class="diagram-label" fill="#23262B">V</text>
+          <text x="152" y="130" class="diagram-label" fill="#23262B">T</text>
+          <line x1="30" y1="115" x2="140" y2="35" stroke="#1E8A3C" stroke-width="2.4"/>
+        </svg>
+        <svg class="diagram" viewBox="0 0 180 140">
+          <line x1="30" y1="15" x2="30" y2="115" stroke="#23262B" stroke-width="1.3"/>
+          <line x1="30" y1="115" x2="160" y2="115" stroke="#23262B" stroke-width="1.3"/>
+          <text x="14" y="20" class="diagram-label" fill="#23262B">P</text>
+          <text x="152" y="130" class="diagram-label" fill="#23262B">V</text>
+          <line x1="55" y1="60" x2="130" y2="60" stroke="#1E8A3C" stroke-width="2.4" marker-end="url(#arrowamb)"/>
+          <defs><marker id="arrowamb" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1E8A3C"/></marker></defs>
+        </svg>
+      </div>
+      <table class="sign-table">
+        <tr><th>Case</th><th>ΔU</th><th>W</th><th>Q</th></tr>
+        <tr><td>V↑ (T↑)</td><td class="pos">+</td><td class="pos">+</td><td class="pos">+</td></tr>
+      </table>
+      <p style="font-size:13.5px; color:var(--ink-soft); margin-top:8px;">Volume and temperature both rise ⇒ internal energy rises (ΔU +). Gas expands, doing positive work (W = P·ΔV, +). Heat flows in for both effects (Q +).</p>
+    </div>
+
+    <!-- Isothermal -->
+    <div class="process teal">
+      <div class="process-head">
+        <span class="process-num">3</span>
+        <h3 style="color:var(--isothermal); margin:0;">Isothermal (constant temperature)</h3>
+      </div>
+      <p style="font-size:14.5px;"><span class="mono">PV = nRT</span>, T constant ⇒ <strong>P ∝ 1/V</strong>. As V↑, P↓.</p>
+      <svg class="diagram" style="max-width:220px;" viewBox="0 0 180 140">
+        <line x1="30" y1="15" x2="30" y2="115" stroke="#23262B" stroke-width="1.3"/>
+        <line x1="30" y1="115" x2="160" y2="115" stroke="#23262B" stroke-width="1.3"/>
+        <text x="14" y="20" class="diagram-label" fill="#23262B">P</text>
+        <text x="152" y="130" class="diagram-label" fill="#23262B">V</text>
+        <path d="M45 35 C 70 55, 110 90, 145 108" stroke="#D62E2E" stroke-width="2.4" fill="none"/>
+        <text x="90" y="30" class="diagram-label" fill="#D62E2E">isothermal contraction ↺</text>
+      </svg>
+      <p style="font-size:14.5px;"><strong>ΔU:</strong> since T is constant, ΔT = 0 ⇒ <span class="mono">ΔU = 3/2 nR·ΔT = 0</span></p>
+      <table class="sign-table">
+        <tr><th>Case</th><th>ΔU</th><th>W</th><th>Q</th></tr>
+        <tr><td>V↓ (compression, V₂&lt;V₁)</td><td class="zero">0</td><td class="neg">−</td><td class="neg">−</td></tr>
+      </table>
+      <p style="font-size:13.5px; color:var(--ink-soft); margin-top:8px;">With ΔU = 0, the First Law gives Q = W directly — so Q takes the same sign as the work done.</p>
+    </div>
+
+    <!-- Adiabatic -->
+    <div class="process rust">
+      <div class="process-head">
+        <span class="process-num">4</span>
+        <h3 style="color:var(--adiabatic); margin:0;">Adiabatic (no thermal energy transfer)</h3>
+      </div>
+      <p style="font-size:14.5px;"><span class="mono">Q = 0</span> by definition — the curve is steeper than an isothermal curve on a P–V diagram.</p>
+      <svg class="diagram" style="max-width:220px;" viewBox="0 0 180 140">
+        <line x1="30" y1="15" x2="30" y2="115" stroke="#23262B" stroke-width="1.3"/>
+        <line x1="30" y1="115" x2="160" y2="115" stroke="#23262B" stroke-width="1.3"/>
+        <text x="14" y="20" class="diagram-label" fill="#23262B">P</text>
+        <text x="152" y="130" class="diagram-label" fill="#23262B">V</text>
+        <path d="M45 30 C 60 60, 85 95, 115 108" stroke="#7A3FC2" stroke-width="2.4" fill="none"/>
+      </svg>
+      <p style="font-size:14.5px;">For this case (gas expands): <span class="mono">Q = 0</span>, <span class="mono">W = +</span> (W = P·ΔV, expanding). From Q = ΔU + W: <span class="mono">0 = ΔU + (+)</span> ⇒ <strong>ΔU = −</strong></p>
+      <table class="sign-table">
+        <tr><th>Case</th><th>ΔU</th><th>W</th><th>Q</th></tr>
+        <tr><td>Expansion</td><td class="neg">−</td><td class="pos">+</td><td class="zero">0</td></tr>
+      </table>
+      <div class="formula-box small rust" style="border-color:var(--adiabatic); color:var(--adiabatic);">P<sub>A</sub>V<sub>A</sub><sup>5/3</sup> = P<sub>B</sub>V<sub>B</sub><sup>5/3</sup></div>
+      <p style="font-size:13px; color:var(--ink-soft);">holds for an ideal, <strong>monatomic</strong> gas undergoing an adiabatic process (since PV<sup>5/3</sup> = constant).</p>
+    </div>
+
+    <div class="checkpoint">
+      <h4>For an isobaric expansion (constant pressure, volume increasing), what are the signs of ΔU, W and Q?</h4>
+      <div class="options" data-correct="0">
+        <button class="opt-btn">All three are positive</button>
+        <button class="opt-btn">ΔU positive, W positive, Q negative</button>
+        <button class="opt-btn">ΔU negative, W positive, Q positive</button>
+        <button class="opt-btn">All three are negative</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
+
+  <!-- EXPLANATIONS -->
+  <section id="explanations">
+    <span class="tag magenta">Why Does This Happen?</span>
+    <h2>Reasoning It Through</h2>
+    <p class="lede">Starting from <span class="mono">PV = nRT</span>, for a fixed amount of gas: <span class="mono">P ∝ T/V</span>.</p>
+
+    <div class="card">
+      <h3 style="color:var(--isothermal);">Isothermal</h3>
+      <p style="font-size:14.5px;">Temperature is constant, so only the volume effect matters: <span class="mono">P ∝ 1/V</span>, i.e. <span class="mono">PV = constant</span>.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="color:var(--adiabatic);">Adiabatic</h3>
+      <p style="font-size:14.5px;">The gas performs work <em>without</em> receiving heat, so it loses internal energy → temperature decreases.</p>
+      <ul class="notes" style="font-size:14.5px; margin-top:8px;">
+        <li><strong>Isothermal:</strong> pressure falls because molecules spread through a larger volume (needed to keep pressure consistent with constant T)</li>
+        <li><strong>Adiabatic:</strong> pressure falls for <em>two</em> reasons stacked together — the gas occupies more volume <em>and</em> it's colder, so molecules collide with the walls less often. That's why the adiabatic curve drops more steeply than the isothermal one — the gas expands against external pressure while cooling, performing work without receiving heat.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ASSESSMENT FOR LEARNING -->
+  <section id="assessment">
+    <span class="tag green">Assessment for Learning</span>
+    <h2>Self-Check Before the Exercises</h2>
+    <p class="lede">No grades here — just an honest check of what's solid and what needs another pass.</p>
+
+    <div class="card">
+      <h3>Fill in the sign table from memory first, then reveal</h3>
+      <button class="reveal-btn" onclick="toggle('signtable')">Reveal full sign table</button>
+      <div class="hidden-answer" id="signtable">
+        <table class="sign-table">
+          <tr><th>Process</th><th>Constraint</th><th>ΔU</th><th>W</th><th>Q</th></tr>
+          <tr><td>Isochoric</td><td>ΔV = 0</td><td>depends on ΔT</td><td class="zero">0</td><td>= ΔU</td></tr>
+          <tr><td>Isobaric</td><td>ΔP = 0</td><td>depends on ΔT</td><td>= P·ΔV</td><td>= ΔU + W</td></tr>
+          <tr><td>Isothermal</td><td>ΔT = 0</td><td class="zero">0</td><td>depends on ΔV</td><td>= W</td></tr>
+          <tr><td>Adiabatic</td><td>Q = 0</td><td>= −W</td><td>depends on ΔV</td><td class="zero">0</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="reflection">
+      <p class="q">1. In your own words: why is Q negative when a gas releases heat to its surroundings?</p>
+      <button class="reveal-btn" onclick="toggle('r1')">Show model answer</button>
+      <div class="hidden-answer" id="r1">By the Clausius convention, Q is defined as positive when heat flows <em>into</em> the system from the surroundings. If heat is instead leaving the system, that flow is in the opposite direction, so Q is negative.</div>
+    </div>
+
+    <div class="reflection">
+      <p class="q">2. Why is the adiabatic curve steeper than the isothermal curve on a P–V diagram?</p>
+      <button class="reveal-btn" onclick="toggle('r2')">Show model answer</button>
+      <div class="hidden-answer" id="r2">On the isothermal curve, pressure only falls because the gas spreads into a larger volume. On the adiabatic curve, pressure falls for that <em>same</em> reason, plus the gas is also cooling (since it does work without receiving heat) — colder gas molecules collide with the container walls less often, dropping the pressure further for the same increase in volume.</div>
+    </div>
+
+    <div class="reflection">
+      <p class="q">3. Starting from Q = ΔU + W, show algebraically why W = 0 in an isochoric process.</p>
+      <button class="reveal-btn" onclick="toggle('r3')">Show model answer</button>
+      <div class="hidden-answer" id="r3">Work is defined as W = P·ΔV. "Isochoric" means constant volume, so ΔV = 0 by definition. Substituting: W = P × 0 = 0. This leaves Q = ΔU — all the heat transferred goes directly into changing internal energy (and hence temperature).</div>
+    </div>
+  </section>
+
+  <!-- EXERCISES -->
+  <section id="exercises">
+    <span class="tag magenta">IB Physics Exercise</span>
+    <h2>10 Multiple-Choice Questions</h2>
+    <p class="lede">2 hard · 4 medium · 4 easy. Select an answer to see instant feedback.</p>
+
+    <div id="quiz"></div>
+
+    <div class="score-panel">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; opacity:.8;">Score</div>
+        <div class="big"><span id="scoreVal">0</span> / 10</div>
+      </div>
+      <button onclick="resetQuiz()">Reset Quiz</button>
+    </div>
+  </section>
+
+  <footer>First Law of Thermodynamics · Q = ΔU + W · study deck</footer>
+</main>
+
+<script>
+// Checkpoint logic
+document.querySelectorAll('.checkpoint').forEach(cp=>{
+  const correctIdx = parseInt(cp.querySelector('.options').dataset.correct);
+  const btns = cp.querySelectorAll('.opt-btn');
+  const fb = cp.querySelector('.cp-feedback');
+  btns.forEach((b,i)=>{
+    b.addEventListener('click', ()=>{
+      if(b.classList.contains('locked')) return;
+      btns.forEach(x=>x.classList.add('locked'));
+      if(i===correctIdx){
+        b.classList.add('correct');
+        fb.textContent = "Correct — " + btns[correctIdx].textContent;
+        fb.className = 'cp-feedback show good';
+      } else {
+        b.classList.add('incorrect');
+        btns[correctIdx].classList.add('correct');
+        fb.textContent = "Not quite. The correct answer is: " + btns[correctIdx].textContent;
+        fb.className = 'cp-feedback show bad';
+      }
+    });
+  });
+});
+
+function toggle(id){
+  document.getElementById(id).classList.toggle('show');
+}
+
+// Quiz data
+const quizData = [
+  {diff:'easy', stem:'In a closed system, which of the following can be transferred across the boundary?', opts:['Mass only','Energy only, as heat and work','Both mass and energy','Neither mass nor energy'], correct:1,
+   exp:'A closed system blocks mass transfer entirely, but allows energy to move in or out as heat and/or work.'},
+  {diff:'easy', stem:'A gas releases heat to its surroundings. What is the sign of Q?', opts:['Positive','Negative','Zero','Cannot be determined'], correct:1,
+   exp:'By the Clausius convention, Q is positive when heat flows into the system. Heat leaving means Q is negative.'},
+  {diff:'easy', stem:'Which expression correctly gives the work done by or on a closed system?', opts:['W = P · ΔV','W = V · ΔP','W = ΔU / Q','W = n R ΔT'], correct:0,
+   exp:'Work done is W = P·ΔV — pressure multiplied by the change in volume, equal to the area under a P–V graph.'},
+  {diff:'easy', stem:'Which equation is the correct statement of the First Law of Thermodynamics?', opts:['Q = ΔU + W','Q = W − ΔU','Q = ΔU × W','Q = ΔU / W'], correct:0,
+   exp:'The First Law is Q = ΔU + W: heat added equals the increase in internal energy plus the work done by the system.'},
+  {diff:'medium', stem:'In an isochoric (constant-volume) process, what is the work done, W?', opts:['W = 0','W = P·ΔV, positive','W = P·ΔV, negative','Cannot be determined without more data'], correct:0,
+   exp:'ΔV = 0 by definition for an isochoric process, so W = P·ΔV = 0, regardless of how pressure or temperature change.'},
+  {diff:'medium', stem:'A gas expands at constant pressure (isobaric). What is the sign of ΔU?', opts:['Positive','Negative','Zero','Cannot be determined'], correct:0,
+   exp:'At constant P, V ∝ T, so an increase in volume means an increase in temperature — and ΔU = 3/2 nRΔT is therefore positive.'},
+  {diff:'medium', stem:'For an isothermal process on an ideal gas, how are pressure and volume related?', opts:['P ∝ V','P ∝ 1/V','P ∝ T','P is independent of V'], correct:1,
+   exp:'From PV = nRT with T constant, P ∝ 1/V — this is the hyperbola seen on the isothermal P–V curve.'},
+  {diff:'medium', stem:'A gas absorbs 500 J of heat and does 200 J of work on its surroundings. What is ΔU?', opts:['300 J','700 J','−300 J','200 J'], correct:0,
+   exp:'Q = ΔU + W → 500 = ΔU + 200 → ΔU = 300 J.'},
+  {diff:'hard', stem:'An ideal gas undergoes an isovolumetric process from A (P = 5×10⁵ Pa, V = 2.0×10⁻³ m³, T = 500 K) to B (T = 300 K). What is Q?', opts:['−600 J','+600 J','−400 J','−900 J'], correct:0,
+   exp:'ΔV = 0 so W = 0, and Q = ΔU = 3/2 · (P_AV_A/T_A) · ΔT = 1.5 × (5×10⁵ × 2×10⁻³ / 500) × (300 − 500) = 1.5 × 2 × (−200) = −600 J.'},
+  {diff:'hard', stem:'A monatomic ideal gas undergoes an adiabatic expansion to double its volume (V_B = 2V_A). Using P_AV_A^(5/3) = P_BV_B^(5/3), find P_B / P_A.', opts:['≈ 0.315','0.5','≈ 0.630','≈ 1.587'], correct:0,
+   exp:'P_B/P_A = (V_A/V_B)^(5/3) = (1/2)^(5/3) = 2^(−5/3) ≈ 0.315. (1.587 = 2^(5/3) is the tempting inverse-exponent trap.)'},
+];
+
+const quizEl = document.getElementById('quiz');
+let score = 0;
+const answered = new Array(quizData.length).fill(false);
+
+function renderQuiz(){
+  quizEl.innerHTML = '';
+  quizData.forEach((q,qi)=>{
+    const card = document.createElement('div');
+    card.className = 'quiz-q';
+    card.innerHTML = `
+      <div class="quiz-head">
+        <span class="quiz-num">Question ${qi+1} of 10</span>
+        <span class="diff ${q.diff}">${q.diff}</span>
+      </div>
+      <p class="stem">${q.stem}</p>
+      <div class="quiz-opts">
+        ${q.opts.map((o,oi)=>`<button class="qopt" data-qi="${qi}" data-oi="${oi}">${o}</button>`).join('')}
+      </div>
+      <div class="qexp" id="exp-${qi}">${q.exp}</div>
+    `;
+    quizEl.appendChild(card);
+  });
+  quizEl.querySelectorAll('.qopt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const qi = parseInt(btn.dataset.qi);
+      const oi = parseInt(btn.dataset.oi);
+      if(answered[qi]) return;
+      answered[qi] = true;
+      const group = quizEl.querySelectorAll(`.qopt[data-qi="${qi}"]`);
+      group.forEach(b=>b.classList.add('disabled'));
+      if(oi === quizData[qi].correct){
+        btn.classList.add('correct');
+        score++;
+      } else {
+        btn.classList.add('incorrect');
+        group[quizData[qi].correct].classList.add('correct');
+      }
+      document.getElementById(`exp-${qi}`).classList.add('show');
+      document.getElementById('scoreVal').textContent = score;
+    });
+  });
+}
+renderQuiz();
+
+function resetQuiz(){
+  score = 0;
+  for(let i=0;i<answered.length;i++) answered[i]=false;
+  document.getElementById('scoreVal').textContent = 0;
+  renderQuiz();
+}
+
+// scroll spy
+const navLinks = document.querySelectorAll('#navbar a');
+const secs = document.querySelectorAll('main section, main .hero');
+window.addEventListener('scroll', ()=>{
+  let current = '';
+  secs.forEach(s=>{
+    const top = s.offsetTop - 90;
+    if(window.scrollY >= top) current = s.id;
+  });
+  navLinks.forEach(l=>{
+    l.classList.toggle('active', l.getAttribute('href') === '#'+current);
+  });
+});
+</script>
+</body>
+</html>
