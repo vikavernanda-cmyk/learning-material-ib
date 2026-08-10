@@ -65,174 +65,47 @@
   .mono{font-family:'IBM Plex Mono', monospace;}
   sup, sub{font-size:0.68em;}
 
-  /* ========================================
-   VERTICAL BULLET NAVIGATION
-   ======================================== */
-
-#navbar{
-  position:fixed;
-  top:50%;
-  right:24px;
-  z-index:100;
-
-  display:flex;
-  flex-direction:column;
-  align-items:flex-end;
-  gap:5px;
-
-  padding:12px 10px;
-
-  background:rgba(246,243,234,0.88);
-  border:1px solid rgba(35,38,43,0.12);
-  border-radius:18px;
-
-  box-shadow:0 8px 28px rgba(35,38,43,0.10);
-
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-
-  transform:translateY(-50%);
+  /* ---- Top nav ---- */
+  nav{
+position:sticky;
+top:0;
+z-index:50;
+display:flex;
+align-items:center;
+gap:4px;
+min-height:52px;
+padding:0 18px;
+overflow-x:auto;
+white-space:nowrap;
+background:rgba(246,243,234,0.97);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(35,38,43,0.16);
+box-shadow:0 3px 12px rgba(35,38,43,0.05);
+scrollbar-width:thin;
 }
-
-#navbar a{
-  position:relative;
-
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:10px;
-
-  min-width:24px;
-  min-height:24px;
-  padding:4px;
-
-  color:var(--ink-soft);
-  text-decoration:none;
-
-  border:none;
-  outline:none;
+  nav a{
+flex:0 0 auto;
+padding:16px 11px 13px;
+color:var(--ink-soft);
+font-family:'IBM Plex Mono', monospace;
+font-size:11.5px;
+font-weight:600;
+line-height:1;
+letter-spacing:.055em;
+text-transform:uppercase;
+text-decoration:none;
+border-bottom:3px solid transparent;
+transition:
+color .15s ease,
+background-color .15s ease,
+border-color .15s ease;
 }
-
-/* Bullet */
-#navbar .nav-dot{
-  position:relative;
-  z-index:2;
-
-  display:block;
-  flex:0 0 auto;
-
-  width:9px;
-  height:9px;
-
-  background:rgba(35,38,43,0.28);
-  border:2px solid transparent;
-  border-radius:50%;
-
-  transition:
-    width .18s ease,
-    height .18s ease,
-    background-color .18s ease,
-    border-color .18s ease,
-    box-shadow .18s ease,
-    transform .18s ease;
-}
-
-/* Nama section */
-#navbar .nav-label{
-  position:absolute;
-  top:50%;
-  right:29px;
-
-  padding:7px 10px;
-
-  color:var(--paper);
-  background:var(--ink);
-  border-radius:6px;
-
-  font-family:'IBM Plex Mono',monospace;
-  font-size:10.5px;
-  font-weight:600;
-  line-height:1;
-  letter-spacing:.055em;
-  text-transform:uppercase;
-  white-space:nowrap;
-
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-
-  transform:translate(8px,-50%);
-
-  box-shadow:0 5px 16px rgba(35,38,43,0.18);
-
-  transition:
-    opacity .16s ease,
-    visibility .16s ease,
-    transform .16s ease;
-}
-
-/* Panah kecil pada label */
-#navbar .nav-label::after{
-  content:"";
-
-  position:absolute;
-  top:50%;
-  right:-5px;
-
-  width:10px;
-  height:10px;
-
-  background:var(--ink);
-
-  transform:translateY(-50%) rotate(45deg);
-}
-
-/* Munculkan label ketika hover atau keyboard focus */
-#navbar a:hover .nav-label,
-#navbar a:focus-visible .nav-label{
-  opacity:1;
-  visibility:visible;
-  transform:translate(0,-50%);
-}
-
-#navbar a:hover .nav-dot,
-#navbar a:focus-visible .nav-dot{
-  background:var(--magenta);
-  transform:scale(1.25);
-}
-
-/* Bullet untuk section yang sedang aktif */
-#navbar a.active .nav-dot{
-  width:13px;
-  height:13px;
-
-  background:var(--magenta);
-  border-color:var(--paper);
-
-  box-shadow:
-    0 0 0 2px var(--magenta),
-    0 3px 10px rgba(178,58,107,0.30);
-}
-
-/* Garis vertikal di belakang bullet */
-#navbar::before{
-  content:"";
-
-  position:absolute;
-  top:22px;
-  right:18px;
-  bottom:22px;
-
-  width:1px;
-
-  background:rgba(35,38,43,0.12);
-}
-
-/* Pastikan konten tidak terkena navigation */
-@media (min-width:1100px){
-  main{
-    padding-right:54px;
-  }
+  nav a:hover,
+nav a.active{
+color:var(--magenta);
+background:rgba(178,58,107,0.045);
+border-bottom-color:var(--magenta);
 }
 
   main{
@@ -441,142 +314,20 @@
   }
 
   footer{text-align:center; padding:30px 0 50px; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; font-size:11.5px;}
-  /* ========================================
-   MOBILE BULLET NAVIGATION
-   ======================================== */
-
-@media (max-width:900px){
-  #navbar{
-    top:auto;
-    right:50%;
-    bottom:12px;
-
-    width:auto;
-    max-width:calc(100vw - 24px);
-
-    flex-direction:row;
-    align-items:center;
-    justify-content:flex-start;
-    gap:3px;
-
-    padding:8px 10px;
-
-    border-radius:20px;
-
-    overflow-x:auto;
-    overflow-y:hidden;
-
-    transform:translateX(50%);
-
-    scrollbar-width:none;
-  }
-
-  #navbar::-webkit-scrollbar{
-    display:none;
-  }
-
-  #navbar::before{
-    display:none;
-  }
-
-  #navbar a{
-    flex:0 0 auto;
-
-    min-width:28px;
-    min-height:28px;
-
-    justify-content:center;
-    padding:5px;
-  }
-
-  #navbar .nav-dot{
-    width:8px;
-    height:8px;
-  }
-
-  #navbar a.active .nav-dot{
-    width:12px;
-    height:12px;
-  }
-
-  /* Di mobile, label muncul di atas bullet */
-  #navbar .nav-label{
-    top:auto;
-    right:auto;
-    bottom:38px;
-    left:50%;
-
-    transform:translate(-50%,8px);
-  }
-
-  #navbar .nav-label::after{
-    top:auto;
-    right:auto;
-    bottom:-5px;
-    left:50%;
-
-    transform:translateX(-50%) rotate(45deg);
-  }
-
-  #navbar a:hover .nav-label,
-  #navbar a:focus-visible .nav-label{
-    transform:translate(-50%,0);
-  }
-
-  /* Ruang tambahan agar navigation tidak menutupi footer */
-  main{
-    padding-bottom:100px;
-  }
-
-  footer{
-    padding-bottom:70px;
-  }
-}
 </style>
 </head>
 <body>
 
-<nav id="navbar" aria-label="Study deck navigation">
-  <hero
-    <span class="nav-dot"></span>
-    <span class="nav-label">Start</span>
-  </a>
-
-  <a href="#   <span class="nav-dot"></span>
-    <span class="nav-label">Systems</span>
-  </a>
-
-  <a href="#firstlaw" aria-label="First/span>
-    <span class="nav-label">First Law</span>
-  </a>
-
-  <internal-energy
-    <span class="nav-dot"></span>
-    <span class="nav-label">Internal Energy ΔU</span>
-  </a>
-
-  <example
-    <span class="nav-dot"></span>
-    <span class="nav-label">Worked Example</span>
-  </a>
-
-  <processes
-    <span class="nav-dot"></span>
-    <span class="nav-label">Four Processes</span>
-  </a>
-
-  <a href="#explanations" aria-label-dot"></span>
-    <span class="nav-label">Why?</span>
-  </a>
-
-  <assessment
-    <span class="nav-dot"></span>
-    <span class="nav-label">Assessment</span>
-  </a>
-
-  <a href="#exercises" aria-label="ot"></span>
-    <span class="nav-label">Exercises</span>
-  </a>
+<nav id="navbar">
+  <a href="#hero">Start</a>
+  <a href="#systems">Systems</a>
+  <a href="#firstlaw">1st Law</a>
+  <a href="#internal-energy">ΔU</a>
+  <a href="#example">Worked Ex.</a>
+  <a href="#processes">4 Processes</a>
+  <a href="#explanations">Why?</a>
+  <a href="#assessment">Assessment</a>
+  <a href="#exercises">Exercises</a>
 </nav>
 
 <main>
@@ -1086,41 +837,19 @@ function resetQuiz(){
   renderQuiz();
 }
 
-// Scroll spy for bullet navigation
+// scroll spy
 const navLinks = document.querySelectorAll('#navbar a');
-const sections = document.querySelectorAll('main section[id]');
-
-function updateActiveNavigation(){
-  const scrollPosition = window.scrollY + window.innerHeight * 0.35;
-  let currentSection = sections[0]?.id || 'hero';
-
-  sections.forEach(section => {
-    if(scrollPosition >= section.offsetTop){
-      currentSection = section.id;
-    }
+const secs = document.querySelectorAll('main section, main .hero');
+window.addEventListener('scroll', ()=>{
+  let current = '';
+  secs.forEach(s=>{
+    const top = s.offsetTop - 90;
+    if(window.scrollY >= top) current = s.id;
   });
-
-  navLinks.forEach(link => {
-    const isActive =
-      link.getAttribute('href') === `#${currentSection}`;
-
-    link.classList.toggle('active', isActive);
-
-    if(isActive){
-      link.setAttribute('aria-current', 'location');
-    } else {
-      link.removeAttribute('aria-current');
-    }
+  navLinks.forEach(l=>{
+    l.classList.toggle('active', l.getAttribute('href') === '#'+current);
   });
-}
-
-window.addEventListener('scroll', updateActiveNavigation, {
-  passive:true
 });
-
-window.addEventListener('resize', updateActiveNavigation);
-
-updateActiveNavigation();
 </script>
 </body>
 </html>
