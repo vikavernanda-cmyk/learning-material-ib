@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>First Law of Thermodynamics — Study Deck</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>First Law of Thermodynamics - Study Deck</title>
+
 <style>
   :root{
     --paper:#F6F3EA;
@@ -37,7 +36,7 @@
   margin:0;
   min-height:100vh;
   color:var(--ink);
-  font-family:'IBM Plex Sans', sans-serif;
+  font-family:Arial, Helvetica, sans-serif;
   font-size:16px;
   line-height:1.65;
 
@@ -62,31 +61,32 @@
     z-index:0;
   }
   h1,h2,h3{font-family:'Newsreader', serif; font-weight:600; color:var(--ink); letter-spacing:-0.01em;}
-  .mono{font-family:'IBM Plex Mono', monospace;}
+  .mono{font-family:'Courier New', Courier, monospace;}
   sup, sub{font-size:0.68em;}
 
   /* ========================================
-   VERTICAL BULLET NAVIGATION
+   RIGHT-SIDE BULLET NAVIGATION
    ======================================== */
 
 #navbar{
   position:fixed;
   top:50%;
-  right:24px;
-  z-index:100;
+  right:18px;
+  z-index:1000;
 
   display:flex;
   flex-direction:column;
-  align-items:flex-end;
-  gap:5px;
+  align-items:center;
+  gap:3px;
 
-  padding:12px 10px;
+  width:42px;
+  padding:12px 0;
 
-  background:rgba(246,243,234,0.88);
+  background:rgba(246,243,234,0.94);
   border:1px solid rgba(35,38,43,0.12);
-  border-radius:18px;
+  border-radius:24px;
 
-  box-shadow:0 8px 28px rgba(35,38,43,0.10);
+  box-shadow:0 8px 24px rgba(35,38,43,0.10);
 
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
@@ -94,58 +94,67 @@
   transform:translateY(-50%);
 }
 
+/* Garis vertikal */
+#navbar::before{
+  content:"";
+  position:absolute;
+  top:22px;
+  bottom:22px;
+  left:50%;
+  z-index:0;
+
+  width:1px;
+  background:rgba(35,38,43,0.12);
+
+  transform:translateX(-50%);
+}
+
 #navbar a{
   position:relative;
+  z-index:1;
 
   display:flex;
   align-items:center;
-  justify-content:flex-end;
-  gap:10px;
+  justify-content:center;
 
-  min-width:24px;
-  min-height:24px;
-  padding:4px;
+  width:30px;
+  height:30px;
+  padding:0;
 
   color:var(--ink-soft);
   text-decoration:none;
-
   border:none;
-  outline:none;
 }
 
-/* Bullet */
+/* Titik navigation */
 #navbar .nav-dot{
-  position:relative;
-  z-index:2;
-
   display:block;
-  flex:0 0 auto;
 
-  width:9px;
-  height:9px;
+  width:8px;
+  height:8px;
 
-  background:rgba(35,38,43,0.28);
-  border:2px solid transparent;
+  background:#A5A39C;
+  border:2px solid var(--paper);
   border-radius:50%;
 
   transition:
     width .18s ease,
     height .18s ease,
     background-color .18s ease,
-    border-color .18s ease,
     box-shadow .18s ease,
     transform .18s ease;
 }
 
-/* Nama section */
+/* Nama section disembunyikan secara default */
 #navbar .nav-label{
   position:absolute;
   top:50%;
-  right:29px;
+  right:38px;
 
+  display:block;
   padding:7px 10px;
 
-  color:var(--paper);
+  color:#fff;
   background:var(--ink);
   border-radius:6px;
 
@@ -153,7 +162,7 @@
   font-size:10.5px;
   font-weight:600;
   line-height:1;
-  letter-spacing:.055em;
+  letter-spacing:.04em;
   text-transform:uppercase;
   white-space:nowrap;
 
@@ -161,33 +170,32 @@
   visibility:hidden;
   pointer-events:none;
 
-  transform:translate(8px,-50%);
+  transform:translate(6px,-50%);
 
-  box-shadow:0 5px 16px rgba(35,38,43,0.18);
+  box-shadow:0 5px 15px rgba(35,38,43,0.18);
 
   transition:
-    opacity .16s ease,
-    visibility .16s ease,
-    transform .16s ease;
+    opacity .15s ease,
+    visibility .15s ease,
+    transform .15s ease;
 }
 
-/* Panah kecil pada label */
+/* Segitiga kecil pada tooltip */
 #navbar .nav-label::after{
   content:"";
 
   position:absolute;
   top:50%;
-  right:-5px;
+  right:-4px;
 
-  width:10px;
-  height:10px;
+  width:8px;
+  height:8px;
 
   background:var(--ink);
-
   transform:translateY(-50%) rotate(45deg);
 }
 
-/* Munculkan label ketika hover atau keyboard focus */
+/* Nama hanya muncul saat pointer diarahkan ke titik */
 #navbar a:hover .nav-label,
 #navbar a:focus-visible .nav-label{
   opacity:1;
@@ -195,44 +203,23 @@
   transform:translate(0,-50%);
 }
 
+/* Bullet saat hover */
 #navbar a:hover .nav-dot,
 #navbar a:focus-visible .nav-dot{
   background:var(--magenta);
-  transform:scale(1.25);
+  transform:scale(1.2);
 }
 
-/* Bullet untuk section yang sedang aktif */
+/* Bullet section aktif */
 #navbar a.active .nav-dot{
   width:13px;
   height:13px;
 
   background:var(--magenta);
-  border-color:var(--paper);
 
   box-shadow:
-    0 0 0 2px var(--magenta),
+    0 0 0 2px var(--magenta-soft),
     0 3px 10px rgba(178,58,107,0.30);
-}
-
-/* Garis vertikal di belakang bullet */
-#navbar::before{
-  content:"";
-
-  position:absolute;
-  top:22px;
-  right:18px;
-  bottom:22px;
-
-  width:1px;
-
-  background:rgba(35,38,43,0.12);
-}
-
-/* Pastikan konten tidak terkena navigation */
-@media (min-width:1100px){
-  main{
-    padding-right:54px;
-  }
 }
 
   main{
@@ -254,7 +241,7 @@
   margin-bottom:14px;
 
   color:var(--magenta);
-  font-family:'IBM Plex Mono', monospace;
+  font-family:'Courier New', Courier, monospace;
   font-size:12px;
   font-weight:600;
   line-height:1.4;
@@ -291,7 +278,7 @@
   margin-top:12px;
 
   color:var(--ink-soft);
-  font-family:'IBM Plex Mono', monospace;
+  font-family:'Courier New', Courier, monospace;
   font-size:12px;
   line-height:1.5;
 }
@@ -300,7 +287,7 @@
   section{padding:46px 0; border-top:1px solid var(--line);}
   section:first-of-type{border-top:none;}
   .tag{
-    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em;
+    display:inline-block; font-family:'Courier New', Courier, monospace; font-size:11px; letter-spacing:.08em;
     text-transform:uppercase; padding:3px 9px; border-radius:3px; margin-bottom:12px;
   }
   .tag.green{background:var(--green-soft); color:var(--green);}
@@ -324,7 +311,7 @@
   .card h3{font-size:17px; margin:0 0 10px;}
 
   .formula-box{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:'Courier New', Courier, monospace;
     font-size:18px;
     background:#fff;
     border:1.5px solid var(--ink);
@@ -445,32 +432,6 @@
    MOBILE BULLET NAVIGATION
    ======================================== */
 
-@media (max-width:900px){
-  #navbar{
-    top:auto;
-    right:50%;
-    bottom:12px;
-
-    width:auto;
-    max-width:calc(100vw - 24px);
-
-    flex-direction:row;
-    align-items:center;
-    justify-content:flex-start;
-    gap:3px;
-
-    padding:8px 10px;
-
-    border-radius:20px;
-
-    overflow-x:auto;
-    overflow-y:hidden;
-
-    transform:translateX(50%);
-
-    scrollbar-width:none;
-  }
-
   #navbar::-webkit-scrollbar{
     display:none;
   }
@@ -537,45 +498,47 @@
 <body>
 
 <nav id="navbar" aria-label="Study deck navigation">
-  <hero
-    <span class="nav-dot"></span>
+  #hero
     <span class="nav-label">Start</span>
-  </a>
-
-  <a href="#   <span class="nav-dot"></span>
-    <span class="nav-label">Systems</span>
-  </a>
-
-  <a href="#firstlaw" aria-label="First/span>
-    <span class="nav-label">First Law</span>
-  </a>
-
-  <internal-energy
     <span class="nav-dot"></span>
-    <span class="nav-label">Internal Energy ΔU</span>
+  </a>
+
+  #systems
+    <span class="nav-label">Systems</span>
+    <span class="nav-dot"></span>
+  </a>
+
+  #firstlaw
+    <span class="nav-label">First Law</span>
+    <span class="nav-dot"></span>
+  </a>
+
+  #internal-energy
+    <span class="nav-label">Internal Energy</span>
+    <span class="nav-dot"></span>
   </a>
 
   <example
-    <span class="nav-dot"></span>
     <span class="nav-label">Worked Example</span>
-  </a>
-
-  <processes
     <span class="nav-dot"></span>
-    <span class="nav-label">Four Processes</span>
   </a>
 
-  <a href="#explanations" aria-label-dot"></span>
-    <span class="nav-label">Why?</span>
-  </a>
-
-  <assessment
+  <a href="#processes" class="nav-label">Four Processes</span>
     <span class="nav-dot"></span>
+  </a>
+
+  <a href="#explanations" aria-label="abel">Why?</span>
+    <span class="nav-dot"></span>
+  </a>
+
+  #assessment
     <span class="nav-label">Assessment</span>
+    <span class="nav-dot"></span>
   </a>
 
-  <a href="#exercises" aria-label="ot"></span>
-    <span class="nav-label">Exercises</span>
+  <a href="#exercises" aria-label="Exercises">
+ses</span>
+    <span class="nav-dot"></span>
   </a>
 </nav>
 
