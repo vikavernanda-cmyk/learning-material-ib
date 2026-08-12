@@ -440,46 +440,8 @@ border-bottom-color:var(--magenta);
     <h1>Thermodynamics</h1>
     <p class="sub">Every process below starts from the same point on a P–V diagram. Which path the gas takes — constant volume, constant pressure, constant temperature, or no heat at all — decides everything about Q, ΔU and W.</p>
 
-    <svg class="pv-hero" viewBox="0 0 560 340" fill="none">
-      <!-- axes -->
-      <line x1="70" y1="15" x2="70" y2="290" stroke="#23262B" stroke-width="1.5"/>
-      <polygon points="70,15 65,25 75,25" fill="#23262B"/>
-      <line x1="70" y1="290" x2="540" y2="290" stroke="#23262B" stroke-width="1.5"/>
-      <polygon points="540,290 530,285 530,295" fill="#23262B"/>
-      <text x="48" y="26" class="diagram-label" fill="#23262B" font-size="14">P</text>
-      <text x="530" y="312" class="diagram-label" fill="#23262B" font-size="14">V</text>
-
-      <!-- common starting point -->
-      <circle cx="150" cy="60" r="4" fill="#23262B"/>
-
-      <!-- isochoric: vertical down (V = constant) -->
-      <line x1="150" y1="60" x2="150" y2="278" stroke="#1B4FD6" stroke-width="2.6"/>
-      <text x="130" y="200" class="diagram-label" fill="#1B4FD6" font-size="12" transform="rotate(-90 130 200)">V = constant</text>
-
-      <!-- isobaric: horizontal (P = constant) -->
-      <line x1="150" y1="278" x2="500" y2="278" stroke="#1E8A3C" stroke-width="2.6"/>
-      <text x="270" y="300" class="diagram-label" fill="#1E8A3C" font-size="12">P = constant</text>
-
-      <!-- isothermal: PV = constant, gentler hyperbola -->
-      <path d="M150 60 C 210 100, 330 165, 500 240" stroke="#D62E2E" stroke-width="2.6" fill="none"/>
-      <text x="300" y="182" class="diagram-label" fill="#D62E2E" font-size="12" transform="rotate(-14 300 182)">PV = constant</text>
-
-      <!-- adiabatic: PV^gamma = constant, steeper hyperbola -->
-      <path d="M150 60 C 195 110, 250 190, 400 265" stroke="#7A3FC2" stroke-width="2.6" fill="none"/>
-      <text x="250" y="238" class="diagram-label" fill="#7A3FC2" font-size="12" transform="rotate(-24 250 238)">PVᵞ = constant</text>
-
-      <!-- legend -->
-      <g font-family="'IBM Plex Sans', sans-serif">
-        <line x1="360" y1="30" x2="392" y2="30" stroke="#1B4FD6" stroke-width="3"/>
-        <text x="400" y="34" font-size="12.5" fill="#23262B">Isochoric</text>
-        <line x1="360" y1="52" x2="392" y2="52" stroke="#1E8A3C" stroke-width="3"/>
-        <text x="400" y="56" font-size="12.5" fill="#23262B">Isobaric</text>
-        <line x1="360" y1="74" x2="392" y2="74" stroke="#D62E2E" stroke-width="3"/>
-        <text x="400" y="78" font-size="12.5" fill="#23262B">Isothermal</text>
-        <line x1="360" y1="96" x2="392" y2="96" stroke="#7A3FC2" stroke-width="3"/>
-        <text x="400" y="100" font-size="12.5" fill="#23262B">Adiabatic</text>
-      </g>
-    </svg>
+    image asset/header-title.png
+    
     <div class="hero-caption">four paths, one starting point — scroll to see how each one works</div>
   </section>
 
