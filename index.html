@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>First Law of Thermodynamics — Study Deck</title>
+<title>Topic B — Thermodynamics Study Deck</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -41,7 +41,6 @@
   font-size:16px;
   line-height:1.65;
 
-  /* Grid kecil 16 × 16 px */
   background-color:var(--paper);
   background-image:
     linear-gradient(to right, var(--grid) 1px, transparent 1px),
@@ -84,6 +83,21 @@ border-bottom:1px solid rgba(35,38,43,0.16);
 box-shadow:0 3px 12px rgba(35,38,43,0.05);
 scrollbar-width:thin;
 }
+  .nav-brand{
+    flex:0 0 auto;
+    display:flex;
+    align-items:baseline;
+    gap:6px;
+    padding:14px 14px 13px 2px;
+    margin-right:8px;
+    border-right:1px solid var(--line);
+    font-family:'Newsreader', serif;
+    font-weight:600;
+    font-size:15.5px;
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+  .nav-brand b{color:var(--magenta); font-weight:700;}
   nav a{
 flex:0 0 auto;
 padding:16px 11px 13px;
@@ -314,27 +328,115 @@ border-bottom-color:var(--magenta);
   }
 
   footer{text-align:center; padding:30px 0 50px; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; font-size:11.5px;}
+
+  /* ---- Sticky-note side nav ---- */
+  .side-note{
+    position:fixed;
+    top:120px;
+    right:22px;
+    width:188px;
+    z-index:60;
+    background:#FBEFA0;
+    border:1px solid rgba(35,38,43,0.16);
+    border-radius:2px;
+    padding:20px 16px 16px;
+    transform:rotate(-2.4deg);
+    box-shadow:3px 7px 16px rgba(35,38,43,0.24), 0 1px 0 rgba(255,255,255,0.5) inset;
+    font-family:'IBM Plex Sans', sans-serif;
+    transition:transform .2s ease;
+  }
+  .side-note:hover{transform:rotate(0deg);}
+  .side-note::before{
+    content:"";
+    position:absolute;
+    top:-11px; left:50%;
+    width:58px; height:22px;
+    margin-left:-29px;
+    background:rgba(232,198,213,0.8);
+    border:1px solid rgba(35,38,43,0.1);
+    transform:rotate(2deg);
+  }
+  .side-note .sn-eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.09em; text-transform:uppercase;
+    color:var(--magenta); margin-bottom:3px;
+  }
+  .side-note h4{
+    font-family:'Newsreader',serif; font-size:16.5px; font-weight:600;
+    margin:0 0 13px; line-height:1.22; color:var(--ink);
+  }
+  .side-note ul{list-style:none; margin:0; padding:0;}
+  .side-note li{margin-bottom:10px;}
+  .side-note a{
+    display:block;
+    color:var(--ink); text-decoration:none;
+    font-size:12.8px; line-height:1.4;
+    padding-left:14px; position:relative;
+    border-bottom:1px dashed transparent;
+  }
+  .side-note a::before{
+    content:"—"; position:absolute; left:0; top:0;
+    color:var(--magenta);
+  }
+  .side-note a:hover, .side-note a.active{
+    color:var(--magenta);
+    border-bottom-color:var(--magenta);
+  }
+  .side-note-toggle{
+    display:none;
+    position:fixed; bottom:20px; right:20px; z-index:61;
+    background:var(--ink); color:var(--paper);
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px;
+    padding:11px 16px; border-radius:30px; border:none;
+    box-shadow:0 6px 16px rgba(0,0,0,0.28); cursor:pointer;
+  }
+  @media(max-width:960px){
+    .side-note{
+      display:none;
+      top:auto; bottom:78px; right:16px; width:178px;
+      transform:rotate(-1.6deg);
+    }
+    .side-note.open{display:block;}
+    .side-note-toggle{display:block;}
+  }
 </style>
 </head>
 <body>
 
 <nav id="navbar">
+  <span class="nav-brand"><b>Topic B</b> · Thermodynamics</span>
   <a href="#hero">Start</a>
   <a href="#systems">Systems</a>
   <a href="#firstlaw">1st Law</a>
   <a href="#internal-energy">ΔU</a>
-  <a href="#example">Worked Ex.</a>
+  <a href="#example">Worked Ex. 1</a>
   <a href="#processes">4 Processes</a>
   <a href="#explanations">Why?</a>
+  <a href="#cyclic-example">Worked Ex. 2</a>
+  <a href="#heatengine">Heat Engine</a>
+  <a href="#carnot">Carnot Cycle</a>
+  <a href="#understanding-check">Check</a>
   <a href="#assessment">Assessment</a>
   <a href="#exercises">Exercises</a>
 </nav>
+
+<aside class="side-note" id="sideNote">
+  <div class="sn-eyebrow">B.4</div>
+  <h4>Thermodynamics (HL)</h4>
+  <ul>
+    <li><a href="#firstlaw">Thermodynamics 1st Law</a></li>
+    <li><a href="#internal-energy">Change in Internal Energy</a></li>
+    <li><a href="#processes">Thermodynamics Processes</a></li>
+    <li><a href="#heatengine">Heat Engine</a></li>
+    <li><a href="#carnot">Carnot Cycle</a></li>
+  </ul>
+</aside>
+<button class="side-note-toggle" id="sideNoteToggle">📌 B.4 index</button>
 
 <main>
 
   <!-- HERO -->
   <section class="hero" id="hero" style="border-top:none;">
-    <div class="eyebrow">IB Physics · Thermodynamics</div>
+    <div class="eyebrow">IB Physics · Topic B.4 · Thermodynamics (HL)</div>
     <h1>Thermodynamics</h1>
     <p class="sub">Every process below starts from the same point on a P–V diagram. Which path the gas takes — constant volume, constant pressure, constant temperature, or no heat at all — decides everything about Q, ΔU and W.</p>
 
@@ -475,9 +577,9 @@ border-bottom-color:var(--magenta);
     <p style="font-size:14px; color:var(--ink-soft);">where <span class="mono">N = n · N<sub>A</sub></span> (number of molecules = moles × Avogadro's number)</p>
   </section>
 
-  <!-- WORKED EXAMPLE -->
+  <!-- WORKED EXAMPLE 1 -->
   <section id="example">
-    <span class="tag magenta">Worked Example</span>
+    <span class="tag magenta">Worked Example 1</span>
     <h2>Isovolumetric Cooling, A → B</h2>
     <p class="lede">An ideal gas undergoes an isovolumetric (constant-volume) change from state A to state B.</p>
 
@@ -675,6 +777,253 @@ border-bottom-color:var(--magenta);
     </div>
   </section>
 
+  <!-- WORKED EXAMPLE 2: CYCLIC PROCESS -->
+  <section id="cyclic-example">
+    <span class="tag magenta">Worked Example 2</span>
+    <h2>A Three-Stage Cycle</h2>
+    <p class="lede">A monatomic ideal gas is taken around a cycle: isothermal expansion A→B, isovolumetric cooling B→C, then adiabatic compression C→A back to the start. The volume at B (and C) is twice the volume at A.</p>
+
+    <div class="card">
+      <h3>Given</h3>
+      <ul class="notes mono" style="font-size:14.5px;">
+        <li>At A: P = 2×10⁶ Pa, T = 306 K, V = 0.75×10⁻⁴ m³</li>
+        <li>V<sub>B</sub> = 2V<sub>A</sub> (the isothermal expansion doubles the volume)</li>
+        <li>Work done <em>by</em> the gas during the isothermal expansion A→B = 208 J</li>
+      </ul>
+      <svg class="diagram" style="max-width:230px; margin-top:12px;" viewBox="0 0 200 170">
+        <line x1="35" y1="15" x2="35" y2="140" stroke="#23262B" stroke-width="1.3"/>
+        <line x1="35" y1="140" x2="185" y2="140" stroke="#23262B" stroke-width="1.3"/>
+        <text x="18" y="20" class="diagram-label" fill="#23262B">P</text>
+        <text x="176" y="155" class="diagram-label" fill="#23262B">V</text>
+        <circle cx="55" cy="35" r="3.5" fill="#23262B"/>
+        <text x="42" y="28" class="diagram-label" fill="#23262B">A</text>
+        <path d="M55 35 C 90 55, 125 80, 150 100" stroke="#D62E2E" stroke-width="2.4" fill="none" marker-end="url(#arrowAB2)"/>
+        <text x="94" y="60" class="diagram-label" fill="#D62E2E">isothermal exp.</text>
+        <circle cx="150" cy="100" r="3.5" fill="#23262B"/>
+        <text x="156" y="98" class="diagram-label" fill="#23262B">B</text>
+        <line x1="150" y1="100" x2="150" y2="128" stroke="#1B4FD6" stroke-width="2.4" marker-end="url(#arrowBC2)"/>
+        <text x="156" y="118" class="diagram-label" fill="#1B4FD6">isovol.</text>
+        <circle cx="150" cy="128" r="3.5" fill="#23262B"/>
+        <text x="156" y="140" class="diagram-label" fill="#23262B">C</text>
+        <path d="M150 128 C 120 105, 80 70, 55 35" stroke="#7A3FC2" stroke-width="2.4" fill="none" marker-end="url(#arrowCA2)"/>
+        <text x="60" y="90" class="diagram-label" fill="#7A3FC2" transform="rotate(-40 60 90)">adiabatic comp.</text>
+        <defs>
+          <marker id="arrowAB2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#D62E2E"/></marker>
+          <marker id="arrowBC2" markerWidth="8" markerHeight="8" refX="3" refY="6" orient="auto"><path d="M0,0 L6,0 L3,6 Z" fill="#1B4FD6"/></marker>
+          <marker id="arrowCA2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#7A3FC2"/></marker>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="card">
+      <h3>a) Thermal energy supplied during A→B</h3>
+      <p class="mono" style="font-size:15px;">Q = ΔU + W</p>
+      <p style="font-size:14.5px;">Isothermal ⇒ ΔT = 0 ⇒ <span class="mono">ΔU = 3/2 nR·ΔT = 0</span></p>
+      <p class="mono" style="font-size:17px; color:var(--magenta); font-weight:600;">so Q = W = 208 J</p>
+    </div>
+
+    <div class="card">
+      <h3>b) Gas temperature at C</h3>
+      <p style="font-size:14.5px;">C connects back to A along the <strong>adiabatic</strong> leg, so <span class="mono">PVᵞ = constant</span> links states A and C directly. The general gas law <span class="mono">PV/T = constant</span> links any two states.</p>
+      <p style="font-size:14.5px; margin-top:8px;">Since B→C is isovolumetric, <span class="mono">V<sub>C</sub> = V<sub>B</sub> = 2V<sub>A</sub></span>.</p>
+      <p class="mono" style="font-size:14.5px; margin-top:8px;">P<sub>C</sub>V<sub>C</sub><sup>5/3</sup> = P<sub>A</sub>V<sub>A</sub><sup>5/3</sup> ⇒ P<sub>C</sub> = P<sub>A</sub> · (V<sub>A</sub> / 2V<sub>A</sub>)<sup>5/3</sup> = P<sub>A</sub> · (1/2)<sup>5/3</sup></p>
+      <p class="mono" style="font-size:14.5px; margin-top:10px;">T<sub>C</sub> = T<sub>A</sub> · <span class="frac"><span class="num">P<sub>C</sub>V<sub>C</sub></span><span class="den">P<sub>A</sub>V<sub>A</sub></span></span> = 306 · (1/2)<sup>5/3</sup> · 2</p>
+      <p class="mono" style="font-size:14.5px;">= 306 × 0.314 × 2</p>
+      <p class="mono" style="font-size:17px; color:var(--magenta); font-weight:600;">T<sub>C</sub> ≈ 193 K</p>
+    </div>
+
+    <div class="checkpoint">
+      <h4>Why can PVᵞ = constant be applied directly between states A and C, even though the gas actually travels A→B→C first?</h4>
+      <div class="options" data-correct="0">
+        <button class="opt-btn">Because C→A is itself the adiabatic leg of the cycle, so the relation connects those two states directly</button>
+        <button class="opt-btn">Because all three stages of the cycle are adiabatic</button>
+        <button class="opt-btn">Because pressure is constant across the whole cycle</button>
+        <button class="opt-btn">Because volume is constant across the whole cycle</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
+
+  <!-- HEAT ENGINE -->
+  <section id="heatengine">
+    <span class="tag rust">Converting Heat to Work</span>
+    <h2>Heat Engines</h2>
+    <p class="lede">A heat engine performs useful work by taking heat from a hot reservoir, converting part of it into work, and rejecting the rest to a cold reservoir — cycle after cycle.</p>
+
+    <div class="card">
+      <svg class="diagram" style="max-width:280px; margin:0 auto;" viewBox="0 0 300 270">
+        <rect x="55" y="12" width="190" height="46" rx="4" fill="#F3DCE5" stroke="#B23A6B" stroke-width="1.4"/>
+        <text x="150" y="32" text-anchor="middle" class="diagram-label" fill="#B23A6B" font-size="12" font-weight="600">HOT RESERVOIR</text>
+        <text x="150" y="48" text-anchor="middle" class="diagram-label" fill="#B23A6B" font-size="11">T_H</text>
+
+        <line x1="150" y1="58" x2="150" y2="100" stroke="#B23A6B" stroke-width="2.4" marker-end="url(#arrowQh)"/>
+        <text x="160" y="82" class="diagram-label" fill="#B23A6B" font-size="12">Q_H</text>
+
+        <circle cx="150" cy="140" r="42" fill="#F0EBDC" stroke="#23262B" stroke-width="1.6"/>
+        <text x="150" y="136" text-anchor="middle" class="diagram-label" fill="#23262B" font-size="11" font-weight="600">HEAT</text>
+        <text x="150" y="150" text-anchor="middle" class="diagram-label" fill="#23262B" font-size="11" font-weight="600">ENGINE</text>
+
+        <line x1="150" y1="182" x2="150" y2="224" stroke="#1B4FD6" stroke-width="2.4" marker-end="url(#arrowQc)"/>
+        <text x="160" y="206" class="diagram-label" fill="#1B4FD6" font-size="12">Q_C</text>
+
+        <rect x="55" y="224" width="190" height="46" rx="4" fill="#DCE6F9" stroke="#1B4FD6" stroke-width="1.4"/>
+        <text x="150" y="244" text-anchor="middle" class="diagram-label" fill="#1B4FD6" font-size="12" font-weight="600">COLD RESERVOIR</text>
+        <text x="150" y="260" text-anchor="middle" class="diagram-label" fill="#1B4FD6" font-size="11">T_C</text>
+
+        <line x1="192" y1="140" x2="240" y2="140" stroke="#3F7D4A" stroke-width="2.4" marker-end="url(#arrowW)"/>
+        <text x="196" y="130" class="diagram-label" fill="#3F7D4A" font-size="11.5">useful work</text>
+        <text x="200" y="118" class="diagram-label" fill="#3F7D4A" font-size="11.5">Q_H − Q_C</text>
+
+        <defs>
+          <marker id="arrowQh" markerWidth="8" markerHeight="8" refX="3" refY="6" orient="auto"><path d="M0,0 L6,0 L3,6 Z" fill="#B23A6B"/></marker>
+          <marker id="arrowQc" markerWidth="8" markerHeight="8" refX="3" refY="6" orient="auto"><path d="M0,0 L6,0 L3,6 Z" fill="#1B4FD6"/></marker>
+          <marker id="arrowW" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#3F7D4A"/></marker>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="card">
+      <h3>Cyclic processes: ΔU = 0</h3>
+      <p style="font-size:14.5px;">A heat engine returns to its starting state every cycle, so over one complete loop on a P–V diagram, the net change in internal energy is always zero.</p>
+      <svg class="diagram" style="max-width:180px;" viewBox="0 0 160 140">
+        <line x1="30" y1="15" x2="30" y2="115" stroke="#23262B" stroke-width="1.3"/>
+        <line x1="30" y1="115" x2="145" y2="115" stroke="#23262B" stroke-width="1.3"/>
+        <text x="14" y="20" class="diagram-label" fill="#23262B">P</text>
+        <text x="136" y="130" class="diagram-label" fill="#23262B">V</text>
+        <path d="M65 35 L110 80 L55 95 Z" fill="none" stroke="#1B4FD6" stroke-width="2.2"/>
+        <text x="66" y="30" class="diagram-label" fill="#1B4FD6">A</text>
+        <text x="114" y="82" class="diagram-label" fill="#1B4FD6">B</text>
+        <text x="40" y="105" class="diagram-label" fill="#1B4FD6">C</text>
+        <text x="55" y="70" class="diagram-label" fill="#23262B" font-style="italic">ΔU = 0</text>
+      </svg>
+    </div>
+
+    <div class="card">
+      <h3>Efficiency of a heat engine</h3>
+      <div class="formula-box small">η = <span class="frac"><span class="num">useful work</span><span class="den">input energy</span></span> = <span class="frac"><span class="num">Q_H − Q_C</span><span class="den">Q_H</span></span></div>
+      <p style="font-size:14px; color:var(--ink-soft); margin-top:8px;">Since ΔU = 0 over a full cycle, Q = W for the cycle as a whole — so the useful work done equals the heat absorbed minus the heat rejected.</p>
+    </div>
+
+    <div class="checkpoint">
+      <h4>Over one complete cycle of a heat engine, ΔU is:</h4>
+      <div class="options" data-correct="0">
+        <button class="opt-btn">Always zero</button>
+        <button class="opt-btn">Always positive</button>
+        <button class="opt-btn">Always negative</button>
+        <button class="opt-btn">Equal to Q_H</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
+
+  <!-- CARNOT CYCLE -->
+  <section id="carnot">
+    <span class="tag purple">Most Efficient Cyclic Process</span>
+    <h2>The Carnot Cycle</h2>
+    <p class="lede">The Carnot cycle is the most efficient possible cycle between two reservoirs, built from four reversible stages.</p>
+
+    <div class="card">
+      <svg class="diagram" style="max-width:260px; margin:0 auto;" viewBox="0 0 240 190">
+        <line x1="35" y1="15" x2="35" y2="160" stroke="#23262B" stroke-width="1.3"/>
+        <line x1="35" y1="160" x2="220" y2="160" stroke="#23262B" stroke-width="1.3"/>
+        <text x="18" y="20" class="diagram-label" fill="#23262B">P</text>
+        <text x="210" y="176" class="diagram-label" fill="#23262B">V</text>
+
+        <path d="M55 40 C 90 46, 130 55, 165 70" stroke="#D62E2E" stroke-width="2.4" fill="none"/>
+        <path d="M165 70 C 180 95, 188 115, 190 138" stroke="#7A3FC2" stroke-width="2.4" fill="none"/>
+        <path d="M190 138 C 155 148, 110 148, 78 138" stroke="#D62E2E" stroke-width="2.4" fill="none"/>
+        <path d="M78 138 C 62 112, 55 78, 55 40" stroke="#7A3FC2" stroke-width="2.4" fill="none"/>
+
+        <circle cx="55" cy="40" r="3.3" fill="#23262B"/><text x="42" y="34" class="diagram-label" fill="#23262B">A</text>
+        <circle cx="165" cy="70" r="3.3" fill="#23262B"/><text x="171" y="68" class="diagram-label" fill="#23262B">B</text>
+        <circle cx="190" cy="138" r="3.3" fill="#23262B"/><text x="196" y="140" class="diagram-label" fill="#23262B">C</text>
+        <circle cx="78" cy="138" r="3.3" fill="#23262B"/><text x="60" y="150" class="diagram-label" fill="#23262B">D</text>
+      </svg>
+      <ul class="notes" style="font-size:14px; margin-top:6px;">
+        <li><span style="color:var(--isothermal); font-weight:600;">A → B</span> isothermal expansion</li>
+        <li><span style="color:var(--adiabatic); font-weight:600;">B → C</span> adiabatic expansion</li>
+        <li><span style="color:var(--isothermal); font-weight:600;">C → D</span> isothermal compression</li>
+        <li><span style="color:var(--adiabatic); font-weight:600;">D → A</span> adiabatic compression</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Deriving the Carnot efficiency</h3>
+      <p class="mono" style="font-size:15px;">η = <span class="frac"><span class="num">Q_H − Q_C</span><span class="den">Q_H</span></span> = <span class="frac"><span class="num">T_H − T_C</span><span class="den">T_H</span></span> = <span class="frac"><span class="num">T_H</span><span class="den">T_H</span></span> − <span class="frac"><span class="num">T_C</span><span class="den">T_H</span></span></p>
+      <div class="formula-box purple" style="margin-top:10px;">η = 1 − T_C / T_H</div>
+      <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">Temperatures must be in kelvin — this is a ratio of absolute temperatures, so an absolute scale is required.</p>
+    </div>
+
+    <div class="card">
+      <h3>Worked example: power plant efficiency</h3>
+      <p style="font-size:14.5px;">A power plant is modelled as a Carnot heat engine. Hot reservoir: 657°C. Cold reservoir: 372°C. What is its efficiency?</p>
+      <p class="mono" style="font-size:14.5px; margin-top:8px;">η = 1 − T_C/T_H = 1 − (372 + 273) / (657 + 273)</p>
+      <p class="mono" style="font-size:17px; color:var(--magenta); font-weight:600;">η ≈ 0.302 → about 30%</p>
+    </div>
+
+    <div class="checkpoint">
+      <h4>Why must temperatures in the Carnot efficiency formula be in kelvin, not °C?</h4>
+      <div class="options" data-correct="0">
+        <button class="opt-btn">The formula is a ratio of absolute temperatures, and only kelvin gives a true zero-point scale</button>
+        <button class="opt-btn">Celsius values are always negative</button>
+        <button class="opt-btn">Kelvin is only required for pressure units</button>
+        <button class="opt-btn">It doesn't matter — either scale gives the same ratio</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
+
+  <!-- UNDERSTANDING CHECK -->
+  <section id="understanding-check">
+    <span class="tag green">Understanding Check</span>
+    <h2>Quick Concept Check</h2>
+    <p class="lede">Four quick checks across heat engines and the Carnot cycle — answer before scrolling down to the full assessment.</p>
+
+    <div class="checkpoint">
+      <h4>What does the efficiency η = (Q_H − Q_C) / Q_H actually represent?</h4>
+      <div class="options" data-correct="1">
+        <button class="opt-btn">The total heat absorbed by the engine</button>
+        <button class="opt-btn">The fraction of heat input that is converted into useful work</button>
+        <button class="opt-btn">The heat rejected to the cold reservoir</button>
+        <button class="opt-btn">The temperature difference between the reservoirs</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+
+    <div class="checkpoint">
+      <h4>Why is the Carnot cycle considered the most efficient cyclic process between two reservoirs?</h4>
+      <div class="options" data-correct="0">
+        <button class="opt-btn">Because it's built entirely from reversible stages, so no energy is wasted to irreversibility</button>
+        <button class="opt-btn">Because it uses the highest possible pressure</button>
+        <button class="opt-btn">Because it has the largest volume change</button>
+        <button class="opt-btn">Because it only involves isobaric stages</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+
+    <div class="checkpoint">
+      <h4>According to η = 1 − T_C/T_H, how can a Carnot engine's efficiency be increased?</h4>
+      <div class="options" data-correct="2">
+        <button class="opt-btn">Increase T_C while keeping T_H fixed</button>
+        <button class="opt-btn">Decrease T_H while keeping T_C fixed</button>
+        <button class="opt-btn">Increase T_H and/or decrease T_C</button>
+        <button class="opt-btn">Efficiency cannot be changed once the engine is built</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+
+    <div class="checkpoint">
+      <h4>In the three-stage worked example, why was Q = W during the isothermal expansion A→B?</h4>
+      <div class="options" data-correct="1">
+        <button class="opt-btn">Because W = 0 for any isothermal process</button>
+        <button class="opt-btn">Because ΔU = 0 (no temperature change), so the First Law reduces to Q = W</button>
+        <button class="opt-btn">Because pressure was constant throughout A→B</button>
+        <button class="opt-btn">Because volume was constant throughout A→B</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
+
   <!-- ASSESSMENT FOR LEARNING -->
   <section id="assessment">
     <span class="tag green">Assessment for Learning</span>
@@ -712,26 +1061,32 @@ border-bottom-color:var(--magenta);
       <button class="reveal-btn" onclick="toggle('r3')">Show model answer</button>
       <div class="hidden-answer" id="r3">Work is defined as W = P·ΔV. "Isochoric" means constant volume, so ΔV = 0 by definition. Substituting: W = P × 0 = 0. This leaves Q = ΔU — all the heat transferred goes directly into changing internal energy (and hence temperature).</div>
     </div>
+
+    <div class="reflection">
+      <p class="q">4. Why does a Carnot engine's efficiency only depend on the reservoir temperatures, not on the gas used?</p>
+      <button class="reveal-btn" onclick="toggle('r4')">Show model answer</button>
+      <div class="hidden-answer" id="r4">Because every stage of the Carnot cycle is reversible, the efficiency reduces to η = 1 − T_C/T_H — a result that comes purely from the ratio of absolute reservoir temperatures. No gas-specific quantity (like n or the type of gas) survives in the final expression.</div>
+    </div>
   </section>
 
   <!-- EXERCISES -->
   <section id="exercises">
     <span class="tag magenta">IB Physics Exercise</span>
-    <h2>10 Multiple-Choice Questions</h2>
-    <p class="lede">2 hard · 4 medium · 4 easy. Select an answer to see instant feedback.</p>
+    <h2>15 Multiple-Choice Questions</h2>
+    <p class="lede">4 hard · 6 medium · 5 easy. Select an answer to see instant feedback.</p>
 
     <div id="quiz"></div>
 
     <div class="score-panel">
       <div>
         <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; opacity:.8;">Score</div>
-        <div class="big"><span id="scoreVal">0</span> / 10</div>
+        <div class="big"><span id="scoreVal">0</span> / 15</div>
       </div>
       <button onclick="resetQuiz()">Reset Quiz</button>
     </div>
   </section>
 
-  <footer>First Law of Thermodynamics · Q = ΔU + W · study deck</footer>
+  <footer>Topic B.4 · Thermodynamics (HL) · Q = ΔU + W · η = 1 − T_C/T_H · study deck</footer>
 </main>
 
 <script>
@@ -762,6 +1117,15 @@ function toggle(id){
   document.getElementById(id).classList.toggle('show');
 }
 
+// Sticky side-note toggle (mobile)
+const sideNoteToggle = document.getElementById('sideNoteToggle');
+const sideNote = document.getElementById('sideNote');
+if(sideNoteToggle && sideNote){
+  sideNoteToggle.addEventListener('click', ()=>{
+    sideNote.classList.toggle('open');
+  });
+}
+
 // Quiz data
 const quizData = [
   {diff:'easy', stem:'In a closed system, which of the following can be transferred across the boundary?', opts:['Mass only','Energy only, as heat and work','Both mass and energy','Neither mass nor energy'], correct:1,
@@ -784,6 +1148,16 @@ const quizData = [
    exp:'ΔV = 0 so W = 0, and Q = ΔU = 3/2 · (P_AV_A/T_A) · ΔT = 1.5 × (5×10⁵ × 2×10⁻³ / 500) × (300 − 500) = 1.5 × 2 × (−200) = −600 J.'},
   {diff:'hard', stem:'A monatomic ideal gas undergoes an adiabatic expansion to double its volume (V_B = 2V_A). Using P_AV_A^(5/3) = P_BV_B^(5/3), find P_B / P_A.', opts:['≈ 0.315','0.5','≈ 0.630','≈ 1.587'], correct:0,
    exp:'P_B/P_A = (V_A/V_B)^(5/3) = (1/2)^(5/3) = 2^(−5/3) ≈ 0.315. (1.587 = 2^(5/3) is the tempting inverse-exponent trap.)'},
+  {diff:'easy', stem:'Over one complete cycle of a heat engine, what is ΔU?', opts:['Always zero','Always positive','Always negative','Equal to Q_H'], correct:0,
+   exp:'A cyclic process returns to its starting state, so the net change in internal energy over one full cycle is always zero.'},
+  {diff:'medium', stem:'What does the efficiency of a heat engine represent?', opts:['Useful work output divided by heat input','Heat rejected divided by heat input','Heat input divided by useful work','The temperature difference between the reservoirs'], correct:0,
+   exp:'η = useful work / input energy = (Q_H − Q_C)/Q_H — the fraction of absorbed heat converted to useful work.'},
+  {diff:'medium', stem:'A Carnot engine operates between a hot reservoir at 500 K and a cold reservoir at 300 K. What is its efficiency?', opts:['40%','60%','20%','83%'], correct:0,
+   exp:'η = 1 − T_C/T_H = 1 − 300/500 = 1 − 0.6 = 0.4 = 40%.'},
+  {diff:'hard', stem:'A monatomic ideal gas completes a full cycle (A→B→C→A). Since ΔU = 0 over the cycle, what does the First Law tell us about total Q and total W?', opts:['Q_total = W_total','Q_total = −W_total','Q_total = 0 always, regardless of W','W_total = 0 always, regardless of Q'], correct:0,
+   exp:'Q = ΔU + W. With ΔU = 0 over the full cycle, Q_total = W_total — all the net heat absorbed becomes net work done.'},
+  {diff:'hard', stem:'In the three-stage cycle example (V_A = 0.75×10⁻⁴ m³, T_A = 306 K, V_C = 2V_A, adiabatic C→A), what is T_C?', opts:['≈ 193 K','306 K','≈ 612 K','≈ 96 K'], correct:0,
+   exp:'P_C = P_A(1/2)^(5/3), then T_C = T_A · (P_CV_C)/(P_AV_A) = 306 × (1/2)^(5/3) × 2 ≈ 306 × 0.314 × 2 ≈ 193 K.'},
 ];
 
 const quizEl = document.getElementById('quiz');
@@ -797,7 +1171,7 @@ function renderQuiz(){
     card.className = 'quiz-q';
     card.innerHTML = `
       <div class="quiz-head">
-        <span class="quiz-num">Question ${qi+1} of 10</span>
+        <span class="quiz-num">Question ${qi+1} of ${quizData.length}</span>
         <span class="diff ${q.diff}">${q.diff}</span>
       </div>
       <p class="stem">${q.stem}</p>
@@ -837,8 +1211,9 @@ function resetQuiz(){
   renderQuiz();
 }
 
-// scroll spy
+// scroll spy — top nav + sticky-note side nav
 const navLinks = document.querySelectorAll('#navbar a');
+const sideLinks = document.querySelectorAll('.side-note a');
 const secs = document.querySelectorAll('main section, main .hero');
 window.addEventListener('scroll', ()=>{
   let current = '';
@@ -847,6 +1222,9 @@ window.addEventListener('scroll', ()=>{
     if(window.scrollY >= top) current = s.id;
   });
   navLinks.forEach(l=>{
+    l.classList.toggle('active', l.getAttribute('href') === '#'+current);
+  });
+  sideLinks.forEach(l=>{
     l.classList.toggle('active', l.getAttribute('href') === '#'+current);
   });
 });
