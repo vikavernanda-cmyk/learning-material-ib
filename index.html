@@ -878,7 +878,7 @@ border-bottom-color:var(--magenta);
     <p class="lede">Four quick checks across heat engines and the Carnot cycle — answer before scrolling down to the full assessment.</p>
 
     <div class="checkpoint">
-      <h4>What does the efficiency η = (Q_H − Q_C) / Q_H actually represent?</h4>
+      <h4>What does the efficiency η = (Q<sub>H</sub> − Q<sub>C</sub>) / Q<sub>H</sub> actually represent?</h4>
       <div class="options" data-correct="1">
         <button class="opt-btn">The total heat absorbed by the engine</button>
         <button class="opt-btn">The fraction of heat input that is converted into useful work</button>
@@ -900,7 +900,7 @@ border-bottom-color:var(--magenta);
     </div>
 
     <div class="checkpoint">
-      <h4>According to η = 1 − T_C/T_H, how can a Carnot engine's efficiency be increased?</h4>
+      <h4>According to η = 1 − T<sub>C</sub>/T<sub>H</sub>, how can a Carnot engine's efficiency be increased?</h4>
       <div class="options" data-correct="2">
         <button class="opt-btn">Increase T_C while keeping T_H fixed</button>
         <button class="opt-btn">Decrease T_H while keeping T_C fixed</button>
@@ -1043,19 +1043,24 @@ const quizData = [
   {diff:'medium', stem:'A gas absorbs 500 J of heat and does 200 J of work on its surroundings. What is ΔU?', opts:['300 J','700 J','−300 J','200 J'], correct:0,
    exp:'Q = ΔU + W → 500 = ΔU + 200 → ΔU = 300 J.'},
   {diff:'hard', stem:'An ideal gas undergoes an isovolumetric process from A (P = 5×10⁵ Pa, V = 2.0×10⁻³ m³, T = 500 K) to B (T = 300 K). What is Q?', opts:['−600 J','+600 J','−400 J','−900 J'], correct:0,
-   exp:'ΔV = 0 so W = 0, and Q = ΔU = 3/2 · (P_AV_A/T_A) · ΔT = 1.5 × (5×10⁵ × 2×10⁻³ / 500) × (300 − 500) = 1.5 × 2 × (−200) = −600 J.'},
-  {diff:'hard', stem:'A monatomic ideal gas undergoes an adiabatic expansion to double its volume (V_B = 2V_A). Using P_AV_A^(5/3) = P_BV_B^(5/3), find P_B / P_A.', opts:['≈ 0.315','0.5','≈ 0.630','≈ 1.587'], correct:0,
-   exp:'P_B/P_A = (V_A/V_B)^(5/3) = (1/2)^(5/3) = 2^(−5/3) ≈ 0.315. (1.587 = 2^(5/3) is the tempting inverse-exponent trap.)'},
-  {diff:'easy', stem:'Over one complete cycle of a heat engine, what is ΔU?', opts:['Always zero','Always positive','Always negative','Equal to Q_H'], correct:0,
+   exp:'ΔV = 0 so W = 0, and Q = ΔU = 3/2 · (P<sub>A</sub>V<sub>A</sub>/T<sub>A</sub>) · ΔT = 1.5 × (5×10⁵ × 2×10⁻³ / 500) × (300 − 500) = 1.5 × 2 × (−200) = −600 J.'},
+  {
+  diff: 'hard',
+  stem: 'A monatomic ideal gas undergoes an adiabatic expansion to double its volume (V<sub>B</sub> = 2V<sub>A</sub>). Using P<sub>A</sub>V<sub>A</sub><sup>5/3</sup> = P<sub>B</sub>V<sub>B</sub><sup>5/3</sup>, find P<sub>B</sub> / P<sub>A</sub>.',
+  opts: ['≈ 0.315', '0.5', '≈ 0.630', '≈ 1.587'],
+  correct: 0,
+  exp: 'P<sub>B</sub>/P<sub>A</sub> = (V<sub>A</sub>/V<sub>B</sub>)<sup>5/3</sup> = (1/2)<sup>5/3</sup> = 2<sup>−5/3</sup> ≈ 0.315. (1.587 = 2<sup>5/3</sup> is the tempting inverse-exponent trap.)'
+},
+  {diff:'easy', stem:'Over one complete cycle of a heat engine, what is ΔU?', opts:['Always zero','Always positive','Always negative','Equal to Q<sub>H</sub>'], correct:0,
    exp:'A cyclic process returns to its starting state, so the net change in internal energy over one full cycle is always zero.'},
   {diff:'medium', stem:'What does the efficiency of a heat engine represent?', opts:['Useful work output divided by heat input','Heat rejected divided by heat input','Heat input divided by useful work','The temperature difference between the reservoirs'], correct:0,
-   exp:'η = useful work / input energy = (Q_H − Q_C)/Q_H — the fraction of absorbed heat converted to useful work.'},
+   exp:'η = useful work / input energy = (Q<sub>H</sub> − Q<sub>C</sub>)/Q<sub>H</sub> — the fraction of absorbed heat converted to useful work.'},
   {diff:'medium', stem:'A Carnot engine operates between a hot reservoir at 500 K and a cold reservoir at 300 K. What is its efficiency?', opts:['40%','60%','20%','83%'], correct:0,
-   exp:'η = 1 − T_C/T_H = 1 − 300/500 = 1 − 0.6 = 0.4 = 40%.'},
-  {diff:'hard', stem:'A monatomic ideal gas completes a full cycle (A→B→C→A). Since ΔU = 0 over the cycle, what does the First Law tell us about total Q and total W?', opts:['Q_total = W_total','Q_total = −W_total','Q_total = 0 always, regardless of W','W_total = 0 always, regardless of Q'], correct:0,
+   exp:'η = 1 − T<sub>C</sub>/T<sub>H</sub> = 1 − 300/500 = 1 − 0.6 = 0.4 = 40%.'},
+  {diff:'hard', stem:'A monatomic ideal gas completes a full cycle (A→B→C→A). Since ΔU = 0 over the cycle, what does the First Law tell us about total Q and total W?', opts:['Q<sub>total</sub> = W<sub>total</sub>','Q<sub>total</sub> = −W<sub>total</sub>','Q<sub>total</sub> = 0 always, regardless of W','W<sub>total</sub> = 0 always, regardless of Q'], correct:0,
    exp:'Q = ΔU + W. With ΔU = 0 over the full cycle, Q_total = W_total — all the net heat absorbed becomes net work done.'},
-  {diff:'hard', stem:'In the three-stage cycle example (V_A = 0.75×10⁻⁴ m³, T_A = 306 K, V_C = 2V_A, adiabatic C→A), what is T_C?', opts:['≈ 193 K','306 K','≈ 612 K','≈ 96 K'], correct:0,
-   exp:'P_C = P_A(1/2)^(5/3), then T_C = T_A · (P_CV_C)/(P_AV_A) = 306 × (1/2)^(5/3) × 2 ≈ 306 × 0.314 × 2 ≈ 193 K.'},
+  {diff:'hard', stem:'In the three-stage cycle example (V<sub>A</sub> = 0.75×10⁻⁴ m³, T<sub>A</sub> = 306 K, V<sub>C</sub> = 2V<sub>A</sub>, adiabatic C→A), what is T<sub>C</sub>?', opts:['≈ 193 K','306 K','≈ 612 K','≈ 96 K'], correct:0,
+   exp:'P<sub>C</sub> = P<sub>C</sub> = P<sub>A</sub>(1/2)<sup>5/3</sup>, then T<sub>C</sub> = T<sub>A</sub> · (P<sub>C</sub>V<sub>C</sub>)/(P<sub>A</sub>V<sub>A</sub>) = 306 × (1/2)<sup>5/3</sup> × 2 ≈ 306 × 0.314 × 2 ≈ 193 K.'},
 ];
 
 const quizEl = document.getElementById('quiz');
