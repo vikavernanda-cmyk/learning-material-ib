@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Topic B — Thermodynamics Study Deck</title>
+<title>IB Physics Material</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -71,17 +71,16 @@ top:0;
 z-index:50;
 display:flex;
 align-items:center;
+flex-wrap:wrap;
 gap:4px;
 min-height:52px;
 padding:0 18px;
-overflow-x:auto;
-white-space:nowrap;
+overflow:visible;
 background:rgba(246,243,234,0.97);
 backdrop-filter:blur(12px);
 -webkit-backdrop-filter:blur(12px);
 border-bottom:1px solid rgba(35,38,43,0.16);
 box-shadow:0 3px 12px rgba(35,38,43,0.05);
-scrollbar-width:thin;
 }
   .nav-item{position:relative; flex:0 0 auto;}
   .nav-brand{
@@ -273,6 +272,31 @@ border-bottom-color:var(--magenta);
   .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
   @media(max-width:640px){.grid2{grid-template-columns:1fr;}}
 
+    .grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+}
+
+.grid3 > .card {
+  width: auto;
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+.grid3 {
+  margin-bottom: 32px;
+}
+
+#b1-states > .card {
+  margin-bottom: 24px;
+}
+@media (max-width: 760px) {
+  .grid3 {
+    grid-template-columns: 1fr;
+  }
+}
   svg.diagram{width:100%; height:auto; display:block;}
   .diagram-label{font-family:'IBM Plex Mono',monospace; font-size:11px;}
 
@@ -479,25 +503,17 @@ border-bottom-color:var(--magenta);
 </nav>
 
 <aside class="side-note" id="sideNote">
-  <h4>B.4 Thermodynamics (HL)</h4>
-  <ul>
-    <li><a href="#hero">Top</a></li>
-    <li><a href="#firstlaw">Thermodynamics 1st Law</a></li>
-    <li><a href="#internal-energy">Change in Internal Energy</a></li>
-    <li><a href="#processes">Thermodynamics Processes</a></li>
-    <li><a href="#heatengine">Heat Engine</a></li>
-    <li><a href="#carnot">Carnot Cycle</a></li>
-    <li><a href="#exercises">Exercises</a></li>
-  </ul>
+  <h4 id="sideNoteTitle">B.4 Thermodynamics (HL)</h4>
+  <ul id="sideNoteList"></ul>
 </aside>
-<button class="side-note-toggle" id="sideNoteToggle">📌 B.4 index</button>
+<button class="side-note-toggle" id="sideNoteToggle">📌 index</button>
 
 <main>
 <div class="topic-page" id="page-B.4">
 
   <!-- HERO -->
   <section class="hero" id="hero" style="border-top:none;">
-    <div class="eyebrow">IB Physics · Topic B.4 · Thermodynamics (HL)</div>
+    <div class="eyebrow">Topic B.4 · Thermodynamics (HL)</div>
     <h1>Thermodynamics</h1>
     <p class="sub">Every process below starts from the same point on a P–V diagram. Which path the gas takes — constant volume, constant pressure, constant temperature, or no heat at all — decides everything about Q, ΔU and W.</p>
 
@@ -908,15 +924,15 @@ border-bottom-color:var(--magenta);
 
     <div class="card">
       <h3>Deriving the Carnot efficiency</h3>
-      <p class="mono" style="font-size:15px;">η = <span class="frac"><span class="num">Q<sub>H</sub> − Q<sub>C</sub></span><span class="den">Q<sub>H</sub></span></span> = <span class="frac"><span class="num">T<sub>H</sub> − T<sub>C</sub></span><span class="den">T<sub>H</sub></span></span> = <span class="frac"><span class="num">T<sub>H</sub></span><span class="den">T<sub>H</sub></span></span> − <span class="frac"><span class="num">T<sub>C</sub></span><span class="den">T<sub>H</sub></span></span></p>
-      <div class="formula-box purple" style="margin-top:10px;">η = 1 − T<sub>C</sub> / T<sub>H</sub></div>
+      <p class="mono" style="font-size:15px;">η = <span class="frac"><span class="num">Q_H − Q_C</span><span class="den">Q_H</span></span> = <span class="frac"><span class="num">T_H − T_C</span><span class="den">T_H</span></span> = <span class="frac"><span class="num">T_H</span><span class="den">T_H</span></span> − <span class="frac"><span class="num">T_C</span><span class="den">T_H</span></span></p>
+      <div class="formula-box purple" style="margin-top:10px;">η = 1 − T_C / T_H</div>
       <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">Temperatures must be in kelvin — this is a ratio of absolute temperatures, so an absolute scale is required.</p>
     </div>
 
     <div class="card">
       <h3>Worked example: power plant efficiency</h3>
       <p style="font-size:14.5px;">A power plant is modelled as a Carnot heat engine. Hot reservoir: 657°C. Cold reservoir: 372°C. What is its efficiency?</p>
-      <p class="mono" style="font-size:14.5px; margin-top:8px;">η = 1 − T<sub>C</sub>/T<sub>H</sub> = 1 − (372 + 273) / (657 + 273)</p>
+      <p class="mono" style="font-size:14.5px; margin-top:8px;">η = 1 − T_C/T_H = 1 − (372 + 273) / (657 + 273)</p>
       <p class="mono" style="font-size:17px; color:var(--magenta); font-weight:600;">η ≈ 0.302 → about 30%</p>
     </div>
 
@@ -1045,10 +1061,833 @@ border-bottom-color:var(--magenta);
     </div>
   </section>
 
-  <footer>Topic B.4 · Thermodynamics (HL) · Q = ΔU + W · η = 1 − T_C/T_H · study deck</footer>
+  <footer>Topic B.4 · Thermodynamics (HL)</footer>
+</div>
+
+<div class="topic-page" id="page-B.1" style="display:none;">
+
+  <!-- HERO -->
+  <section class="hero" id="hero-b1" style="border-top:none;">
+    <div class="eyebrow">Topic B.1 · Thermal Energy Transfers</div>
+    <h1>Thermal Energy Transfers</h1>
+    <p class="sub">From vibrating particles, to the heating curve of melting ice, to the glow of a black body — how thermal energy moves, and what temperature actually measures.</p>
+
+  </section>
+
+  <!-- STATES OF MATTER + SCALES -->
+  <section id="b1-states">
+    <span class="tag blue">Foundations</span>
+    <h2>States of Matter, Celsius &amp; Kelvin</h2>
+    <p class="lede">Particles are never still — even in a solid they constantly vibrate. What changes between states is how far particles can move, and how tightly they're held together.</p>
+
+    <div class="grid3">
+      <div class="card">
+        <h3>Solid</h3>
+        <p>Fixed shape, fixed volume — particles vibrate about fixed positions, held tightly by strong forces.</p>
+      </div>
+      <div class="card">
+        <h3>Liquid</h3>
+        <p>No fixed shape, fixed volume — particles can slide past one another but stay close together.</p>
+     </div>
+    <div class="card">
+      <h3>Gas</h3>
+      <p>No fixed shape, no fixed volume — particles move freely and independently, far apart from one another.</p>
+    </div>
+    </div>
+
+    <div class="card">
+      <h3>Celsius &amp; Kelvin</h3>
+      <table class="sign-table">
+        <tr><th>Reference point</th><th>°C</th><th>K</th></tr>
+        <tr><td>Freezing point of water</td><td>0 °C</td><td>273 K</td></tr>
+        <tr><td>Boiling point of water</td><td>100 °C</td><td>373 K</td></tr>
+        <tr><td>Absolute zero</td><td>−273 °C</td><td>0 K</td></tr>
+      </table>
+      <p style="font-size:14px; color:var(--ink-soft); margin-top:10px;">The Kelvin scale starts at <strong>absolute zero</strong> — the coldest temperature theoretically possible, where particle motion is at its minimum. Because it has no negative values, Kelvin is the scale physics equations use.</p>
+    </div>
+    <div class="formula-box small">T (K) = T (°C) + 273</div>
+  </section>
+
+  <!-- KINETIC MODEL -->
+  <section id="b1-kinetic">
+    <span class="tag purple">Kinetic Model</span>
+    <h2>What Temperature Really Measures</h2>
+    <p class="lede">Temperature is a measure of the <strong>average kinetic energy</strong> of a substance's particles — nothing else.</p>
+
+    <div class="formula-box purple">⟨E<sub>k</sub>⟩ = <span class="frac"><span class="num">3</span><span class="den">2</span></span> k<sub>B</sub> T</div>
+    <p style="font-size:14px; color:var(--ink-soft);">where k<sub>B</sub> is the Boltzmann constant (1.38 × 10⁻²³ J K⁻¹). Raising the temperature raises the average kinetic energy — and particles move faster.</p>
+
+    <div class="grid2">
+      <div class="card"><h3>Cold</h3><p>Low average kinetic energy — particles move slowly.</p></div>
+      <div class="card"><h3>Hot</h3><p>High average kinetic energy — particles move quickly. But because E<sub>k</sub> = ½mv², doubling T only multiplies speed by √2, not 2.</p></div>
+    </div>
+
+    <div class="card">
+      <h3>Check — Concept + calculation</h3>
+      <p style="font-size:14.5px;"><strong>(a)</strong> A gas is heated from 300 K to 600 K. Explain why the particles are <em>not</em> moving exactly twice as fast, even though their average kinetic energy has exactly doubled.</p>
+      <p style="font-size:14.5px;"><strong>(b)</strong> Calculate the average kinetic energy of a single gas particle at 310 K.</p>
+      <button class="reveal-btn" onclick="toggle('b1sol1')">Reveal solution</button>
+      <div class="hidden-answer" id="b1sol1">
+        <p style="margin:0 0 8px;"><strong>(a)</strong> ⟨E<sub>k</sub>⟩ ∝ T, so doubling T doubles ⟨E<sub>k</sub>⟩. But E<sub>k</sub> = ½mv², so v ∝ √T — speed only increases by a factor of √2 ≈ 1.41.</p>
+        <p style="margin:0;"><strong>(b)</strong> ⟨E<sub>k</sub>⟩ = (3/2)k<sub>B</sub>T = (3/2)(1.38×10⁻²³)(310) ≈ <strong>6.42 × 10⁻²¹ J</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HEAT & INTERNAL ENERGY -->
+  <section id="b1-heat-internal">
+    <span class="tag green">Energy Transfer</span>
+    <h2>Heat &amp; Internal Energy</h2>
+
+    <div class="card">
+      <h3>Heat (Q)</h3>
+      <p>Energy transferred between a system and its surroundings because of a temperature difference. It's measured in joules, and only exists while the transfer is happening — a substance doesn't "contain" heat. Heat always flows <strong>from hot to cold</strong> — energy naturally spreads from where particles move faster to where they move slower, never the reverse, unless work is done to force it.</p>
+    </div>
+
+    <div class="card">
+      <h3>Internal energy (U)</h3>
+      <p>The total energy stored inside a substance — the sum of every particle's kinetic energy and every particle's potential energy.</p>
+      <div class="formula-box small">U = ΣE<sub>k</sub> + ΣE<sub>p</sub></div>
+      <div class="grid2" style="margin-top:10px;">
+        <div class="card"><h3>Kinetic part</h3><p style="font-size:14px;">Energy of particle <strong>motion</strong> — this is the part temperature tracks.</p></div>
+        <div class="card"><h3>Potential part</h3><p style="font-size:14px;">Energy stored in the <strong>bonds and forces</strong> between particles — depends on how far apart particles are, not how fast they move.</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Check — Concept</h3>
+      <p style="font-size:14.5px;">Match each term to its correct description: <strong>Temperature</strong>, <strong>Heat</strong>, <strong>Internal energy</strong>.</p>
+      <ul class="notes" style="font-size:14.5px;">
+        <li>1. The total kinetic + potential energy of all particles in a substance.</li>
+        <li>2. A measure of the average kinetic energy of particles.</li>
+        <li>3. Energy transferred between a system and surroundings due to a temperature difference.</li>
+      </ul>
+      <button class="reveal-btn" onclick="toggle('b1sol2')">Reveal solution</button>
+      <div class="hidden-answer" id="b1sol2">
+        <p style="margin:0 0 8px;">1 → Internal energy &nbsp; 2 → Temperature &nbsp; 3 → Heat</p>
+        <p style="margin:0;">A common exam trap: only heat is "energy in motion" between two things — temperature and internal energy are both properties a substance simply has.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIFIC HEAT CAPACITY -->
+  <section id="b1-shc">
+    <span class="tag green">Energy Transfer</span>
+    <h2>Specific Heat Capacity</h2>
+    <p class="lede">Adding heat to a substance speeds its particles up — which is exactly what raises its temperature.</p>
+
+    <div class="card">
+      <h3>Definition</h3>
+      <p>Specific heat capacity, <strong>c</strong>, is the energy needed to raise the temperature of <strong>one unit of mass</strong> of a substance by <strong>1 Kelvin</strong>.</p>
+    </div>
+    <div class="formula-box small">Q = mcΔT</div>
+    <p style="font-size:14px; color:var(--ink-soft);">c in J kg⁻¹ K⁻¹. A high c (like water) means a substance resists changing temperature; a low c means it heats up and cools down quickly.</p>
+
+    <div class="card">
+      <h3>Check — Exam-style</h3>
+      <p style="font-size:14.5px;">Calculate the heat energy needed to raise the temperature of 2.0 kg of water from 15 °C to 95 °C. <span class="mono">c(water) = 4200 J kg⁻¹ K⁻¹</span></p>
+      <button class="reveal-btn" onclick="toggle('b1sol3')">Reveal solution</button>
+      <div class="hidden-answer" id="b1sol3">
+        <p style="margin:0 0 6px;">Q = mcΔT = (2.0)(4200)(95 − 15) = (2.0)(4200)(80)</p>
+        <p style="margin:0;"><strong>Q = 672,000 J = 6.72 × 10⁵ J</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATENT HEAT -->
+  <section id="b1-latent">
+    <span class="tag green">Energy Transfer</span>
+    <h2>Specific Latent Heat</h2>
+    <p class="lede">During a change of phase, heat is no longer used to speed particles up — it's used to <strong>break or form the bonds</strong> between them, so temperature stops rising even while heat keeps flowing in.</p>
+
+    <div class="card">
+      <h3>Why does temperature pause?</h3>
+      <p>All the incoming energy goes into pulling particles apart (or letting them come together) rather than increasing their kinetic energy — so average KE, and therefore temperature, stays constant until the phase change is complete.</p>
+    </div>
+    <div class="grid2">
+      <div class="card"><p style="font-size:14px;"><strong>Melting</strong>: solid → liquid &nbsp;·&nbsp; <strong>Freezing</strong>: liquid → solid</p></div>
+      <div class="card"><p style="font-size:14px;"><strong>Boiling</strong>: liquid → gas &nbsp;·&nbsp; <strong>Condensing</strong>: gas → liquid</p></div>
+    </div>
+    <div class="card">
+      <h3>Definition</h3>
+      <p>Specific latent heat, <strong>L</strong>, is the energy <strong>per unit mass</strong> absorbed or released during a phase change (at constant temperature).</p>
+    </div>
+    <div class="formula-box small">Q = mL</div>
+    <p style="font-size:14px; color:var(--ink-soft);">L in J kg⁻¹. <strong>Latent heat of fusion</strong> — melting/freezing. <strong>Latent heat of vaporization</strong> — boiling/condensing (always the larger value, since particles must fully separate).</p>
+
+    <div class="card">
+      <h3>Check — Exam-style</h3>
+      <p style="font-size:14.5px;">Calculate the energy needed to melt 0.50 kg of ice at 0 °C. <span class="mono">L(fusion, water) = 3.34 × 10⁵ J kg⁻¹</span></p>
+      <button class="reveal-btn" onclick="toggle('b1sol4')">Reveal solution</button>
+      <div class="hidden-answer" id="b1sol4">
+        <p style="margin:0 0 6px;">Q = mL = (0.50)(3.34×10⁵)</p>
+        <p style="margin:0;"><strong>Q = 1.67 × 10⁵ J</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HEATING CURVE -->
+  <section id="b1-heatingcurve">
+    <span class="tag green">Putting It Together</span>
+    <h2>The Heating Curve</h2>
+    <p class="lede">Plotting temperature against heat added produces a curve with two kinds of segment — and each is governed by a different equation.</p>
+
+    <svg class="diagram" viewBox="0 0 640 260">
+      <line x1="50" y1="230" x2="620" y2="230" stroke="#5B5A52" stroke-width="1.3"/>
+      <line x1="50" y1="230" x2="50" y2="20" stroke="#5B5A52" stroke-width="1.3"/>
+      <text x="330" y="253" class="diagram-label" fill="#5B5A52" text-anchor="middle">Heat added, Q →</text>
+      <text x="20" y="125" class="diagram-label" fill="#5B5A52" text-anchor="middle" transform="rotate(-90 20 125)">Temperature, T →</text>
+      <polyline points="50,210 130,160" fill="none" stroke="#1B4FD6" stroke-width="2.5"/>
+      <polyline points="130,160 220,160" fill="none" stroke="#B23A6B" stroke-width="2.5"/>
+      <polyline points="220,160 340,80" fill="none" stroke="#1B4FD6" stroke-width="2.5"/>
+      <polyline points="340,80 470,80" fill="none" stroke="#B23A6B" stroke-width="2.5"/>
+      <polyline points="470,80 570,35" fill="none" stroke="#1B4FD6" stroke-width="2.5"/>
+      <text x="80" y="200" class="diagram-label" fill="#23262B">ice</text>
+      <text x="150" y="150" class="diagram-label" fill="#23262B">melting</text>
+      <text x="255" y="120" class="diagram-label" fill="#23262B">water</text>
+      <text x="375" y="70" class="diagram-label" fill="#23262B">boiling</text>
+      <text x="500" y="60" class="diagram-label" fill="#23262B">steam</text>
+    </svg>
+    <div class="grid2">
+      <div class="card"><h3>Sloped section</h3><p style="font-size:14px;">A single phase is warming or cooling — governed by <span class="mono">Q = mcΔT</span>.</p></div>
+      <div class="card"><h3>Flat section</h3><p style="font-size:14px;">A phase change is in progress — temperature holds steady while <span class="mono">Q = mL</span> is absorbed or released.</p></div>
+    </div>
+
+    <div class="card">
+      <h3>Check — Exam-style · full heating curve</h3>
+      <p style="font-size:14.5px;">Calculate the total energy needed to convert 0.20 kg of ice at −10 °C completely into water vapor at 100 °C.</p>
+      <p class="mono" style="font-size:12.5px; color:var(--ink-soft);">c(ice)=2100 J kg⁻¹K⁻¹ · L(fusion)=3.34×10⁵ J kg⁻¹ · c(water)=4200 J kg⁻¹K⁻¹ · L(vaporization)=2.26×10⁶ J kg⁻¹</p>
+      <button class="reveal-btn" onclick="toggle('b1sol5')">Reveal solution</button>
+      <div class="hidden-answer" id="b1sol5">
+        <p style="margin:0 0 4px;">Warm ice −10→0 °C: Q₁ = mcΔT = (0.20)(2100)(10) = 4200 J</p>
+        <p style="margin:0 0 4px;">Melt ice at 0 °C: Q₂ = mL = (0.20)(3.34×10⁵) = 66,800 J</p>
+        <p style="margin:0 0 4px;">Warm water 0→100 °C: Q₃ = mcΔT = (0.20)(4200)(100) = 84,000 J</p>
+        <p style="margin:0 0 4px;">Boil water at 100 °C: Q₄ = mL = (0.20)(2.26×10⁶) = 452,000 J</p>
+        <p style="margin:0;">Q<sub>total</sub> = Q₁+Q₂+Q₃+Q₄ ≈ <strong>6.07 × 10⁵ J (607 kJ)</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONDUCTION, CONVECTION, RADIATION -->
+  <section id="b1-transfer">
+    <span class="tag blue">Thermal Energy Transfer</span>
+    <h2>Conduction, Convection &amp; Radiation</h2>
+    <p class="lede">Heat always moves from hot to cold — but it can travel by three completely different routes.</p>
+
+    <div class="process blue">
+      <div class="process-head"><span class="process-num">1</span><h3 style="color:var(--blue); margin:0;">Conduction</h3></div>
+      <p style="font-size:14.5px;">Transfer of thermal energy through a material — or between two materials in contact — <strong>without any bulk movement</strong> of the material itself. Fast-vibrating particles collide with slower neighbours and pass kinetic energy along, particle by particle. Most effective in solids, especially metals, where free electrons carry energy very quickly.</p>
+      <div class="formula-box small">Q/t = <span class="frac"><span class="num">kAΔT</span><span class="den">d</span></span></div>
+      <p style="font-size:13px; color:var(--ink-soft); margin-top:6px;">k = thermal conductivity (W m⁻¹K⁻¹) · A = cross-sectional area (m²) · ΔT = temperature difference (K) · d = thickness (m). A larger k or A, or bigger ΔT, speeds up conduction; a thicker material slows it down.</p>
+      <p style="font-size:13.5px; margin-top:8px;"><strong>Example:</strong> a metal spoon left in hot soup soon becomes hot to touch. A woollen sweater keeps you warm largely because still air trapped between fibres has very low k, so almost no conduction escapes.</p>
+    </div>
+
+    <div class="process teal">
+      <div class="process-head"><span class="process-num">2</span><h3 style="color:var(--isothermal); margin:0;">Convection</h3></div>
+      <p style="font-size:14.5px;">Transfer of thermal energy through the actual <strong>bulk movement</strong> of a fluid (liquid or gas). Heated fluid expands, becomes less dense, and rises; cooler, denser fluid sinks to take its place — setting up a convection current. Because it needs particles free to flow, convection only happens in fluids, never solids.</p>
+      <div class="grid2">
+        <div class="card"><h3>Natural convection</h3><p style="font-size:13.5px;">Driven purely by density differences — e.g. a room radiator warms nearby air, which rises and circulates on its own.</p></div>
+        <div class="card"><h3>Forced convection</h3><p style="font-size:13.5px;">A fan or pump actively moves the fluid — e.g. a car's radiator fan, or a central heating pump.</p></div>
+      </div>
+      <p style="font-size:13.5px;"><strong>Example:</strong> a sea breeze forms because land heats up faster than the sea in daytime; warm air rises over land and cooler sea air flows in to replace it.</p>
+    </div>
+
+    <div class="process rust">
+      <div class="process-head"><span class="process-num">3</span><h3 style="color:var(--adiabatic); margin:0;">Radiation</h3></div>
+      <p style="font-size:14.5px;">Transfer of energy by electromagnetic waves (mostly infrared). Needs <strong>no medium</strong> — it travels through a vacuum just fine, which is how the Sun's energy reaches Earth. Every object above absolute zero radiates; hotter objects radiate more energy, at shorter wavelengths.</p>
+      <div class="grid2">
+        <div class="card"><h3>Emit</h3><p style="font-size:13.5px;">An object radiates electromagnetic waves outward. Hotter, darker, rougher (matte) surfaces are <strong>better emitters</strong>.</p></div>
+        <div class="card"><h3>Absorb</h3><p style="font-size:13.5px;">An object absorbs incoming radiation, converting it into internal energy. Dark, matte surfaces absorb well; light, shiny surfaces mostly reflect.</p></div>
+      </div>
+      <p style="font-size:13.5px;">A surface that is a good emitter at a given wavelength is also a good absorber at that wavelength (Kirchhoff's law) — matte black surfaces both heat up fastest in the sun <em>and</em> cool down fastest at night.</p>
+    </div>
+
+    <div class="card">
+      <h3>Comparing the three mechanisms</h3>
+      <table class="sign-table">
+        <tr><th>Mechanism</th><th>Needs</th><th>Where it dominates</th></tr>
+        <tr><td>Conduction</td><td>Matter in contact</td><td>Solids, especially metals</td></tr>
+        <tr><td>Convection</td><td>A fluid</td><td>Liquids and gases</td></tr>
+        <tr><td>Radiation</td><td>No medium at all</td><td>Works through a vacuum</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Check — Concept + application</h3>
+      <p style="font-size:14.5px;"><strong>(a)</strong> Explain why radiation is the only one of the three transfer mechanisms that can bring energy from the Sun to the Earth.</p>
+      <p style="font-size:14.5px;"><strong>(b)</strong> A cooking pot has a metal base, sits over a gas flame, and has boiling water inside with steam rising above it. Identify which transfer mechanism is mainly responsible at each of: (i) flame → pot base, (ii) pot base → water, (iii) water → rising steam.</p>
+      <button class="reveal-btn" onclick="toggle('b1sol6')">Reveal solution</button>
+      <div class="hidden-answer" id="b1sol6">
+        <p style="margin:0 0 8px;"><strong>(a)</strong> The space between the Sun and Earth is a vacuum, so conduction and convection (which both need matter) are impossible — only radiation can cross empty space.</p>
+        <p style="margin:0;"><strong>(b)</strong> (i) Radiation (and some conduction from direct flame contact) heats the metal base. (ii) Conduction through the solid metal base into the water. (iii) Convection — heated water rises, carrying energy with it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLACK-BODY RADIATION -->
+  <section id="b1-blackbody">
+    <span class="tag purple">Black-Body Radiation</span>
+    <h2>The Black-Body Spectrum</h2>
+    <p class="lede">An idealised perfect absorber turns out to be the key to understanding lightbulbs, stars, and — eventually — the Earth's own temperature.</p>
+
+    <div class="card">
+      <h3>What is a black body?</h3>
+      <p>An idealised object that absorbs <strong>all</strong> electromagnetic radiation falling on it, at every wavelength, reflecting none. Because it wastes nothing on reflection, when heated a black body also emits the <strong>maximum possible</strong> amount of thermal radiation for its temperature — it has emissivity ε = 1.</p>
+      <p style="margin-top:8px;">No real object is a perfect black body, but many everyday sources come close enough to be modelled as one. Example: an electric current heating a tungsten filament to ~2500–3000 K makes it glow with a continuous spectrum resembling black-body radiation — mostly invisible infrared, which is why incandescent bulbs are so energy-inefficient compared with LEDs.</p>
+    </div>
+
+    <div class="card">
+      <h3>The black-body spectrum</h3>
+      <p>A black body doesn't emit at one single wavelength — it emits a continuous range, with intensity at each wavelength described by a curve that depends only on temperature.</p>
+      <svg class="diagram" viewBox="0 0 620 200">
+        <line x1="50" y1="175" x2="600" y2="175" stroke="#5B5A52" stroke-width="1.3"/>
+        <line x1="50" y1="175" x2="50" y2="15" stroke="#5B5A52" stroke-width="1.3"/>
+        <text x="325" y="195" class="diagram-label" fill="#5B5A52" text-anchor="middle">Wavelength, λ →</text>
+        <path d="M60,170 C120,170 150,158 190,110 C210,80 230,65 260,65 C300,65 340,105 420,158 C470,170 520,172 590,173" fill="none" stroke="#1B4FD6" stroke-width="2.2"/>
+        <path d="M60,170 C100,170 120,140 150,80 C165,45 180,28 205,28 C240,28 280,60 360,128 C420,158 500,170 590,172" fill="none" stroke="#6B4FA0" stroke-width="2.2"/>
+        <path d="M60,168 C85,162 95,110 115,50 C127,18 140,8 158,8 C185,8 220,32 290,95 C360,140 480,168 590,171" fill="none" stroke="#B23A6B" stroke-width="2.2"/>
+        <text x="255" y="60" class="diagram-label" fill="#1B4FD6">T₁ (coolest)</text>
+        <text x="200" y="22" class="diagram-label" fill="#6B4FA0">T₂</text>
+        <text x="150" y="4" class="diagram-label" fill="#B23A6B">T₃ (hottest)</text>
+      </svg>
+      <p style="font-size:13px; color:var(--ink-soft); text-align:center;">As T increases: total area under the curve grows (more power), and the peak shifts to shorter wavelength.</p>
+    </div>
+
+    <div class="card">
+      <h3>Wien's displacement law</h3>
+      <p>The peak wavelength is inversely proportional to absolute temperature.</p>
+      <div class="formula-box small">λ<sub>max</sub> · T = b</div>
+      <p style="font-size:13.5px; color:var(--ink-soft);">where b = 2.898 × 10⁻³ m·K. Hotter objects glow bluer-white (peak shifts to shorter wavelengths); cooler stars glow red. The human body (~310 K) peaks deep in the infrared — invisible to our eyes.</p>
+    </div>
+
+    <div class="card">
+      <h3>The inverse square law</h3>
+      <p>As radiation spreads from a small source, its power is shared over the surface of an ever-expanding sphere. Since sphere surface area grows with r², intensity falls off as 1/r².</p>
+      <div class="formula-box small">I = <span class="frac"><span class="num">P</span><span class="den">4πr²</span></span></div>
+      <p style="font-size:13.5px; color:var(--ink-soft);"><strong>Example:</strong> Mars orbits roughly 1.5× further from the Sun than Earth — so it receives only about (1/1.5)² ≈ 44% of the solar intensity Earth gets.</p>
+    </div>
+
+    <div class="card">
+      <h3>Power radiated by a black body — Stefan–Boltzmann law</h3>
+      <div class="formula-box small">P = σAT⁴</div>
+      <p style="font-size:13.5px; color:var(--ink-soft);">For a real (non-ideal) emitter with emissivity ε: P = εσAT⁴, where σ = 5.67 × 10⁻⁸ W m⁻²K⁻⁴. Because power scales with the <strong>fourth power</strong> of temperature, even a small rise in T causes a large rise in radiated power — doubling absolute temperature multiplies radiated power by 2⁴ = 16.</p>
+    </div>
+
+    <div class="card">
+      <h3>Check — Exam-style</h3>
+      <p style="font-size:14.5px;">A tungsten filament of surface area 6.0 × 10⁻⁵ m² and emissivity 0.35 operates at 2700 K. Calculate the power it radiates.</p>
+      <button class="reveal-btn" onclick="toggle('b1sol7')">Reveal solution</button>
+      <div class="hidden-answer" id="b1sol7">
+        <p style="margin:0 0 6px;">P = εσAT⁴ = (0.35)(5.67×10⁻⁸)(6.0×10⁻⁵)(2700)⁴</p>
+        <p style="margin:0 0 6px;">(2700)⁴ ≈ 5.31×10¹¹</p>
+        <p style="margin:0;"><strong>P ≈ 63 W</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>Topic B.1 · Thermal Energy Transfers</footer>
+</div>
+
+
+<div class="topic-page" id="page-B.2" style="display:none;">
+
+  <!-- HERO -->
+  <section class="hero" id="hero-b2" style="border-top:none;">
+    <div class="eyebrow">Topic B.2 · Greenhouse Effect</div>
+    <h1>The Greenhouse Effect</h1>
+    <p class="sub">Black bodies, the inverse square law, and T⁴ come together to explain why the Earth is a habitable temperature — and why that's changing.</p>
+  </section>
+
+  <!-- SOLAR SPECTRUM -->
+  <section id="b2-spectrum">
+    <span class="tag amber">Solar Radiation</span>
+    <h2>The Sun's Radiation Spectrum</h2>
+    <p class="lede">The Sun's photosphere is close to a black body at roughly 5800 K, so — by Wien's law — its spectrum peaks in the visible range, spanning from short, energetic ultraviolet down through visible light to infrared.</p>
+
+    <div class="grid3">
+      <div class="card"><h3>Ultraviolet (~5%)</h3><p style="font-size:13.5px;">Shortest wavelength, highest energy per photon; interacts with the ozone layer, causes sunburn.</p></div>
+      <div class="card"><h3>Visible light (~43%)</h3><p style="font-size:13.5px;">~400–700 nm; the range human eyes detect, and where the Sun's output peaks.</p></div>
+    <div class="card"><h3>Infrared radiation (~52%)</h3><p style="font-size:13.5px;">Longest wavelength; felt as warmth, and the wavelength range the (much cooler) Earth itself re-emits at.</p></div>
+    </div>
+  </section>
+
+  <!-- SOLAR CONSTANT -->
+  <section id="b2-solarconstant">
+    <span class="tag amber">Solar Radiation</span>
+    <h2>Solar Power, Intensity &amp; the Solar Constant</h2>
+    <p class="lede">Treating the Sun as a black body, its total power output follows the Stefan–Boltzmann law.</p>
+
+    <div class="formula-box small">P<sub>☉</sub> = σA<sub>☉</sub>T<sub>☉</sub>⁴</div>
+    <p style="font-size:14px; color:var(--ink-soft);">That power then spreads out through space and, by the inverse square law, its intensity falls with distance. At Earth's mean orbital distance (d ≈ 1.5×10¹¹ m):</p>
+    <div class="formula-box small">I = <span class="frac"><span class="num">P<sub>☉</sub></span><span class="den">4πd²</span></span></div>
+
+    <div class="card">
+      <h3>The solar constant, S</h3>
+      <p>The average intensity of solar radiation on a surface held perpendicular to the Sun's rays, just outside Earth's atmosphere: <span class="mono">S ≈ 1361 W m⁻²</span>.</p>
+    </div>
+  </section>
+
+  <!-- ALBEDO & EMISSIVITY -->
+  <section id="b2-albedo">
+    <span class="tag amber">Earth's Radiation Budget</span>
+    <h2>Albedo &amp; Emissivity</h2>
+    <p class="lede">Not all the radiation striking Earth gets absorbed, and Earth itself doesn't radiate exactly like a perfect black body either.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Albedo, α</h3>
+        <p style="font-size:14px;">The <strong>fraction of incoming radiation reflected</strong> without being absorbed. α = 0 means everything is absorbed (perfectly black); α = 1 means everything is reflected. Earth's average albedo is about <span class="mono">0.3</span> — clouds, ice, oceans, and land each reflect differently.</p>
+      </div>
+      <div class="card">
+        <h3>Emissivity, ε</h3>
+        <p style="font-size:14px;">The ratio of radiation a real surface emits compared with what an ideal black body at the same temperature would emit. A perfect black body has ε = 1; a perfect reflector has ε ≈ 0. Real surfaces, including Earth's, sit in between.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENERGY BALANCE, NO ATMOSPHERE -->
+  <section id="b2-balance-noatm">
+    <span class="tag magenta">Energy Balance</span>
+    <h2>Earth Without an Atmosphere</h2>
+    <p class="lede">In equilibrium, the power Earth absorbs must equal the power it radiates away.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Power absorbed</h3>
+        <p style="font-size:14px;">Earth intercepts sunlight over its circular cross-section (area πr²), and absorbs the fraction not reflected:</p>
+        <div class="formula-box small">P<sub>in</sub> = Sπr²(1 − α)</div>
+      </div>
+      <div class="card">
+        <h3>Power emitted</h3>
+        <p style="font-size:14px;">Earth radiates from its whole spherical surface (area 4πr²), modelled as a black body:</p>
+        <div class="formula-box small">P<sub>out</sub> = σ · 4πr² · T⁴</div>
+      </div>
+    </div>
+    <p class="lede">Setting P<sub>in</sub> = P<sub>out</sub> and solving for T gives Earth's <strong>equilibrium temperature with no atmosphere</strong> — about <strong>255 K (−18 °C)</strong>, well below the observed average surface temperature.</p>
+
+    <div class="card">
+      <h3>Check — Derivation + calculation</h3>
+      <p style="font-size:14.5px;">Using S = 1361 W m⁻² and α = 0.30, show that Earth's equilibrium temperature without an atmosphere is approximately 255 K.</p>
+      <button class="reveal-btn" onclick="toggle('b2sol1')">Reveal solution</button>
+      <div class="hidden-answer" id="b2sol1">
+        <p style="margin:0 0 4px;">Set Sπr²(1 − α) = σ·4πr²·T⁴</p>
+        <p style="margin:0 0 4px;">The πr² cancels partially: S(1 − α) = 4σT⁴</p>
+        <p style="margin:0 0 4px;">T⁴ = S(1 − α) / 4σ = (1361)(0.70) / [4(5.67×10⁻⁸)] ≈ 4.20×10⁹</p>
+        <p style="margin:0;"><strong>T ≈ 255 K (−18 °C)</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENERGY BALANCE, WITH ATMOSPHERE -->
+  <section id="b2-balance-atm">
+    <span class="tag magenta">Energy Balance</span>
+    <h2>Earth With an Atmosphere</h2>
+    <p class="lede">The atmosphere is largely transparent to incoming <strong>shortwave</strong> visible sunlight, which passes through and warms the surface. But because Earth is much cooler than the Sun, by Wien's law it re-emits energy as <strong>longwave infrared</strong> — and greenhouse gases (CO₂, water vapour, methane, etc.) absorb much of that outgoing infrared, then re-emit it in all directions, including back down toward the surface.</p>
+
+    <svg class="diagram" viewBox="0 0 600 200">
+      <circle cx="60" cy="30" r="16" fill="#B3790C"/>
+      <rect x="20" y="130" width="560" height="14" fill="#F0EBDC" stroke="#D6DEE8"/>
+      <text x="300" y="124" class="diagram-label" fill="#5B5A52" text-anchor="middle">atmosphere (greenhouse gases)</text>
+      <rect x="20" y="178" width="560" height="12" fill="#3F7D4A"/>
+      <text x="300" y="196" class="diagram-label" fill="#23262B" text-anchor="middle">Earth's surface</text>
+      <line x1="90" y1="38" x2="230" y2="176" stroke="#B3790C" stroke-width="2.2"/>
+      <polygon points="230,176 220,166 232,168" fill="#B3790C"/>
+      <text x="240" y="80" class="diagram-label" fill="#B3790C">shortwave (visible) in</text>
+      <line x1="270" y1="176" x2="330" y2="50" stroke="#B23A6B" stroke-width="2.2"/>
+      <polygon points="330,50 322,62 335,62" fill="#B23A6B"/>
+      <text x="335" y="115" class="diagram-label" fill="#B23A6B">longwave IR out (some escapes)</text>
+      <line x1="300" y1="176" x2="380" y2="140" stroke="#7A3FC2" stroke-width="2" stroke-dasharray="4,3"/>
+      <line x1="380" y1="140" x2="330" y2="176" stroke="#7A3FC2" stroke-width="2" stroke-dasharray="4,3"/>
+      <polygon points="330,176 342,166 342,178" fill="#7A3FC2"/>
+      <text x="420" y="132" class="diagram-label" fill="#7A3FC2">IR absorbed &amp;</text>
+      <text x="420" y="144" class="diagram-label" fill="#7A3FC2">re-emitted down</text>
+    </svg>
+    <p class="lede">This natural process — the <strong>greenhouse effect</strong> — lifts Earth's average surface temperature from the airless equilibrium of ~255 K up to the observed <strong>~288 K (15 °C)</strong>. Without it, Earth's surface would sit well below freezing.</p>
+  </section>
+
+  <!-- CAUSES OF WARMING -->
+  <section id="b2-warming">
+    <span class="tag rust">Climate Change</span>
+    <h2>What Can Cause Global Warming?</h2>
+    <p class="lede">Any change that shifts the balance between P<sub>in</sub> and P<sub>out</sub> forces the system to settle at a new, warmer equilibrium temperature.</p>
+
+    <div class="grid2">
+      <div class="card"><h3>Increased solar constant</h3><p style="font-size:13.5px;">More incoming power (P<sub>in</sub> ↑) directly, before anything else changes.</p></div>
+      <div class="card"><h3>Reduced albedo</h3><p style="font-size:13.5px;">Less radiation reflected, more absorbed — e.g. melting ice exposes darker ocean or land beneath.</p></div>
+      <div class="card"><h3>Reduced emissivity</h3><p style="font-size:13.5px;">The surface radiates away less efficiently for its temperature, so energy accumulates.</p></div>
+      <div class="card"><h3>Enhanced greenhouse effect</h3><p style="font-size:13.5px;">More greenhouse gases absorb and return more outgoing infrared to the surface, reducing net P<sub>out</sub>.</p></div>
+    </div>
+
+    <div class="card">
+      <h3>Check — Applied reasoning</h3>
+      <p style="font-size:14.5px;">Using the energy-balance equation above, explain how (a) increasing use of renewable/nuclear energy and (b) reducing albedo loss from melting ice would each affect Earth's equilibrium temperature — one is a mitigation, one is a feedback that worsens warming.</p>
+      <button class="reveal-btn" onclick="toggle('b2sol2')">Reveal solution</button>
+      <div class="hidden-answer" id="b2sol2">
+        <p style="margin:0 0 8px;"><strong>(a)</strong> Renewables/nuclear reduce enhanced-greenhouse gas emissions, keeping outgoing longwave radiation closer to its natural value — helping P<sub>out</sub> stay high enough to balance P<sub>in</sub> at a lower T.</p>
+        <p style="margin:0;"><strong>(b)</strong> Melting ice lowers albedo (α ↓), which increases P<sub>in</sub> = Sπr²(1 − α) — more energy absorbed, pushing equilibrium T higher, which melts more ice: a reinforcing (positive) feedback loop.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REDUCING HUMAN CONTRIBUTION -->
+  <section id="b2-mitigation">
+    <span class="tag rust">Climate Change</span>
+    <h2>Reducing the Human Contribution</h2>
+
+    <div class="grid2">
+      <div class="card"><h3>Greater efficiency</h3><p style="font-size:13.5px;">Less fuel burned per unit of useful energy delivered.</p></div>
+      <div class="card"><h3>Coal/oil → natural gas</h3><p style="font-size:13.5px;">Lower CO₂ released per unit of energy generated.</p></div>
+      <div class="card"><h3>Combined heat &amp; power</h3><p style="font-size:13.5px;">Waste heat from generation is captured and used, rather than released.</p></div>
+      <div class="card"><h3>Renewables &amp; nuclear</h3><p style="font-size:13.5px;">Little to no CO₂ emitted during electricity generation itself.</p></div>
+      <div class="card"><h3>Electric vehicles</h3><p style="font-size:13.5px;">Shifts transport emissions away from direct fossil-fuel combustion, especially with low-carbon electricity.</p></div>
+      <div class="card"><h3>Carbon capture &amp; storage</h3><p style="font-size:13.5px;">Removes CO₂ from emissions or the atmosphere and stores it, preventing further enhancement of the greenhouse effect.</p></div>
+    </div>
+  </section>
+
+  <footer>Topic B.2 · Greenhouse Effect</footer>
+</div>
+
+
+<div class="topic-page" id="page-B.3" style="display:none;">
+
+  <!-- HERO -->
+  <section class="hero" id="hero-b3" style="border-top:none;">
+    <div class="eyebrow">Topic B.3 · Gas Laws</div>
+    <h1>The Gas Laws</h1>
+    <p class="sub">Zooming back down to individual particles — how pressure, volume, and temperature of a gas are all connected.</p>
+  </section>
+
+  <!-- AVOGADRO -->
+  <section id="b3-avogadro">
+    <span class="tag purple">Foundations</span>
+    <h2>Avogadro's Hypothesis, the Mole &amp; Avogadro's Constant</h2>
+
+    <div class="card">
+      <h3>Avogadro's hypothesis</h3>
+      <p>Equal volumes of different (ideal) gases, at the same temperature and pressure, contain <strong>equal numbers of particles</strong> — regardless of what the gas actually is.</p>
+    </div>
+    <div class="card">
+      <h3>The mole (mol)</h3>
+      <p>The SI unit for "amount of substance." One mole of anything contains exactly Avogadro's number of particles.</p>
+    </div>
+    <div class="formula-box small">N<sub>A</sub> = 6.022 × 10²³ mol⁻¹</div>
+    <p style="font-size:14px; color:var(--ink-soft);">The number of particles N in n moles is simply N = n·N<sub>A</sub>.</p>
+  </section>
+
+  <!-- IDEAL GAS STATE -->
+  <section id="b3-idealgas">
+    <span class="tag purple">Foundations</span>
+    <h2>The Ideal Gas &amp; Defining Its State</h2>
+
+    <div class="card">
+      <h3>Ideal gas assumptions</h3>
+      <p>Particles have negligible volume compared with the container; there are no forces between particles except during brief, elastic collisions; particles move in random straight lines between collisions; there is a very large number of particles with a range of speeds.</p>
+    </div>
+    <p class="lede">The complete state of a fixed amount of gas is described by three macroscopic variables:</p>
+    <div class="grid2">
+      <div class="card"><h3>Volume, V</h3><p style="font-size:14px;">The space (m³) the gas occupies.</p></div>
+      <div class="card"><h3>Temperature, T</h3><p style="font-size:14px;">Related to the average kinetic energy (K) of the particles.</p></div>
+    </div>
+    <div class="card"><h3>Pressure, p</h3><p style="font-size:14px;">Force per unit area (Pa) from particle collisions on the container walls.</p></div>
+    <p class="lede">The gas laws that follow each describe how two of these relate when the third is held constant.</p>
+  </section>
+
+  <!-- BOYLE -->
+  <section id="b3-boyle">
+    <span class="tag blue">Gas Laws</span>
+    <h2>Boyle–Mariotte Law</h2>
+    <p class="lede">At <strong>constant temperature</strong>, the pressure of a fixed mass of gas is inversely proportional to its volume.</p>
+
+    <div class="formula-box small">pV = constant &nbsp;⇒&nbsp; p₁V₁ = p₂V₂</div>
+    <svg class="diagram" viewBox="0 0 400 190">
+      <line x1="45" y1="165" x2="370" y2="165" stroke="#5B5A52" stroke-width="1.3"/>
+      <line x1="45" y1="165" x2="45" y2="20" stroke="#5B5A52" stroke-width="1.3"/>
+      <text x="210" y="185" class="diagram-label" fill="#5B5A52" text-anchor="middle">Volume, V →</text>
+      <text x="18" y="95" class="diagram-label" fill="#5B5A52" text-anchor="middle" transform="rotate(-90 18 95)">Pressure, p →</text>
+      <path d="M60,35 C90,50 120,90 160,120 C200,145 260,160 355,168" fill="none" stroke="#1B4FD6" stroke-width="2.5"/>
+    </svg>
+    <div class="card"><h3>Example</h3><p style="font-size:14px;">Pushing down a bicycle pump's piston (assuming temperature stays roughly constant) reduces the trapped air's volume and raises its pressure.</p></div>
+  </section>
+
+  <!-- GAY-LUSSAC -->
+  <section id="b3-gaylussac">
+    <span class="tag blue">Gas Laws</span>
+    <h2>Gay-Lussac's Law</h2>
+    <p class="lede">At <strong>constant volume</strong>, the pressure of a fixed mass of gas is directly proportional to its absolute (Kelvin) temperature.</p>
+
+    <div class="formula-box small"><span class="frac"><span class="num">p</span><span class="den">T</span></span> = constant &nbsp;⇒&nbsp; <span class="frac"><span class="num">p₁</span><span class="den">T₁</span></span> = <span class="frac"><span class="num">p₂</span><span class="den">T₂</span></span></div>
+    <svg class="diagram" viewBox="0 0 400 190">
+      <line x1="45" y1="165" x2="370" y2="165" stroke="#5B5A52" stroke-width="1.3"/>
+      <line x1="45" y1="165" x2="45" y2="20" stroke="#5B5A52" stroke-width="1.3"/>
+      <text x="210" y="185" class="diagram-label" fill="#5B5A52" text-anchor="middle">Temperature, T (K) →</text>
+      <text x="18" y="95" class="diagram-label" fill="#5B5A52" text-anchor="middle" transform="rotate(-90 18 95)">Pressure, p →</text>
+      <line x1="45" y1="165" x2="350" y2="30" stroke="#B23A6B" stroke-width="2.5"/>
+      <text x="30" y="178" class="diagram-label" fill="#5B5A52">0</text>
+    </svg>
+    <div class="card"><h3>Example</h3><p style="font-size:14px;">A sealed rigid gas canister left in a hot car will see its internal pressure rise as temperature rises — the volume can't change.</p></div>
+  </section>
+
+  <!-- CHARLES -->
+  <section id="b3-charles">
+    <span class="tag blue">Gas Laws</span>
+    <h2>Charles' Law</h2>
+    <p class="lede">At <strong>constant pressure</strong>, the volume of a fixed mass of gas is directly proportional to its absolute temperature.</p>
+
+    <div class="formula-box small"><span class="frac"><span class="num">V</span><span class="den">T</span></span> = constant &nbsp;⇒&nbsp; <span class="frac"><span class="num">V₁</span><span class="den">T₁</span></span> = <span class="frac"><span class="num">V₂</span><span class="den">T₂</span></span></div>
+    <svg class="diagram" viewBox="0 0 400 190">
+      <line x1="45" y1="165" x2="370" y2="165" stroke="#5B5A52" stroke-width="1.3"/>
+      <line x1="45" y1="165" x2="45" y2="20" stroke="#5B5A52" stroke-width="1.3"/>
+      <text x="210" y="185" class="diagram-label" fill="#5B5A52" text-anchor="middle">Temperature, T (K) →</text>
+      <text x="18" y="95" class="diagram-label" fill="#5B5A52" text-anchor="middle" transform="rotate(-90 18 95)">Volume, V →</text>
+      <line x1="45" y1="165" x2="350" y2="30" stroke="#3F7D4A" stroke-width="2.5"/>
+      <text x="30" y="178" class="diagram-label" fill="#5B5A52">0</text>
+    </svg>
+    <div class="card"><h3>Example</h3><p style="font-size:14px;">A balloon left in the sun expands as the air inside warms, since atmospheric pressure outside stays roughly constant.</p></div>
+
+    <div class="card">
+      <h3>Check — Exam-style</h3>
+      <p style="font-size:14.5px;">A gas occupies 2.0 L at 300 K and 1.0 atm. It is heated at constant pressure until its volume is 3.0 L. Find the final temperature.</p>
+      <button class="reveal-btn" onclick="toggle('b3sol1')">Reveal solution</button>
+      <div class="hidden-answer" id="b3sol1">
+        <p style="margin:0 0 6px;">Charles' law: V₁/T₁ = V₂/T₂</p>
+        <p style="margin:0 0 6px;">T₂ = T₁ × (V₂/V₁) = 300 × (3.0/2.0)</p>
+        <p style="margin:0;"><strong>T₂ = 450 K</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IDEAL GAS EQUATION -->
+  <section id="b3-idealgaseq">
+    <span class="tag magenta">Combining the Laws</span>
+    <h2>The Ideal Gas Equation</h2>
+    <p class="lede">Combining Boyle's, Gay-Lussac's, and Charles' laws with Avogadro's hypothesis gives one single equation linking all the state variables at once.</p>
+
+    <div class="formula-box magenta">pV = nRT</div>
+    <p style="font-size:14px; color:var(--ink-soft);">where R = 8.314 J mol⁻¹K⁻¹ is the universal gas constant. In terms of the actual number of particles:</p>
+    <div class="formula-box small">pV = NkT</div>
+    <p style="font-size:14px; color:var(--ink-soft);">where N is the number of particles and k = 1.38 × 10⁻²³ J K⁻¹ is the Boltzmann constant, related by R = N<sub>A</sub>·k.</p>
+
+    <div class="card">
+      <h3>Physical picture</h3>
+      <p>p comes from constant particle collisions with the walls; V is the space those particles move in; T tracks the particles' average kinetic energy; n (or N) is simply how many particles are colliding.</p>
+    </div>
+  </section>
+
+  <!-- INTERNAL ENERGY OF IDEAL GAS -->
+  <section id="b3-internalenergy">
+    <span class="tag magenta">Combining the Laws</span>
+    <h2>Internal Energy of an Ideal Gas</h2>
+    <p class="lede">An ideal gas has no forces between particles except during collisions, so it stores <strong>no</strong> intermolecular potential energy — its internal energy is purely kinetic.</p>
+
+    <div class="formula-box magenta">U = <span class="frac"><span class="num">3</span><span class="den">2</span></span> nRT</div>
+    <p style="font-size:14px; color:var(--ink-soft);">This follows directly from the average kinetic energy per particle, ⟨E<sub>k</sub>⟩ = (3/2)k<sub>B</sub>T, multiplied by the number of particles. Because internal energy depends only on T, for an ideal gas it is completely independent of pressure or volume individually.</p>
+
+    <div class="card">
+      <h3>Check — Exam-style</h3>
+      <p style="font-size:14.5px;">Calculate the change in internal energy of 0.40 mol of a monatomic ideal gas when its temperature rises by 60 K.</p>
+      <button class="reveal-btn" onclick="toggle('b3sol2')">Reveal solution</button>
+      <div class="hidden-answer" id="b3sol2">
+        <p style="margin:0 0 6px;">ΔU = (3/2)nRΔT = (3/2)(0.40)(8.314)(60)</p>
+        <p style="margin:0;"><strong>ΔU ≈ 300 J</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>Topic B.3 · Gas Laws</footer>
+</div>
+
+
+<div class="topic-page" id="page-placeholder" style="display:none;">
+  <div class="placeholder-wrap">
+    <div class="ph-eyebrow">IB Physics · <span id="phCode"></span></div>
+    <h1 id="phTitle">Coming soon</h1>
+    <p id="phDesc">This subtopic hasn't been built into an interactive deck yet.</p>
+    <span class="ph-badge">🚧 Not built yet</span>
+    <div>
+      <button class="ph-back" id="phBack" type="button">← Back to B.4 Thermodynamics</button>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <script>
+// ---- Topic / subtopic directory ----
+const topics = {
+  A: {
+    title: "Space, time and motion",
+    subs: [
+      {code:"A.1", name:"Kinematics"},
+      {code:"A.2", name:"Forces and momentum"},
+      {code:"A.3", name:"Work, energy and power"},
+      {code:"A.4", name:"Rigid body mechanics (HL)", hl:true},
+      {code:"A.5", name:"Galilean and special relativity (HL)", hl:true},
+    ]
+  },
+  B: {
+    title: "The particulate nature of matter",
+    subs: [
+      {code:"B.1", name:"Thermal energy transfers", built:true},
+      {code:"B.2", name:"Greenhouse effect", built:true},
+      {code:"B.3", name:"Gas laws", built:true},
+      {code:"B.4", name:"Thermodynamics (HL)", hl:true, built:true},
+      {code:"B.5", name:"Current and circuits"},
+    ]
+  },
+  C: {
+    title: "Wave behavior",
+    subs: [
+      {code:"C.1", name:"Simple harmonic motion"},
+      {code:"C.2", name:"Wave model"},
+      {code:"C.3", name:"Wave phenomena"},
+      {code:"C.4", name:"Standing waves and resonance"},
+      {code:"C.5", name:"Doppler effect"},
+    ]
+  }
+};
+
+// ---- Build dropdown menus ----
+document.querySelectorAll('.nav-item').forEach(item=>{
+  const key = item.dataset.topic;
+  const dd = item.querySelector('.nav-dropdown');
+  const topic = topics[key];
+  let html = `<div class="dd-title">${key} · ${topic.title}</div>`;
+  topic.subs.forEach(sub=>{
+    html += `<button class="dd-item" data-code="${sub.code}" data-name="${sub.name}">
+      <span><span class="dd-code">${sub.code}</span> ${sub.name}</span>
+      <span class="dd-flag">${sub.built ? 'Ready' : 'Soon'}</span>
+    </button>`;
+  });
+  dd.innerHTML = html;
+});
+
+// ---- Dropdown open/close ----
+const navItems = document.querySelectorAll('.nav-item');
+function closeAllDropdowns(){
+  navItems.forEach(it=>{
+    it.querySelector('.nav-dropdown').classList.remove('open');
+    it.querySelector('.nav-brand').classList.remove('open');
+  });
+}
+navItems.forEach(item=>{
+  const btn = item.querySelector('.nav-brand');
+  const dd = item.querySelector('.nav-dropdown');
+  btn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const isOpen = dd.classList.contains('open');
+    closeAllDropdowns();
+    if(!isOpen){
+      dd.classList.add('open');
+      btn.classList.add('open');
+    }
+  });
+  dd.addEventListener('click', (e)=>{
+    const item = e.target.closest('.dd-item');
+    if(!item) return;
+    navigateTo(item.dataset.code, item.dataset.name);
+    closeAllDropdowns();
+  });
+});
+document.addEventListener('click', closeAllDropdowns);
+
+// ---- Router ----
+const sideNote = document.getElementById('sideNote');
+const sideNoteToggle = document.getElementById('sideNoteToggle');
+const sideNoteTitle = document.getElementById('sideNoteTitle');
+const sideNoteList = document.getElementById('sideNoteList');
+const pagePlaceholder = document.getElementById('page-placeholder');
+
+const builtPages = {
+  'B.1': {
+    el: document.getElementById('page-B.1'),
+    title: 'B.1 Thermal Energy Transfers',
+    index: [
+      {href:'#hero-b1', label:'Top'},
+      {href:'#b1-states', label:'States of Matter · Scales'},
+      {href:'#b1-kinetic', label:'Kinetic Model'},
+      {href:'#b1-heat-internal', label:'Heat &amp; Internal Energy'},
+      {href:'#b1-shc', label:'Specific Heat Capacity'},
+      {href:'#b1-latent', label:'Specific Latent Heat'},
+      {href:'#b1-heatingcurve', label:'The Heating Curve'},
+      {href:'#b1-transfer', label:'Conduction · Convection · Radiation'},
+      {href:'#b1-blackbody', label:'Black-Body Radiation'},
+    ]
+  },
+  'B.2': {
+    el: document.getElementById('page-B.2'),
+    title: 'B.2 Greenhouse Effect',
+    index: [
+      {href:'#hero-b2', label:'Top'},
+      {href:'#b2-spectrum', label:"Sun's Radiation Spectrum"},
+      {href:'#b2-solarconstant', label:'Solar Constant'},
+      {href:'#b2-albedo', label:'Albedo &amp; Emissivity'},
+      {href:'#b2-balance-noatm', label:'Balance — No Atmosphere'},
+      {href:'#b2-balance-atm', label:'Balance — With Atmosphere'},
+      {href:'#b2-warming', label:'Causes of Warming'},
+      {href:'#b2-mitigation', label:'Reducing Human Contribution'},
+    ]
+  },
+  'B.3': {
+    el: document.getElementById('page-B.3'),
+    title: 'B.3 Gas Laws',
+    index: [
+      {href:'#hero-b3', label:'Top'},
+      {href:'#b3-avogadro', label:"Avogadro's Hypothesis"},
+      {href:'#b3-idealgas', label:'The Ideal Gas'},
+      {href:'#b3-boyle', label:'Boyle–Mariotte Law'},
+      {href:'#b3-gaylussac', label:"Gay-Lussac's Law"},
+      {href:'#b3-charles', label:"Charles' Law"},
+      {href:'#b3-idealgaseq', label:'Ideal Gas Equation'},
+      {href:'#b3-internalenergy', label:'Internal Energy of Ideal Gas'},
+    ]
+  },
+  'B.4': {
+    el: document.getElementById('page-B.4'),
+    title: 'B.4 Thermodynamics (HL)',
+    index: [
+      {href:'#hero', label:'Top'},
+      {href:'#firstlaw', label:'Thermodynamics 1st Law'},
+      {href:'#internal-energy', label:'Change in Internal Energy'},
+      {href:'#processes', label:'Thermodynamics Processes'},
+      {href:'#heatengine', label:'Heat Engine'},
+      {href:'#carnot', label:'Carnot Cycle'},
+      {href:'#exercises', label:'Exercises'},
+    ]
+  }
+};
+
+let activePageEl = null;
+
+function navigateTo(code, name){
+  Object.values(builtPages).forEach(p => { p.el.style.display = 'none'; });
+
+  if(builtPages[code]){
+    const page = builtPages[code];
+    page.el.style.display = '';
+    pagePlaceholder.style.display = 'none';
+    sideNote.style.display = '';
+    sideNoteToggle.style.display = '';
+    sideNoteToggle.textContent = '📌 ' + code + ' index';
+    sideNoteTitle.textContent = page.title;
+    sideNoteList.innerHTML = page.index.map(i => `<li><a href="${i.href}">${i.label}</a></li>`).join('');
+    activePageEl = page.el;
+  } else {
+    pagePlaceholder.style.display = '';
+    sideNote.style.display = 'none';
+    sideNoteToggle.style.display = 'none';
+    sideNote.classList.remove('open');
+    activePageEl = null;
+    document.getElementById('phCode').textContent = code;
+    document.getElementById('phTitle').textContent = name || code;
+    document.getElementById('phDesc').textContent = `This deck for ${code} · ${name} hasn't been built yet — check back soon.`;
+  }
+  window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
+}
+document.getElementById('phBack').addEventListener('click', ()=> navigateTo('B.4','Thermodynamics'));
+
+// Default landing page: B.4 Thermodynamics
+navigateTo('B.4','Thermodynamics');
+
 // Checkpoint logic
 document.querySelectorAll('.checkpoint').forEach(cp=>{
   const correctIdx = parseInt(cp.querySelector('.options').dataset.correct);
@@ -1077,8 +1916,6 @@ function toggle(id){
 }
 
 // Sticky side-note toggle (mobile)
-const sideNoteToggle = document.getElementById('sideNoteToggle');
-const sideNote = document.getElementById('sideNote');
 if(sideNoteToggle && sideNote){
   sideNoteToggle.addEventListener('click', ()=>{
     sideNote.classList.toggle('open');
@@ -1175,18 +2012,15 @@ function resetQuiz(){
   renderQuiz();
 }
 
-// scroll spy — top nav + sticky-note side nav
-const navLinks = document.querySelectorAll('#navbar a');
-const sideLinks = document.querySelectorAll('.side-note a');
-const secs = document.querySelectorAll('main section, main .hero');
+// scroll spy — sticky-note side nav (relevant on whichever built page is active)
 window.addEventListener('scroll', ()=>{
+  if(!activePageEl || activePageEl.style.display === 'none') return;
+  const sideLinks = sideNoteList.querySelectorAll('a');
+  const secs = activePageEl.querySelectorAll('section');
   let current = '';
   secs.forEach(s=>{
     const top = s.offsetTop - 90;
     if(window.scrollY >= top) current = s.id;
-  });
-  navLinks.forEach(l=>{
-    l.classList.toggle('active', l.getAttribute('href') === '#'+current);
   });
   sideLinks.forEach(l=>{
     l.classList.toggle('active', l.getAttribute('href') === '#'+current);
