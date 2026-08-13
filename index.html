@@ -950,22 +950,55 @@ border-bottom-color:var(--magenta);
 
   <!-- ENTROPY & The 2nd Law of Thermodynamics -->
   <section id="entropy">
-    <span class="tag purple">One of The Strangest Quantity</span>
+    <span class="tag purple">One of The Strangest Quantities</span>
     <h2>Entropy</h2>
-    <p class="lede">Entropy is a measure of amount of disorder, of the particle in a system.</p>
+    <p class="lede">Entropy is a measure of the amount of disorder of the particles in a system. A warmer object has more entropy (more movement); a colder object has less entropy.</p>
 
     <div class="card">
-   
-        <h3><span style="color:var(--isothermal); font-weight:600;">The 2nd Law of Thermodynamics</span> states that total entropy, or disorder, in an isolated system must always increase over time during any spontaneous process</h3>
-      
+      <h3><span style="color:var(--isothermal); font-weight:600;">The 2nd Law of Thermodynamics</span> states that total entropy, or disorder, in an isolated system must always increase over time during any spontaneous process</h3>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Macroscopic definition</h3>
+        <p style="font-size:13px; color:var(--ink-soft); margin-bottom:8px;">In terms of thermal energy (ΔQ) and temperature (T)</p>
+        <div class="formula-box purple">ΔS = <span class="frac"><span class="num">ΔQ</span><span class="den">T</span></span></div>
+        <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">ΔS is measured in joules per kelvin (J/K). ΔQ is in joules (J), T is in kelvin (K).</p>
+      </div>
+      <div class="card">
+        <h3>Microscopic definition</h3>
+        <p style="font-size:13px; color:var(--ink-soft); margin-bottom:8px;">In terms of possible microstates (Ω)</p>
+        <div class="formula-box purple">S = k<sub>B</sub> · ln Ω</div>
+        <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">k<sub>B</sub> is the Boltzmann constant; Ω is the number of possible microstates the particles could be arranged in.</p>
+      </div>
     </div>
 
     <div class="card">
-      <h3>Entropy Equation (Macroscopic)</h3>
-      <div class="formula-box purple" style="margin-top:10px;">ΔS = <span class="frac"><span class="num">ΔQ</span><span class="den">T</div>
-      <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">Change in Entropy(ΔS) measured in Joule/Kelvin.</p>
+      <h3>Worked example: which point has the largest entropy?</h3>
+      <p style="font-size:14.5px;">A gas is taken around the cycle A → B → C → D on a P–V diagram: A→B is an isothermal expansion, B→C is an isovolumetric (constant-volume) process, and C→D is adiabatic. At which point is the entropy largest?</p>
+
+      <div class="formula-box small" style="margin-top:6px;">ΔS = <span class="frac"><span class="num">ΔQ</span><span class="den">T</span></span> → entropy change</div>
+
+      <ul class="notes" style="font-size:14.5px; margin-top:12px;">
+        <li><strong style="color:var(--isothermal);">A → B, isothermal expansion:</strong> T is constant, so ΔU = 0, meaning Q = W. Since the gas expands, W is positive, so Q &gt; 0 → <strong>ΔS increases</strong> from A to B.</li>
+        <li><strong style="color:var(--purple);">B → C, isovolumetric:</strong> ΔV = 0, so W = 0 and Q = ΔU. Since ΔU = <span class="frac"><span class="num">3</span><span class="den">2</span></span>nRΔT and PV = nRT, as P falls and T falls, ΔU &lt; 0 → <strong>ΔS decreases</strong> from B to C.</li>
+        <li><strong style="color:var(--adiabatic);">C → D, adiabatic:</strong> ΔQ = 0 by definition, so <strong>ΔS = 0</strong> — entropy stays constant.</li>
+      </ul>
+
+      <p class="mono" style="font-size:15px; color:var(--magenta); font-weight:600; margin-top:10px;">Entropy is largest at B — it rises all the way from A to B, then falls from B to C, and holds steady from C to D.</p>
     </div>
 
+    <div class="checkpoint">
+      <h4>Along an adiabatic process, what happens to the entropy of the gas?</h4>
+      <div class="options" data-correct="1">
+        <button class="opt-btn">It always increases, since work is being done</button>
+        <button class="opt-btn">It stays constant, since ΔQ = 0</button>
+        <button class="opt-btn">It always decreases, since no heat enters the system</button>
+        <button class="opt-btn">It cannot be determined without knowing ΔU</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
 
   <!-- UNDERSTANDING CHECK -->
   <section id="understanding-check">
@@ -1081,6 +1114,350 @@ border-bottom-color:var(--magenta);
   </section>
 
   <footer>Topic B.4 · Thermodynamics (HL)</footer>
+</div>
+
+<div class="topic-page" id="page-B.5" style="display:none;">
+
+  <!-- HERO -->
+  <section class="hero" id="hero" style="border-top:none;">
+    <div class="eyebrow">Topic B.5 · Current and Circuits</div>
+    <h1>Current &amp; Circuits</h1>
+    <p class="sub">Charge moving through a conductor, pushed by a potential difference, resisted by a resistor. From that one idea, every circuit rule below follows.</p>
+    <div class="hero-caption">current · potential difference · resistance · series &amp; parallel · internal resistance · sensors</div>
+  </section>
+
+  <!-- ELECTRIC CURRENT -->
+  <section id="current">
+    <span class="tag green">Definitions</span>
+    <h2>Electric Current</h2>
+    <p class="lede">Electric current is the movement of charge.</p>
+
+    <div class="card">
+      <h3>Conventional current vs. electron flow</h3>
+      <ul class="notes">
+        <li><strong>Conventional current</strong> is defined as the direction positive charges would flow — from + to − around the external circuit.</li>
+        <li>In reality, it's negatively charged <strong>electrons</strong> that move, and they travel in the opposite direction — from − to +.</li>
+        <li>Every circuit rule in this topic is written in terms of conventional current, by convention.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Defining current</h3>
+      <div class="formula-box magenta">I = <span class="frac"><span class="num">Δq</span><span class="den">Δt</span></span></div>
+      <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">q = charge, measured in coulombs (C). t = time, measured in seconds (s). Current I is measured in <strong>amperes</strong> (A), where 1 A = 1 C/s.</p>
+    </div>
+
+    <div class="checkpoint">
+      <h4>Conventional current in a circuit flows in the direction that:</h4>
+      <div class="options" data-correct="0">
+        <button class="opt-btn">Positive charge would move, from + to − around the circuit</button>
+        <button class="opt-btn">Electrons actually move, from − to +</button>
+        <button class="opt-btn">Whichever direction is shorter around the loop</button>
+        <button class="opt-btn">Only from the negative terminal outward</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
+
+  <!-- POTENTIAL DIFFERENCE -->
+  <section id="pd">
+    <span class="tag magenta">Doing Work on Charge</span>
+    <h2>Potential Difference</h2>
+    <p class="lede">To move charge around a circuit, work must be done on it — that work, per unit charge, is the potential difference.</p>
+
+    <div class="card">
+      <h3>Potential difference (V)</h3>
+      <div class="formula-box purple">V = <span class="frac"><span class="num">W</span><span class="den">q</span></span></div>
+      <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">W = work done per charge to move a positive charge between two points in a circuit. Unit: <strong>volt</strong> (V), where 1 V = 1 J/C.</p>
+    </div>
+
+    <div class="card">
+      <h3>The electron-volt</h3>
+      <p style="font-size:14.5px;">Since work done equals kinetic energy transferred, W = E<sub>k</sub>, so V = E<sub>k</sub>/q → E<sub>k</sub> = qV.</p>
+      <div class="formula-box small" style="margin-top:8px;">E<sub>k</sub> = q · V &nbsp;→&nbsp; for an electron: E<sub>k</sub> = e · V, where e = 1.6 × 10⁻¹⁹ C</div>
+      <div class="formula-box small purple" style="margin-top:8px;">1 eV = 1.6 × 10⁻¹⁹ J</div>
+      <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">One electron-volt is the kinetic energy gained by a single electron accelerated through a potential difference of 1 V — a convenient energy unit used later for particle and atomic-scale conversions.</p>
+    </div>
+
+    <div class="checkpoint">
+      <h4>An electron accelerates through a potential difference of 2 V. What kinetic energy does it gain, in eV?</h4>
+      <div class="options" data-correct="1">
+        <button class="opt-btn">1 eV</button>
+        <button class="opt-btn">2 eV</button>
+        <button class="opt-btn">3.2 × 10⁻¹⁹ eV</button>
+        <button class="opt-btn">0.5 eV</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
+
+  <!-- OHM'S LAW, RESISTIVITY, POWER -->
+  <section id="ohmslaw">
+    <span class="tag purple">Core Relationships</span>
+    <h2>Ohm's Law, Resistivity &amp; Power</h2>
+    <p class="lede">Resistance describes how hard it is to push current through a component. Resistivity describes that same property for the material itself, independent of shape.</p>
+
+    <div class="card">
+      <h3>Ohm's Law</h3>
+      <div class="formula-box magenta">V = IR</div>
+      <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">Valid for an <strong>ohmic conductor</strong> at constant temperature: current is directly proportional to potential difference, giving a straight-line V–I graph through the origin. R is the resistance, measured in <strong>ohms</strong> (Ω), where 1 Ω = 1 V/A.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Resistance</h3>
+        <div class="formula-box small">R = <span class="frac"><span class="num">V</span><span class="den">I</span></span></div>
+        <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">Opposition to current flow. Depends on the component and, for most materials, its temperature.</p>
+      </div>
+      <div class="card">
+        <h3>Resistivity</h3>
+        <div class="formula-box small">R = <span class="frac"><span class="num">ρL</span><span class="den">A</span></span></div>
+        <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">ρ = resistivity (Ω·m), a property of the <em>material only</em>. L = length, A = cross-sectional area. Longer wires resist more; thicker wires resist less.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Electrical power</h3>
+      <div class="formula-box purple">P = IV = I²R = <span class="frac"><span class="num">V²</span><span class="den">R</span></span></div>
+      <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">All three forms come from combining P = IV with V = IR. Power is measured in <strong>watts</strong> (W), where 1 W = 1 J/s.</p>
+    </div>
+
+    <div class="checkpoint">
+      <h4>A resistor has V = 6 V across it and I = 2 A through it. What power does it dissipate?</h4>
+      <div class="options" data-correct="2">
+        <button class="opt-btn">3 W</button>
+        <button class="opt-btn">8 W</button>
+        <button class="opt-btn">12 W</button>
+        <button class="opt-btn">36 W</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
+
+  <!-- CIRCUITS BASICS -->
+  <section id="circuitbasics">
+    <span class="tag blue">Foundations</span>
+    <h2>Building a Circuit</h2>
+    <p class="lede">A battery supplies the potential difference (work). That work causes charge to move — and moving charge is current.</p>
+
+    <div class="card">
+      <h3>Ammeters &amp; voltmeters</h3>
+      <ul class="notes">
+        <li><strong>Ammeter</strong> — counts coulombs per second (current). Connected in <strong>series</strong> with the component being measured.</li>
+        <li><strong>Voltmeter</strong> — measures the difference in potential (p.d.) across a component. Connected in <strong>parallel</strong> across it.</li>
+      </ul>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3 style="color:var(--green)">Ideal ammeter</h3>
+        <div class="formula-box small">R = 0</div>
+        <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">All current passes through it without any voltage being dropped across it.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--green)">Ideal voltmeter</h3>
+        <div class="formula-box small">R = ∞</div>
+        <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">No current passes through it — it measures p.d. without disturbing the circuit.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Resistors</h3>
+      <p style="font-size:14.5px;">A resistor has resistance R (unit: Ω, ohm) and uses potential difference to resist the current flowing through it.</p>
+    </div>
+  </section>
+
+  <!-- SERIES CIRCUITS -->
+  <section id="series">
+    <span class="tag teal">Series Circuits</span>
+    <h2>Series Circuits</h2>
+    <p class="lede">One loop, one path — every component shares the same current.</p>
+
+    <div class="card">
+      <h3>Series circuit rules</h3>
+      <ul class="notes">
+        <li><strong>Current</strong> — the same everywhere (measured by an ammeter anywhere in the loop): I = I<sub>1</sub> = I<sub>2</sub> = …</li>
+        <li><strong>Voltage</strong> — the battery's p.d. is shared out across each component: V = V<sub>1</sub> + V<sub>2</sub> + …</li>
+        <li><strong>Total resistance</strong> — resistances simply add: R<sub>s</sub> = R<sub>1</sub> + R<sub>2</sub> + …</li>
+      </ul>
+      <div class="formula-box small teal" style="margin-top:8px; border-color:var(--isothermal); color:var(--isothermal);">R<sub>s</sub> = R<sub>1</sub> + R<sub>2</sub> + …</div>
+    </div>
+
+    <div class="checkpoint">
+      <h4>Two resistors, 4 Ω and 6 Ω, are connected in series across a 10 V battery. What current flows?</h4>
+      <div class="options" data-correct="1">
+        <button class="opt-btn">0.4 A</button>
+        <button class="opt-btn">1 A</button>
+        <button class="opt-btn">1.67 A</button>
+        <button class="opt-btn">2.5 A</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
+
+  <!-- PARALLEL CIRCUITS -->
+  <section id="parallel">
+    <span class="tag amber">Parallel Circuits</span>
+    <h2>Parallel Circuits</h2>
+    <p class="lede">Multiple paths for current, all starting and ending at the same two points — so every branch shares the same p.d.</p>
+
+    <div class="card">
+      <h3>Parallel circuit rules</h3>
+      <ul class="notes">
+        <li><strong>Current</strong> — splits between branches and recombines: I = I<sub>1</sub> + I<sub>2</sub> + …</li>
+        <li><strong>Voltage</strong> — the same across every branch: V = V<sub>1</sub> = V<sub>2</sub> = …</li>
+        <li><strong>Total resistance</strong> — reciprocals add, so R<sub>p</sub> is always smaller than the smallest individual resistor: <span class="frac"><span class="num">1</span><span class="den">R<sub>p</sub></span></span> = <span class="frac"><span class="num">1</span><span class="den">R<sub>1</sub></span></span> + <span class="frac"><span class="num">1</span><span class="den">R<sub>2</sub></span></span> + …</li>
+      </ul>
+    </div>
+
+    <div class="checkpoint">
+      <h4>Two resistors, 4 Ω and 4 Ω, are connected in parallel. What is the total resistance?</h4>
+      <div class="options" data-correct="0">
+        <button class="opt-btn">2 Ω</button>
+        <button class="opt-btn">4 Ω</button>
+        <button class="opt-btn">8 Ω</button>
+        <button class="opt-btn">0.5 Ω</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
+
+  <!-- INTERNAL RESISTANCE -->
+  <section id="internalresistance">
+    <span class="tag rust">Real Batteries</span>
+    <h2>Internal Resistance</h2>
+    <p class="lede">Every real battery has some resistance of its own — so not all of its EMF reaches the external circuit.</p>
+
+    <div class="card">
+      <h3>EMF and terminal voltage</h3>
+      <p style="font-size:14.5px;">The EMF (ε) is the total energy per charge the battery supplies. Some of that is "lost" driving current through the battery's own internal resistance (r), leaving only the terminal voltage available to the external circuit.</p>
+      <div class="formula-box small" style="margin-top:8px; border-color:var(--adiabatic); color:var(--adiabatic);">ε = I(R + r) = IR + Ir</div>
+      <div class="formula-box small" style="margin-top:8px; border-color:var(--adiabatic); color:var(--adiabatic);">V = ε − Ir</div>
+      <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">IR is the terminal p.d. (V) delivered to the external circuit; Ir is the "lost volts" dropped inside the battery itself.</p>
+    </div>
+
+    <div class="checkpoint">
+      <h4>A battery with EMF 6 V and internal resistance 1 Ω drives a current of 2 A. What is the terminal voltage?</h4>
+      <div class="options" data-correct="1">
+        <button class="opt-btn">6 V</button>
+        <button class="opt-btn">4 V</button>
+        <button class="opt-btn">2 V</button>
+        <button class="opt-btn">8 V</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
+
+  <!-- THERMISTOR & LDR -->
+  <section id="sensors">
+    <span class="tag green">Non-Ohmic Components</span>
+    <h2>Thermistors &amp; LDRs</h2>
+    <p class="lede">Not every component obeys Ohm's law — some resistors are designed so their resistance responds to the environment, making them useful as sensors.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Thermistor (NTC)</h3>
+        <ul class="notes">
+          <li>Resistance <strong>decreases</strong> as temperature <strong>increases</strong> (a Negative Temperature Coefficient thermistor).</li>
+          <li>Higher temperature frees more charge carriers, so current flows more easily.</li>
+          <li>Used in temperature sensing and thermostats.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>LDR (Light-Dependent Resistor)</h3>
+        <ul class="notes">
+          <li>Resistance <strong>decreases</strong> as light intensity <strong>increases</strong>.</li>
+          <li>More incident light frees more charge carriers in the semiconductor material.</li>
+          <li>Used in light sensing, e.g. automatic street lights.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="checkpoint">
+      <h4>As the temperature of an NTC thermistor increases, its resistance:</h4>
+      <div class="options" data-correct="1">
+        <button class="opt-btn">Increases</button>
+        <button class="opt-btn">Decreases</button>
+        <button class="opt-btn">Stays exactly the same</button>
+        <button class="opt-btn">Becomes infinite</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
+
+  <!-- POTENTIOMETERS -->
+  <section id="potentiometer">
+    <span class="tag magenta">Variable Voltage Dividers</span>
+    <h2>Potentiometers</h2>
+    <p class="lede">A potentiometer is a three-terminal resistor with a sliding contact (wiper), used to output a variable, adjustable potential difference.</p>
+
+    <div class="card">
+      <h3>How it works</h3>
+      <ul class="notes">
+        <li>The full supply p.d. is connected across the two end terminals of a resistive track.</li>
+        <li>The wiper taps off a fraction of that p.d., set by its position along the track — moving the wiper smoothly varies the output voltage from 0 up to the full supply voltage.</li>
+        <li>Because it's a voltage divider rather than a single variable resistor in series, it can supply the <em>full</em> range of output voltages, including right down to 0 V.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Common uses</h3>
+      <p style="font-size:14.5px;">Volume controls, providing a known reference/comparison voltage in measuring circuits, and calibrating other sensors.</p>
+    </div>
+  </section>
+
+  <!-- UNDERSTANDING CHECK -->
+  <section id="understanding-check">
+    <span class="tag green">Understanding Check</span>
+    <h2>Quick Concept Check</h2>
+    <p class="lede">Four quick checks across current, resistance, and circuits — answer before moving on.</p>
+
+    <div class="checkpoint">
+      <h4>Why does an ideal voltmeter need infinite resistance?</h4>
+      <div class="options" data-correct="2">
+        <button class="opt-btn">So it reads the current instead of the voltage</button>
+        <button class="opt-btn">So it can be connected in series without affecting the circuit</button>
+        <button class="opt-btn">So no current flows through it, and it doesn't disturb the p.d. it's measuring</button>
+        <button class="opt-btn">So it can measure resistance directly</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+
+    <div class="checkpoint">
+      <h4>Adding another resistor in parallel to an existing circuit does what to the total resistance?</h4>
+      <div class="options" data-correct="0">
+        <button class="opt-btn">Decreases it, since it opens up another path for current</button>
+        <button class="opt-btn">Increases it, since there's more material for current to pass through</button>
+        <button class="opt-btn">Leaves it unchanged</button>
+        <button class="opt-btn">Depends only on the battery's EMF</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+
+    <div class="checkpoint">
+      <h4>A wire's length is doubled while its cross-sectional area and material stay the same. What happens to its resistance?</h4>
+      <div class="options" data-correct="1">
+        <button class="opt-btn">Halves</button>
+        <button class="opt-btn">Doubles</button>
+        <button class="opt-btn">Stays the same</button>
+        <button class="opt-btn">Quadruples</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+
+    <div class="checkpoint">
+      <h4>Why does a real battery's terminal voltage drop as it delivers more current?</h4>
+      <div class="options" data-correct="3">
+        <button class="opt-btn">Because Ohm's law fails at high current</button>
+        <button class="opt-btn">Because EMF itself decreases with current</button>
+        <button class="opt-btn">Because the external resistance automatically increases</button>
+        <button class="opt-btn">Because more p.d. (Ir) is lost driving current through its own internal resistance</button>
+      </div>
+      <div class="cp-feedback"></div>
+    </div>
+  </section>
+
+  <footer>Topic B.5 · Current and Circuits</footer>
 </div>
 
 <div class="topic-page" id="page-B.1" style="display:none;">
@@ -1750,7 +2127,7 @@ const topics = {
       {code:"B.2", name:"Greenhouse effect", built:true},
       {code:"B.3", name:"Gas laws", built:true},
       {code:"B.4", name:"Thermodynamics (HL)", hl:true, built:true},
-      {code:"B.5", name:"Current and circuits"},
+      {code:"B.5", name:"Current and circuits", built:true},
     ]
   },
   C: {
@@ -1873,6 +2250,23 @@ const builtPages = {
       {href:'#entropy', label:'Entropy'},
       {href:'#assessment', label:'Self-Assessment'},
       {href:'#exercises', label:'Exercises'},
+    ]
+  },
+  'B.5': {
+    el: document.getElementById('page-B.5'),
+    title: 'B.5 Current and Circuits',
+    index: [
+      {href:'#hero', label:'Top'},
+      {href:'#current', label:'Electric Current'},
+      {href:'#pd', label:'Potential Difference'},
+      {href:'#ohmslaw', label:"Ohm's Law, Resistivity & Power"},
+      {href:'#circuitbasics', label:'Building a Circuit'},
+      {href:'#series', label:'Series Circuits'},
+      {href:'#parallel', label:'Parallel Circuits'},
+      {href:'#internalresistance', label:'Internal Resistance'},
+      {href:'#sensors', label:'Thermistors & LDRs'},
+      {href:'#potentiometer', label:'Potentiometers'},
+      {href:'#understanding-check', label:'Understanding Check'},
     ]
   }
 };
