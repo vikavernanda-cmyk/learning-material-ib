@@ -604,6 +604,51 @@ border-bottom-color:var(--magenta);
     .topic-card{min-height:145px;}
   }
 
+   /* ---- Cheat-sheet downloads ---- */
+  .cheatsheet-section{margin-top:56px; padding-top:40px; border-top:1px solid var(--line);}
+  .cheatsheet-grid{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:10px;
+  }
+  .cheatsheet-card{
+    display:flex; flex-direction:column; align-items:flex-start; gap:10px;
+    padding:16px 15px 15px;
+    background:rgba(255,255,255,.55);
+    border:1px solid var(--line); border-radius:10px;
+    text-decoration:none; color:var(--ink);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+  }
+  .cheatsheet-card:hover{
+    transform:translateY(-3px);
+    border-color:rgba(178,58,107,.38);
+    box-shadow:0 12px 26px rgba(35,38,43,.10);
+    background:#fff;
+  }
+  .cheatsheet-icon{
+    display:flex; align-items:center; justify-content:center;
+    width:34px; height:34px; border-radius:8px;
+    background:var(--magenta-soft); color:var(--magenta);
+    font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:700;
+  }
+  .cheatsheet-card h4{margin:0; font-size:14.5px; line-height:1.3;}
+  .cheatsheet-card .cs-code{
+    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--ink-soft);
+  }
+  .cheatsheet-card .cs-action{
+    margin-top:2px; font-family:'IBM Plex Mono',monospace; font-size:10.5px;
+    letter-spacing:.05em; text-transform:uppercase; color:var(--magenta);
+    display:flex; align-items:center; gap:5px;
+  }
+  .cheatsheet-card:hover .cs-action span{transform:translateX(3px);}
+  .cheatsheet-card .cs-action span{display:inline-block; transition:transform .15s;}
+  @media(max-width:900px){
+    .cheatsheet-grid{grid-template-columns:repeat(3,1fr);}
+  }
+  @media(max-width:560px){
+    .cheatsheet-grid{grid-template-columns:repeat(2,1fr);}
+  }
+
+  
   /* ---- Placeholder ("coming soon") page ---- */
   .placeholder-wrap{
     padding:100px 0 80px;
@@ -705,7 +750,53 @@ border-bottom-color:var(--magenta);
       </button>
     </div>
 
-    <div class="landing-footnote">Tip: use the topic menu above to jump directly into a subtopic.</div>
+   <div class="landing-footnote">Tip: use the topic menu above to jump directly into a subtopic.</div>
+
+    <div class="cheatsheet-section">
+      <div class="landing-section-label">Downloadable cheat sheets</div>
+      <div class="cheatsheet-grid">
+        <a class="cheatsheet-card" href="cheat-sheet/B1.pdf" target="_blank" rel="noopener">
+          <span class="cheatsheet-icon">PDF</span>
+          <div>
+            <div class="cs-code">B.1</div>
+            <h4>Thermal Energy Transfers</h4>
+          </div>
+          <span class="cs-action">Download <span>↗</span></span>
+        </a>
+        <a class="cheatsheet-card" href="cheat-sheet/B2.pdf" target="_blank" rel="noopener">
+          <span class="cheatsheet-icon">PDF</span>
+          <div>
+            <div class="cs-code">B.2</div>
+            <h4>Greenhouse Effect</h4>
+          </div>
+          <span class="cs-action">Download <span>↗</span></span>
+        </a>
+        <a class="cheatsheet-card" href="cheat-sheet/B3.pdf" target="_blank" rel="noopener">
+          <span class="cheatsheet-icon">PDF</span>
+          <div>
+            <div class="cs-code">B.3</div>
+            <h4>Gas Laws</h4>
+          </div>
+          <span class="cs-action">Download <span>↗</span></span>
+        </a>
+        <a class="cheatsheet-card" href="cheat-sheet/B4.pdf" target="_blank" rel="noopener">
+          <span class="cheatsheet-icon">PDF</span>
+          <div>
+            <div class="cs-code">B.4</div>
+            <h4>Thermodynamics (HL)</h4>
+          </div>
+          <span class="cs-action">Download <span>↗</span></span>
+        </a>
+        <a class="cheatsheet-card" href="cheat-sheet/B5.pdf" target="_blank" rel="noopener">
+          <span class="cheatsheet-icon">PDF</span>
+          <div>
+            <div class="cs-code">B.5</div>
+            <h4>Current and Circuits</h4>
+          </div>
+          <span class="cs-action">Download <span>↗</span></span>
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 
