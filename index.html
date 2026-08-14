@@ -65,6 +65,37 @@
   sup, sub{font-size:0.68em;}
 
   /* ---- Top nav ---- */
+    .nav-home{
+      appearance:none;
+      -webkit-appearance:none;
+      border:0;
+      border-bottom:3px solid transparent;
+      outline:none;
+      background:transparent;
+      flex:0 0 auto;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:14px 12px 13px;
+      margin-right:4px;
+      color:var(--ink-soft);
+      font-family:'IBM Plex Mono',monospace;
+      font-size:11.5px;
+      font-weight:600;
+      line-height:1;
+      letter-spacing:.055em;
+      text-transform:uppercase;
+      text-decoration:none;
+      transition:color .15s ease, background-color .15s ease, border-color .15s ease;
+      cursor:pointer;
+    }
+    .nav-home:hover,
+    .nav-home.active{
+      color:var(--magenta);
+      background:rgba(178,58,107,0.045);
+      border-bottom-color:var(--magenta);
+    }
+
   nav{
 position:sticky;
 top:0;
@@ -467,6 +498,112 @@ border-bottom-color:var(--magenta);
     .side-note-toggle{display:block;}
   }
 
+
+  /* ---- Landing page ---- */
+  .landing-page{
+    min-height:calc(100vh - 52px);
+    display:flex;
+    align-items:center;
+    padding:54px 0 72px;
+  }
+  .landing-inner{width:100%;}
+  .landing-kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; font-weight:600; letter-spacing:.13em;
+    text-transform:uppercase; color:var(--magenta);
+    margin-bottom:18px;
+  }
+  .landing-kicker::before{
+    content:""; width:26px; height:1px; background:var(--magenta);
+  }
+  .landing-title{
+    max-width:760px;
+    margin:0 0 18px;
+    font-family:'Newsreader',serif;
+    font-size:clamp(48px,8vw,76px);
+    line-height:.98;
+    letter-spacing:-.035em;
+  }
+  .landing-title em{color:var(--magenta); font-style:italic;}
+  .landing-lede{
+    max-width:620px;
+    margin:0 0 34px;
+    color:var(--ink-soft);
+    font-size:17px;
+    line-height:1.7;
+  }
+  .landing-actions{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:48px;}
+  .landing-btn{
+    display:inline-flex; align-items:center; gap:9px;
+    border-radius:6px; padding:11px 16px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px;
+    letter-spacing:.04em; text-transform:uppercase;
+    cursor:pointer; text-decoration:none;
+    transition:.15s ease;
+  }
+  .landing-btn.primary{background:var(--ink); color:var(--paper); border:1px solid var(--ink);}
+  .landing-btn.primary:hover{background:var(--magenta); border-color:var(--magenta);}
+  .landing-btn.secondary{background:rgba(255,255,255,.45); color:var(--ink); border:1px solid var(--line);}
+  .landing-btn.secondary:hover{border-color:var(--ink); background:#fff;}
+  .landing-section-label{
+    display:flex; align-items:center; gap:12px;
+    margin-bottom:13px;
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);
+  }
+  .landing-section-label::after{content:""; height:1px; flex:1; background:var(--line);}
+  .topic-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+  }
+  .topic-card{
+    position:relative; min-height:180px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    padding:18px 18px 16px;
+    background:rgba(255,255,255,.58);
+    border:1px solid var(--line); border-radius:10px;
+    cursor:pointer; text-align:left;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .topic-card:hover{
+    transform:translateY(-3px);
+    border-color:rgba(178,58,107,.38);
+    box-shadow:0 12px 26px rgba(35,38,43,.10);
+  }
+  .topic-card.featured{background:linear-gradient(145deg, rgba(243,220,229,.7), rgba(255,255,255,.65)); border-color:rgba(178,58,107,.28);}
+  .topic-code{
+    font-family:'IBM Plex Mono',monospace; font-size:11px;
+    color:var(--magenta); font-weight:600; letter-spacing:.08em;
+  }
+  .topic-card h3{
+    margin:24px 0 5px; font-size:22px; line-height:1.05;
+  }
+  .topic-card p{margin:0; color:var(--ink-soft); font-size:13px; line-height:1.5;}
+  .topic-arrow{
+    align-self:flex-end; font-family:'IBM Plex Mono',monospace;
+    font-size:18px; color:var(--ink-soft); transition:transform .15s;
+  }
+  .topic-card:hover .topic-arrow{transform:translateX(4px); color:var(--magenta);}
+  .topic-status{
+    position:absolute; top:15px; right:15px;
+    font-family:'IBM Plex Mono',monospace; font-size:9px;
+    letter-spacing:.07em; text-transform:uppercase;
+    padding:3px 7px; border-radius:20px;
+    background:var(--green-soft); color:var(--green);
+  }
+  .topic-status.soon{background:var(--paper2); color:var(--ink-soft);}
+  .landing-footnote{
+    margin-top:24px; color:var(--ink-soft);
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px;
+  }
+  @media(max-width:700px){
+    .landing-page{padding:42px 0 56px; align-items:flex-start;}
+    .landing-title{font-size:48px;}
+    .landing-lede{font-size:15.5px;}
+    .topic-grid{grid-template-columns:1fr;}
+    .topic-card{min-height:145px;}
+  }
+
   /* ---- Placeholder ("coming soon") page ---- */
   .placeholder-wrap{
     padding:100px 0 80px;
@@ -494,6 +631,7 @@ border-bottom-color:var(--magenta);
 <body>
 
 <nav id="navbar">
+  <button class="nav-home" type="button" id="navHome" aria-label="Go to homepage">⌂&nbsp; Home</button>
   <div class="nav-item" data-topic="A">
     <button class="nav-brand" type="button"><b>A</b> · Space, time and motion <span class="caret">▾</span></button>
     <div class="nav-dropdown"></div>
@@ -514,7 +652,64 @@ border-bottom-color:var(--magenta);
 </aside>
 <button class="side-note-toggle" id="sideNoteToggle">📌 index</button>
 
-<main>
+<main id="home">
+
+<div class="landing-page" id="landingPage">
+  <div class="landing-inner">
+    <div class="landing-kicker">IB Physics · A Complete Physics Material</div>
+    <h1 class="landing-title">Understand the idea.<br><em>Then solve.</em></h1>
+    <p class="landing-lede">
+      A structured physics learning deck built around clear explanations, visual models,
+      worked examples, and quick checkpoints — so you can learn the reasoning, not just memorize formulas.
+    </p>
+
+    <div class="landing-actions">
+      <button class="landing-btn primary" type="button" onclick="navigateTo('B.4','Thermodynamics')">
+        Continue with B.4 <span>→</span>
+      </button>
+      <button class="landing-btn secondary" type="button" onclick="document.getElementById('topicGrid').scrollIntoView({behavior:'smooth',block:'center'})">
+        Browse topics <span>↓</span>
+      </button>
+    </div>
+
+    <div class="landing-section-label">Choose a topic</div>
+    <div class="topic-grid" id="topicGrid">
+      <button class="topic-card" type="button" onclick="openTopic('A')">
+        <span class="topic-code">TOPIC A</span>
+        <div>
+          <h3>Space, time<br>and motion</h3>
+          <p>Kinematics · forces · energy · mechanics · relativity</p>
+        </div>
+        <span class="topic-arrow">→</span>
+        <span class="topic-status soon">Explore</span>
+      </button>
+
+      <button class="topic-card featured" type="button" onclick="openTopic('B')">
+        <span class="topic-code">TOPIC B</span>
+        <div>
+          <h3>The particulate<br>nature of matter</h3>
+          <p>Thermal physics · gas laws · thermodynamics · circuits</p>
+        </div>
+        <span class="topic-arrow">→</span>
+        <span class="topic-status">5 decks ready</span>
+      </button>
+
+      <button class="topic-card" type="button" onclick="openTopic('C')">
+        <span class="topic-code">TOPIC C</span>
+        <div>
+          <h3>Wave<br>behavior</h3>
+          <p>SHM · wave model · phenomena · resonance · Doppler effect</p>
+        </div>
+        <span class="topic-arrow">→</span>
+        <span class="topic-status soon">Explore</span>
+      </button>
+    </div>
+
+    <div class="landing-footnote">Tip: use the topic menu above to jump directly into a subtopic.</div>
+  </div>
+</div>
+
+
 <div class="topic-page" id="page-B.4">
 
   <!-- HERO -->
@@ -893,7 +1088,7 @@ border-bottom-color:var(--magenta);
 
     <div class="card">
       <h3>Efficiency of a heat engine</h3>
-      <div class="formula-box small">η = <span class="frac"><span class="num">useful work</span><span class="den">input energy</span></span> = <span class="frac"><span class="num">Q_H − Q_C</span><span class="den">Q_H</span></span></div>
+      <div class="formula-box small">η = <span class="frac"><span class="num">useful work</span><span class="den">input energy</span></span> = <span class="frac"><span class="num">Q<sub>H</sub> − Q<sub>C</sub></span><span class="den">Q<sub>H</sub></span></span></div>
       <p style="font-size:14px; color:var(--ink-soft); margin-top:8px;">Since ΔU = 0 over a full cycle, Q = W for the cycle as a whole — so the useful work done equals the heat absorbed minus the heat rejected.</p>
     </div>
 
@@ -903,7 +1098,7 @@ border-bottom-color:var(--magenta);
         <button class="opt-btn">Always zero</button>
         <button class="opt-btn">Always positive</button>
         <button class="opt-btn">Always negative</button>
-        <button class="opt-btn">Equal to Q_H</button>
+        <button class="opt-btn">Equal to Q<sub>H</sub></button>
       </div>
       <div class="cp-feedback"></div>
     </div>
@@ -930,15 +1125,15 @@ border-bottom-color:var(--magenta);
 
     <div class="card">
       <h3>Deriving the Carnot efficiency</h3>
-      <p class="mono" style="font-size:15px;">η = <span class="frac"><span class="num">Q_H − Q_C</span><span class="den">Q_H</span></span> = <span class="frac"><span class="num">T_H − T_C</span><span class="den">T_H</span></span> = <span class="frac"><span class="num">T_H</span><span class="den">T_H</span></span> − <span class="frac"><span class="num">T_C</span><span class="den">T_H</span></span></p>
-      <div class="formula-box purple" style="margin-top:10px;">η = 1 − T_C / T_H</div>
+      <p class="mono" style="font-size:15px;">η = <span class="frac"><span class="num">Q<sub>H</sub> − Q<sub>C</sub></span><span class="den">Q<sub>H</sub></span></span> = <span class="frac"><span class="num">T<sub>H</sub> − T<sub>C</sub></span><span class="den">T<sub>H</sub></span></span> = <span class="frac"><span class="num">T<sub>H</sub></span><span class="den">T<sub>H</sub></span></span> − <span class="frac"><span class="num">T<sub>C</sub></span><span class="den">T<sub>H</sub></span></span></p>
+      <div class="formula-box purple" style="margin-top:10px;">η = 1 − T<sub>C</sub> / T<sub>H</sub></div>
       <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">Temperatures must be in kelvin — this is a ratio of absolute temperatures, so an absolute scale is required.</p>
     </div>
 
     <div class="card">
       <h3>Worked example: power plant efficiency</h3>
       <p style="font-size:14.5px;">A power plant is modelled as a Carnot heat engine. Hot reservoir: 657°C. Cold reservoir: 372°C. What is its efficiency?</p>
-      <p class="mono" style="font-size:14.5px; margin-top:8px;">η = 1 − T_C/T_H = 1 − (372 + 273) / (657 + 273)</p>
+      <p class="mono" style="font-size:14.5px; margin-top:8px;">η = 1 − T<sub>C</sub>/T<sub>H</sub> = 1 − (372 + 273) / (657 + 273)</p>
       <p class="mono" style="font-size:17px; color:var(--magenta); font-weight:600;">η ≈ 0.302 → about 30%</p>
     </div>
 
@@ -1037,9 +1232,9 @@ border-bottom-color:var(--magenta);
     <div class="checkpoint">
       <h4>According to η = 1 − T<sub>C</sub>/T<sub>H</sub>, how can a Carnot engine's efficiency be increased?</h4>
       <div class="options" data-correct="2">
-        <button class="opt-btn">Increase T_C while keeping T_H fixed</button>
-        <button class="opt-btn">Decrease T_H while keeping T_C fixed</button>
-        <button class="opt-btn">Increase T_H and/or decrease T_C</button>
+        <button class="opt-btn">Increase T<sub>C</sub> while keeping T<sub>H</sub> fixed</button>
+        <button class="opt-btn">Decrease T<sub>H</sub> while keeping T<sub>C</sub> fixed</button>
+        <button class="opt-btn">Increase T<sub>H</sub> and/or decrease T<sub>C</sub></button>
         <button class="opt-btn">Efficiency cannot be changed once the engine is built</button>
       </div>
       <div class="cp-feedback"></div>
@@ -1098,7 +1293,7 @@ border-bottom-color:var(--magenta);
     <div class="reflection">
       <p class="q">4. Why does a Carnot engine's efficiency only depend on the reservoir temperatures, not on the gas used?</p>
       <button class="reveal-btn" onclick="toggle('r4')">Show model answer</button>
-      <div class="hidden-answer" id="r4">Because every stage of the Carnot cycle is reversible, the efficiency reduces to η = 1 − T_C/T_H — a result that comes purely from the ratio of absolute reservoir temperatures. No gas-specific quantity (like n or the type of gas) survives in the final expression.</div>
+      <div class="hidden-answer" id="r4">Because every stage of the Carnot cycle is reversible, the efficiency reduces to η = 1 − T<sub>C</sub>/T<sub>H</sub> — a result that comes purely from the ratio of absolute reservoir temperatures. No gas-specific quantity (like n or the type of gas) survives in the final expression.</div>
     </div>
   </section>
 
@@ -1125,7 +1320,7 @@ border-bottom-color:var(--magenta);
 <div class="topic-page" id="page-B.5" style="display:none;">
 
   <!-- HERO -->
-  <section class="hero" id="hero" style="border-top:none;">
+  <section class="hero" id="hero-b5" style="border-top:none;">
     <div class="eyebrow">Topic B.5 · Current and Circuits</div>
     <h1>Current &amp; Circuits</h1>
     <p class="sub">Charge moving through a conductor, pushed by a potential difference, resisted by a resistor. From that one idea, every circuit rule below follows.</p>
@@ -1541,7 +1736,7 @@ border-bottom-color:var(--magenta);
   </section>
 
   <!-- UNDERSTANDING CHECK -->
-  <section id="understanding-check">
+  <section id="understanding-check-b5">
     <span class="tag green">Understanding Check</span>
     <h2>Quick Concept Check</h2>
     <p class="lede">Four quick checks across current, resistance, and circuits — answer before moving on.</p>
@@ -1588,6 +1783,23 @@ border-bottom-color:var(--magenta);
         <button class="opt-btn">Because more p.d. (Ir) is lost driving current through its own internal resistance</button>
       </div>
       <div class="cp-feedback"></div>
+    </div>
+  </section>
+
+  <!-- EXERCISES -->
+  <section id="exercises-b5">
+    <span class="tag magenta">IB Physics Exercise</span>
+    <h2>15 Multiple-Choice Questions</h2>
+    <p class="lede">4 hard · 6 medium · 5 easy. Select an answer to see instant feedback.</p>
+
+    <div id="quizB5"></div>
+
+    <div class="score-panel">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; opacity:.8;">Score</div>
+        <div class="big"><span id="scoreValB5">0</span> / 15</div>
+      </div>
+      <button onclick="resetQuizB5()">Reset Quiz</button>
     </div>
   </section>
 
@@ -2390,7 +2602,7 @@ const builtPages = {
     el: document.getElementById('page-B.5'),
     title: 'B.5 Current and Circuits',
     index: [
-      {href:'#hero', label:'Top'},
+      {href:'#hero-b5', label:'Top'},
       {href:'#current', label:'Electric Current'},
       {href:'#pd', label:'Potential Difference'},
       {href:'#ohmslaw', label:"Ohm's Law, Resistivity & Power"},
@@ -2400,7 +2612,8 @@ const builtPages = {
       {href:'#internalresistance', label:'Internal Resistance'},
       {href:'#sensors', label:'Thermistors & LDRs'},
       {href:'#potentiometer', label:'Potentiometers'},
-      {href:'#understanding-check', label:'Understanding Check'},
+      {href:'#understanding-check-b5', label:'Understanding Check'},
+      {href:'#exercises-b5', label:'Exercises'},
     ]
   }
 };
@@ -2408,6 +2621,8 @@ const builtPages = {
 let activePageEl = null;
 
 function navigateTo(code, name){
+  const landing = document.getElementById('landingPage');
+  if(landing) landing.style.display = 'none';
   Object.values(builtPages).forEach(p => { p.el.style.display = 'none'; });
 
   if(builtPages[code]){
@@ -2434,8 +2649,37 @@ function navigateTo(code, name){
 }
 document.getElementById('phBack').addEventListener('click', ()=> navigateTo('B.4','Thermodynamics'));
 
-// Default landing page: B.4 Thermodynamics
-navigateTo('B.4','Thermodynamics');
+function openTopic(key){
+  const topic = topics[key];
+  if(!topic) return;
+  const firstBuilt = topic.subs.find(s => s.built);
+  if(firstBuilt){
+    navigateTo(firstBuilt.code, firstBuilt.name);
+  } else {
+    navigateTo(topic.subs[0].code, topic.subs[0].name);
+  }
+}
+
+// ---- Return to the landing page ----
+function goHome(){
+  closeAllDropdowns();
+  document.getElementById('landingPage').style.display = '';
+  Object.values(builtPages).forEach(p => { p.el.style.display = 'none'; });
+  pagePlaceholder.style.display = 'none';
+  sideNote.style.display = 'none';
+  sideNoteToggle.style.display = 'none';
+  sideNote.classList.remove('open');
+  activePageEl = null;
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+const navHomeBtn = document.getElementById('navHome');
+if(navHomeBtn){
+  navHomeBtn.addEventListener('click', goHome);
+}
+
+// Default: show the landing page instead of opening a lesson immediately.
+goHome();
 
 // Checkpoint logic
 document.querySelectorAll('.checkpoint').forEach(cp=>{
@@ -2472,7 +2716,7 @@ if(sideNoteToggle && sideNote){
 }
 
 // Quiz data
-const quizData = [
+const quizDataB4 = [
   {diff:'easy', stem:'In a closed system, which of the following can be transferred across the boundary?', opts:['Mass only','Energy only, as heat and work','Both mass and energy','Neither mass nor energy'], correct:1,
    exp:'A closed system blocks mass transfer entirely, but allows energy to move in or out as heat and/or work.'},
   {diff:'easy', stem:'A gas releases heat to its surroundings. What is the sign of Q?', opts:['Positive','Negative','Zero','Cannot be determined'], correct:1,
@@ -2505,61 +2749,102 @@ const quizData = [
   {diff:'medium', stem:'A Carnot engine operates between a hot reservoir at 500 K and a cold reservoir at 300 K. What is its efficiency?', opts:['40%','60%','20%','83%'], correct:0,
    exp:'η = 1 − T<sub>C</sub>/T<sub>H</sub> = 1 − 300/500 = 1 − 0.6 = 0.4 = 40%.'},
   {diff:'hard', stem:'A monatomic ideal gas completes a full cycle (A→B→C→A). Since ΔU = 0 over the cycle, what does the First Law tell us about total Q and total W?', opts:['Q<sub>total</sub> = W<sub>total</sub>','Q<sub>total</sub> = −W<sub>total</sub>','Q<sub>total</sub> = 0 always, regardless of W','W<sub>total</sub> = 0 always, regardless of Q'], correct:0,
-   exp:'Q = ΔU + W. With ΔU = 0 over the full cycle, Q_total = W_total — all the net heat absorbed becomes net work done.'},
+   exp:'Q = ΔU + W. With ΔU = 0 over the full cycle, Q<sub>total</sub> = W<sub>total</sub> — all the net heat absorbed becomes net work done.'},
   {diff:'hard', stem:'In the three-stage cycle example (V<sub>A</sub> = 0.75×10⁻⁴ m³, T<sub>A</sub> = 306 K, V<sub>C</sub> = 2V<sub>A</sub>, adiabatic C→A), what is T<sub>C</sub>?', opts:['≈ 193 K','306 K','≈ 612 K','≈ 96 K'], correct:0,
    exp:'P<sub>C</sub> = P<sub>C</sub> = P<sub>A</sub>(1/2)<sup>5/3</sup>, then T<sub>C</sub> = T<sub>A</sub> · (P<sub>C</sub>V<sub>C</sub>)/(P<sub>A</sub>V<sub>A</sub>) = 306 × (1/2)<sup>5/3</sup> × 2 ≈ 306 × 0.314 × 2 ≈ 193 K.'},
 ];
 
-const quizEl = document.getElementById('quiz');
-let score = 0;
-const answered = new Array(quizData.length).fill(false);
+const quizDataB5 = [
+  {diff:'easy', stem:'What is electric current defined as?', opts:['The energy per unit charge','The rate of flow of charge','The work done per second','The charge stored per volt'], correct:1,
+   exp:'Current I = Δq/Δt — the rate at which charge flows past a point, measured in amperes (A), where 1 A = 1 C/s.'},
+  {diff:'easy', stem:'Conventional current in a circuit flows in the direction:', opts:['Electrons actually travel, from − to +','Positive charge would move, from + to − around the circuit','Determined by the ammeter\'s orientation','From the negative terminal outward only'], correct:1,
+   exp:'By convention, current is defined as the direction positive charge would flow, from the + terminal to the − terminal around the external circuit — opposite to actual electron flow.'},
+  {diff:'easy', stem:'Which unit is equivalent to 1 volt?', opts:['1 A/s','1 C/s','1 J/C','1 Ω/A'], correct:2,
+   exp:'Potential difference V = W/q, so 1 volt = 1 joule per coulomb (1 J/C).'},
+  {diff:'easy', stem:'An ideal ammeter is connected in ______ and has resistance ______.', opts:['series; zero','parallel; zero','series; infinite','parallel; infinite'], correct:0,
+   exp:'An ammeter measures current, so it must sit in the current\'s path (series), and must have zero resistance so it doesn\'t reduce that current.'},
+  {diff:'medium', stem:'An electron accelerates through a potential difference of 5 V. How much kinetic energy does it gain, in joules?', opts:['5 J','5 eV','8.0 × 10⁻¹⁹ J','1.6 × 10⁻¹⁹ J'], correct:2,
+   exp:'E<sub>k</sub> = qV = (1.6×10⁻¹⁹)(5) = 8.0 × 10⁻¹⁹ J.'},
+  {diff:'medium', stem:'A wire has resistance R. If both its length and cross-sectional area are doubled, what happens to R?', opts:['R doubles','R halves','R stays the same','R quadruples'], correct:2,
+   exp:'R = ρL/A. Doubling L doubles R, but doubling A halves R — the two effects cancel, so R is unchanged.'},
+  {diff:'medium', stem:'Three 6 Ω resistors are connected in parallel. What is the equivalent resistance?', opts:['18 Ω','6 Ω','3 Ω','2 Ω'], correct:3,
+   exp:'1/R<sub>p</sub> = 1/6 + 1/6 + 1/6 = 3/6 = 1/2, so R<sub>p</sub> = 2 Ω.'},
+  {diff:'medium', stem:'A 12 V battery with negligible internal resistance is connected across a 3 Ω and a 6 Ω resistor in series. What current flows?', opts:['1 A','1.33 A','2 A','4 A'], correct:1,
+   exp:'R<sub>total</sub> = 3 + 6 = 9 Ω. I = V/R<sub>total</sub> = 12/9 ≈ 1.33 A.'},
+  {diff:'medium', stem:'Which correctly ranks how an NTC thermistor and an LDR respond to increasing temperature and increasing light, respectively?', opts:['Thermistor resistance increases; LDR resistance increases','Thermistor resistance decreases; LDR resistance increases','Thermistor resistance decreases; LDR resistance decreases','Thermistor resistance increases; LDR resistance decreases'], correct:2,
+   exp:'Both are negative-response sensors: an NTC thermistor\'s resistance decreases as temperature rises, and an LDR\'s resistance decreases as light intensity rises — more carriers are freed in each case.'},
+  {diff:'hard', stem:'A battery of EMF 12 V and internal resistance 0.5 Ω is connected to an external resistor R. If the current drawn is 4 A, what is R?', opts:['2.5 Ω','2.0 Ω','3.0 Ω','1.5 Ω'], correct:0,
+   exp:'ε = I(R+r) → 12 = 4(R + 0.5) → 3 = R + 0.5 → R = 2.5 Ω.'},
+  {diff:'hard', stem:'Four identical 8 Ω resistors are connected in parallel, then this combination is connected in series with a 1 Ω resistor and a battery of EMF 6 V and internal resistance 1 Ω. What current flows from the battery?', opts:['1 A','1.5 A','2 A','3 A'], correct:2,
+   exp:'Parallel group: 1/R<sub>p</sub> = 4×(1/8) = 1/2 → R<sub>p</sub> = 2 Ω. Total R = R<sub>p</sub> + 1(external) + 1(internal, r) = 2+1+1 = 4 Ω. I = ε/R<sub>total</sub> = 6/4 = 1.5 A.'},
+  {diff:'hard', stem:'A cylindrical wire of resistivity 1.7×10⁻⁸ Ω·m has length 2.0 m and radius 0.50 mm. What is its resistance?', opts:['≈ 0.043 Ω','≈ 0.0043 Ω','≈ 0.43 Ω','≈ 4.3 Ω'], correct:0,
+   exp:'A = πr² = π(0.5×10⁻³)² ≈ 7.85×10⁻⁷ m². R = ρL/A = (1.7×10⁻⁸ × 2.0)/(7.85×10⁻⁷) ≈ 0.0433 Ω.'},
+  {diff:'hard', stem:'A 9 V battery with internal resistance r delivers 3 A to an external 2 Ω resistor. What is r?', opts:['0.5 Ω','1.0 Ω','1.5 Ω','2.0 Ω'], correct:1,
+   exp:'ε = I(R+r) → 9 = 3(2+r) → 3 = 2+r → r = 1.0 Ω.'},
+  {diff:'medium', stem:'In a potentiometer used as a voltage divider, moving the wiper to the very end of the track (at the low-voltage terminal) gives an output voltage of:', opts:['Half the supply voltage','The full supply voltage','0 V','It cannot reach 0 V'], correct:2,
+   exp:'A potentiometer taps off a fraction of the full p.d. along its track — at one extreme the wiper output is 0 V, and at the other it equals the fueffll supply voltage.'},
+  {diff:'easy', stem:'Which statement about EMF is correct?', opts:['EMF is a force, measured in newtons','EMF is a p.d., measured in volts','EMF only exists in AC circuits','EMF equals the terminal voltage exactly, always'], correct:1,
+   exp:'Despite the name "electromotive force", EMF is not a force — it is a potential difference, measured in volts, representing energy supplied per unit charge.'},
+];
 
-function renderQuiz(){
-  quizEl.innerHTML = '';
-  quizData.forEach((q,qi)=>{
-    const card = document.createElement('div');
-    card.className = 'quiz-q';
-    card.innerHTML = `
-      <div class="quiz-head">
-        <span class="quiz-num">Question ${qi+1} of ${quizData.length}</span>
-        <span class="diff ${q.diff}">${q.diff}</span>
-      </div>
-      <p class="stem">${q.stem}</p>
-      <div class="quiz-opts">
-        ${q.opts.map((o,oi)=>`<button class="qopt" data-qi="${qi}" data-oi="${oi}">${o}</button>`).join('')}
-      </div>
-      <div class="qexp" id="exp-${qi}">${q.exp}</div>
-    `;
-    quizEl.appendChild(card);
-  });
-  quizEl.querySelectorAll('.qopt').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const qi = parseInt(btn.dataset.qi);
-      const oi = parseInt(btn.dataset.oi);
-      if(answered[qi]) return;
-      answered[qi] = true;
-      const group = quizEl.querySelectorAll(`.qopt[data-qi="${qi}"]`);
-      group.forEach(b=>b.classList.add('disabled'));
-      if(oi === quizData[qi].correct){
-        btn.classList.add('correct');
-        score++;
-      } else {
-        btn.classList.add('incorrect');
-        group[quizData[qi].correct].classList.add('correct');
-      }
-      document.getElementById(`exp-${qi}`).classList.add('show');
-      document.getElementById('scoreVal').textContent = score;
+function initQuiz(containerId, data, scoreElId, resetFnName){
+  const el = document.getElementById(containerId);
+  if(!el) return;
+  let score = 0;
+  const answered = new Array(data.length).fill(false);
+
+  function render(){
+    el.innerHTML = '';
+    data.forEach((q,qi)=>{
+      const card = document.createElement('div');
+      card.className = 'quiz-q';
+      card.innerHTML = `
+        <div class="quiz-head">
+          <span class="quiz-num">Question ${qi+1} of ${data.length}</span>
+          <span class="diff ${q.diff}">${q.diff}</span>
+        </div>
+        <p class="stem">${q.stem}</p>
+        <div class="quiz-opts">
+          ${q.opts.map((o,oi)=>`<button class="qopt" data-qi="${qi}" data-oi="${oi}">${o}</button>`).join('')}
+        </div>
+        <div class="qexp" id="${containerId}-exp-${qi}">${q.exp}</div>
+      `;
+      el.appendChild(card);
     });
-  });
-}
-renderQuiz();
+    el.querySelectorAll('.qopt').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const qi = parseInt(btn.dataset.qi);
+        const oi = parseInt(btn.dataset.oi);
+        if(answered[qi]) return;
+        answered[qi] = true;
+        const group = el.querySelectorAll(`.qopt[data-qi="${qi}"]`);
+        group.forEach(b=>b.classList.add('disabled'));
+        if(oi === data[qi].correct){
+          btn.classList.add('correct');
+          score++;
+        } else {
+          btn.classList.add('incorrect');
+          group[data[qi].correct].classList.add('correct');
+        }
+        document.getElementById(`${containerId}-exp-${qi}`).classList.add('show');
+        const scoreEl = document.getElementById(scoreElId);
+        if(scoreEl) scoreEl.textContent = score;
+      });
+    });
+  }
+  render();
 
-function resetQuiz(){
-  score = 0;
-  for(let i=0;i<answered.length;i++) answered[i]=false;
-  document.getElementById('scoreVal').textContent = 0;
-  renderQuiz();
+  window[resetFnName] = function(){
+    score = 0;
+    for(let i=0;i<answered.length;i++) answered[i]=false;
+    const scoreEl = document.getElementById(scoreElId);
+    if(scoreEl) scoreEl.textContent = 0;
+    render();
+  };
 }
+
+initQuiz('quiz', quizDataB4, 'scoreVal', 'resetQuiz');
+initQuiz('quizB5', quizDataB5, 'scoreValB5', 'resetQuizB5');
 
 // scroll spy — sticky-note side nav (relevant on whichever built page is active)
 window.addEventListener('scroll', ()=>{
@@ -2576,5 +2861,8 @@ window.addEventListener('scroll', ()=>{
   });
 });
 </script>
+
+
+
 </body>
 </html>
